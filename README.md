@@ -1,65 +1,65 @@
-# vscode-testbox README
+# A TestBox Bundle v0.1.0 for Visual Studio Code
 
-This is the README for your extension "vscode-testbox". After writing up a brief description, we recommend including the following sections.
+Get the latest Visual Studio Code from https://code.visualstudio.com/.
 
-## Features
+## Target Platforms
+- TestBox 2.X.X
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+## Currently supported features
 
-For example if there is an image subfolder under your extension project workspace:
+This bundle includes functionality for TestBox BDD/TDD and MockBox.
 
-\!\[feature X\]\(images/feature-x.png\)
+### Code Skeleton Snippets
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+- `bdd ➝` : Creates a TestBox BDD Bundle
+- `unit ➝` : Creates a TestBox TDD xUnit Bundle
 
-## Requirements
+### TestBox Snippets
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- `assert` : An `assert()` method
+- `afterAll ➝` : An `afterAll()` BDD life-cycle method
+- `aftereach ➝` : An `afterEach()` BDD closure
+- `afterTests ➝` : An `afterTests()` xUnit life-cycle method
+- `aroundEach ➝` : An `aroundEach()` BDD closure
+- `bdd ➝` : Creates a new BDD Test Bundle CFC
+- `beforeAll ➝` : An `beforeAll()` BDD life-cycle method
+- `beforeeach ➝` : A `beforeEach()` BDD closure
+- `beforeTests ➝` : An `beforeTests()` xUnit life-cycle method
+- `console ➝` : TestBox send some output to the console
+- `debug ➝` : Writes up a non-duplicate `debug()` call
+- `debugduplicate ➝` : Writes up a `debug()` call with duplicate
+- `describe ➝` : A `describe` suite
+- `describeFull ➝` : A `describe` suite with all arguments
+- `expect ➝` : Starts an expectation DSL with a `toBe()` addition
+- `expectAll ➝` : Starts a collection expectation DSL with a `toBe()` addition
+- `expectFalse ➝` : Does a false expectation expression
+- `expectTrue ➝` : Does a true expectation expression
+- `expectToThrow ➝` : Starts an expectation that throws an exception
+- `feature, featureFull ➝` : Starts a `feature()` block
+- `given, givenFull ➝` : Starts a `given()` block
+- `it ➝` : A test spec
+- `itFull ➝` : A test spec with all arguments
+- `setup ➝` : An `setup()` xUnit life-cycle method
+- `story, storyFull ➝` : Starts a `story()` block
+- `teardown ➝` : An `teardown()` xUnit life-cycle method
+- `then, thenFull ➝` : Starts a `then()` block
+- `unit ➝` : Creates a new xUnit Test Bundle CFC
+- `when, whenFull ➝` : Starts a `when()` block 
 
-## Extension Settings
+### ColdBox Testing Snippets
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+- `handlerTest ➝` : Creates a ColdBox Event Handler test case
+- `integration ➝` : Creates a top down integration BDD test case
+- `interceptorTest ➝` : Creates an Interceptor test case
+- `modelTest ➝` : Creates a model test case
+- `testaction ➝` : Creates an integration spec case for an event action
 
-For example:
+## Installation instructions : 
 
-This extension contributes the following settings:
+### With Package Control ###
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+Install the latest *vscode-testbox* package from https://marketplace.visualstudio.com/.
 
-## Known Issues
+## References:
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on OSX or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on OSX or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (OSX) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+- A ColdBox Platform Bundle v2.0.0 for Sublime Text 2/3 - https://github.com/lmajano/cbox-coldbox-sublime
