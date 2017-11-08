@@ -1,0 +1,30 @@
+{
+    "name": "vscode-testbox",
+    "displayName": "vscode-testbox",
+    "description": "TestBox Support for Visual Studio Code",
+    "version": "0.1.0",
+    "publisher": "ilich8086",
+    "icon": "icon.png",
+    "engines": {
+        "vscode": "^1.17.0"
+    },
+    "categories": [
+        "Snippets"
+    ],
+    "contributes": {
+        "snippets": [
+            {
+                "language": "lang-cfml",
+                "path": "./snippets/snippets.json"
+            }
+        ]
+    },
+    "keywords": [
+        "CFML",
+        "ColdFusion",
+        "Lucee",
+        "TestBox",
+        "MockBox"
+    ],
+    "dependencies": {}
+}
