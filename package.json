@@ -3,7 +3,7 @@
     "displayName": "vscode-testbox",
     "description": "TestBox Support for Visual Studio Code",
     "version": "0.1.0",
-    "publisher": "ilich8086",
+    "publisher": "ortus-solutions",
     "icon": "icon.png",
     "engines": {
         "vscode": "^1.17.0"
@@ -11,10 +11,20 @@
     "categories": [
         "Snippets"
     ],
+    "activationEvents": [
+        "onLanguage:lang-cfml",
+        "onLanguage:cfml",
+        "workspaceContains:**/*.cfm",
+        "workspaceContains:**/*.cfml",
+        "workspaceContains:**/*.cfc"
+    ],
     "contributes": {
-        "snippets": [
-            {
+        "snippets": [{
                 "language": "lang-cfml",
+                "path": "./snippets/snippets.json"
+            },
+            {
+                "language": "cfml",
                 "path": "./snippets/snippets.json"
             }
         ]
@@ -24,7 +34,9 @@
         "ColdFusion",
         "Lucee",
         "TestBox",
-        "MockBox"
+        "MockBox",
+        "BDD",
+        "TDD"
     ],
     "dependencies": {}
 }
