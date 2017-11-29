@@ -32,11 +32,9 @@
     "keywords": [
         "CFML",
         "ColdFusion",
-        "Lucee",
         "TestBox",
         "MockBox",
-        "BDD",
-        "TDD"
+        "BDD/TDD"
     ],
     "dependencies": {}
 }
