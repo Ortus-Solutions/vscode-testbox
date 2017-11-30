@@ -2,7 +2,7 @@
     "name": "vscode-testbox",
     "displayName": "vscode-testbox",
     "description": "TestBox Support for Visual Studio Code",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "publisher": "ortus-solutions",
     "icon": "icon.png",
     "engines": {
@@ -10,13 +10,6 @@
     },
     "categories": [
         "Snippets"
-    ],
-    "activationEvents": [
-        "onLanguage:lang-cfml",
-        "onLanguage:cfml",
-        "workspaceContains:**/*.cfm",
-        "workspaceContains:**/*.cfml",
-        "workspaceContains:**/*.cfc"
     ],
     "contributes": {
         "snippets": [{
