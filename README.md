@@ -9,6 +9,13 @@ Get the latest Visual Studio Code from https://code.visualstudio.com/.
 
 This bundle includes functionality for TestBox BDD/TDD and MockBox.
 
+### Jump to Spec
+
+A "Jump to specific TestBox spec" is available in the command pallete.  This lets you
+quickly search for and jump to a specific spec in the currently open file.
+
+You can add a custom keyboard shortcut for this yourself in your Keyboard Shortcuts menu.
+
 ### Code Skeleton Snippets
 
 - `bdd ➝` : Creates a TestBox BDD Bundle
@@ -44,7 +51,7 @@ This bundle includes functionality for TestBox BDD/TDD and MockBox.
 - `teardown ➝` : An `teardown()` xUnit life-cycle method
 - `then, thenFull ➝` : Starts a `then()` block
 - `unit ➝` : Creates a new xUnit Test Bundle CFC
-- `when, whenFull ➝` : Starts a `when()` block 
+- `when, whenFull ➝` : Starts a `when()` block
 
 ### ColdBox Testing Snippets
 
@@ -54,7 +61,7 @@ This bundle includes functionality for TestBox BDD/TDD and MockBox.
 - `modelTest ➝` : Creates a model test case
 - `testaction ➝` : Creates an integration spec case for an event action
 
-## Installation instructions : 
+## Installation instructions :
 
 ### With Package Control ###
 
