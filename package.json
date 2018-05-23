@@ -8,11 +8,18 @@
     "engines": {
         "vscode": "^1.17.0"
     },
-    "categories": [
-        "Snippets"
-    ],
+    "categories": ["Other", "Snippets"],
+    "activationEvents": ["onCommand:extension.jumpToTestBoxSpec"],
+    "main": "./extension",
     "contributes": {
-        "snippets": [{
+        "commands": [
+            {
+                "command": "extension.jumpToTestBoxSpec",
+                "title": "Jump to specific TestBox spec"
+            }
+        ],
+        "snippets": [
+            {
                 "language": "lang-cfml",
                 "path": "./snippets/snippets.json"
             },
@@ -22,12 +29,9 @@
             }
         ]
     },
-    "keywords": [
-        "CFML",
-        "ColdFusion",
-        "TestBox",
-        "MockBox",
-        "BDD/TDD"
-    ],
-    "dependencies": {}
+    "keywords": ["CFML", "ColdFusion", "TestBox", "MockBox", "BDD/TDD"],
+    "dependencies": {},
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    }
 }
