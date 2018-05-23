@@ -8,6 +8,10 @@
     "engines": {
         "vscode": "^1.17.0"
     },
+    "repository" : { 
+        "type" : "git", 
+        "url" : "https://github.com/Ortus-Solutions/vscode-testbox.git"
+    },
     "categories": ["Other", "Snippets"],
     "activationEvents": ["onCommand:extension.jumpToTestBoxSpec"],
     "main": "./extension",
