@@ -1,8 +1,9 @@
-# A TestBox Bundle v0.1.0 for Visual Studio Code
+# A TestBox Bundle v0.2.0 for Visual Studio Code
 
 Get the latest Visual Studio Code from https://code.visualstudio.com/.
 
 ## Target Platforms
+
 - TestBox 2.X.X
 
 ## Currently supported features
