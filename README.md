@@ -57,7 +57,7 @@ You can add a custom keyboard shortcut for this yourself in your Keyboard Shortc
 ### ColdBox Testing Snippets
 
 - `handlerTest ➝` : Creates a ColdBox Event Handler test case
-- `integration ➝` : Creates a top down integration BDD test case
+- `integrationTest ➝` : Creates a top down integration BDD test case
 - `interceptorTest ➝` : Creates an Interceptor test case
 - `modelTest ➝` : Creates a model test case
 - `testaction ➝` : Creates an integration spec case for an event action
