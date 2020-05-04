@@ -2,18 +2,26 @@
     "name": "vscode-testbox",
     "displayName": "vscode-testbox",
     "description": "TestBox Support for Visual Studio Code",
-    "version": "0.2.0",
+    "version": "1.0.0",
     "publisher": "ortus-solutions",
     "icon": "icon.png",
     "engines": {
-        "vscode": "^1.17.0"
+        "vscode": "^1.18.0"
     },
-    "repository" : { 
-        "type" : "git", 
-        "url" : "https://github.com/Ortus-Solutions/vscode-testbox.git"
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Ortus-Solutions/vscode-testbox.git"
     },
-    "categories": ["Other", "Snippets"],
-    "activationEvents": ["onCommand:extension.jumpToTestBoxSpec"],
+    "bugs": {
+        "url": "https://github.com/Ortus-Solutions/vscode-testbox/issues"
+    },
+    "categories": [
+        "Other",
+        "Snippets"
+    ],
+    "activationEvents": [
+        "onCommand:extension.jumpToTestBoxSpec"
+    ],
     "main": "./extension",
     "contributes": {
         "commands": [
@@ -33,8 +41,20 @@
             }
         ]
     },
-    "keywords": ["CFML", "ColdFusion", "TestBox", "MockBox", "BDD/TDD"],
-    "dependencies": {},
+    "keywords": [
+        "CFML",
+        "ColdFusion",
+        "TestBox",
+        "MockBox",
+        "BDD/TDD"
+    ],
+    "dependencies": {
+        "convert-snippets-to-vscode": "^1.0.2"
+    },
+    "devDependencies": {
+        "typescript": "^2.9.2",
+        "vscode": "^1.1.36"
+    },
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install"
     }

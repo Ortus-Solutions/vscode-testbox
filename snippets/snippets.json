@@ -1,235 +1,205 @@
 {
 	"afterall": {
 		"prefix": "afterall",
-		"body": "\r\nfunction afterAll(){\r\n\t${0}\r\n});",
+		"body": "\nfunction afterAll(){\n\t${0}\n});",
 		"description": "TestBox BDD After All",
 		"scope": "source,text"
 	},
 	"after": {
 		"prefix": "after",
-		"body": "\r\nafterEach(function( currentSpec ){\r\n\t${0}\r\n});",
+		"body": "\nafterEach(function( currentSpec ){\n\t${0}\n});",
 		"description": "TestBox BDD After Each",
 		"scope": "source,text"
 	},
 	"aftertests": {
 		"prefix": "aftertests",
-		"body": "\r\nfunction afterTests(){\r\n\t${0}\r\n});",
+		"body": "\nfunction afterTests(){\n\t${0}\n});",
 		"description": "TestBox xUnit After Tests",
 		"scope": "source,text"
 	},
 	"around": {
 		"prefix": "around",
-		"body": "\r\naroundEach(function( spec, suite ){\r\n\t${0}\r\n\targuments.spec.body();\r\n});",
+		"body": "\naroundEach(function( spec, suite ){\n\t${0}\n\targuments.spec.body();\n});",
 		"description": "TestBox BDD Around Each",
 		"scope": "source,text"
 	},
 	"assert": {
 		"prefix": "assert",
-		"body": "\r\nassert(\t${1}, ${2:'Message'});\r\n",
+		"body": "\nassert(\t${1}, ${2:'Message'});\n",
 		"description": "TestBox Assert",
 		"scope": "source,text"
 	},
 	"beforeall": {
 		"prefix": "beforeall",
-		"body": "\r\nfunction beforeAll(){\r\n\t${0}\r\n});",
+		"body": "\nfunction beforeAll(){\n\t${0}\n});",
 		"description": "TestBox BDD Before All",
 		"scope": "source,text"
 	},
 	"before": {
 		"prefix": "before",
-		"body": "\r\nbeforeEach(function( currentSpec ){\r\n\t${0}\r\n});",
+		"body": "\nbeforeEach(function( currentSpec ){\n\t${0}\n});",
 		"description": "TestBox BDD Before Each",
 		"scope": "source,text"
 	},
 	"beforetests": {
 		"prefix": "beforetests",
-		"body": "\r\nfunction beforeTests(){\r\n\t${0}\r\n});",
+		"body": "\nfunction beforeTests(){\n\t${0}\n});",
 		"description": "TestBox xUnit Before Tests",
 		"scope": "source,text"
 	},
 	"console": {
 		"prefix": "console",
-		"body": "\r\nconsole( $1 );\r\n",
+		"body": "\nconsole( $1 );\n",
 		"description": "TestBox Send To Console",
 		"scope": "source,text"
 	},
 	"debug": {
 		"prefix": "debug",
-		"body": "\r\ndebug( $1 );\r\n",
+		"body": "\ndebug( $1 );\n",
 		"description": "TestBox Debug",
 		"scope": "source,text"
 	},
 	"debugduplicate": {
 		"prefix": "debugduplicate",
-		"body": "\r\ndebug( var=$1, duplicate=true, top=999 );\r\n",
+		"body": "\ndebug( var=$1, duplicate=true, top=999 );\n",
 		"description": "TestBox Debug Duplicate",
 		"scope": "source,text"
 	},
 	"describe": {
 		"prefix": "describe",
-		"body": "\r\ndescribe( \"${1:A suite}\", function(){\r\n${0}\r\n\r\n});",
+		"body": "\ndescribe( \"${1:A suite}\", function(){\n${0}\n\n});",
 		"description": "TestBox BDD Suite",
 		"scope": "source,text"
 	},
 	"describeFull": {
 		"prefix": "describeFull",
-		"body": "\r\ndescribe( title=\"${1:A suite}\", labels=\"\", asyncAll=false, skip=false, body=function(){\r\n${0}\r\n\r\n});",
+		"body": "\ndescribe( title=\"${1:A suite}\", labels=\"\", asyncAll=false, skip=false, body=function(){\n${0}\n\n});",
 		"description": "TestBox BDD Suite With Arguments",
 		"scope": "source,text"
 	},
 	"expectToThrow": {
 		"prefix": "expectToThrow",
-		"body": "\r\nexpect(\tfunction(){\r\n\t${1}\r\n} ).toThrow();\r\n",
+		"body": "\nexpect(\tfunction(){\n\t${1}\n} ).toThrow();\n",
 		"description": "TestBox Expect To Throw",
 		"scope": "source,text"
 	},
 	"expect": {
 		"prefix": "expect",
-		"body": "\r\nexpect(\t${1} ).${2:toBe}(${3});\r\n",
+		"body": "\nexpect(\t${1} ).${2:toBe}(${3});\n",
 		"description": "TestBox Expect",
-		"scope": "source,text"
-	},
-	"expectall": {
-		"prefix": "expectall",
-		"body": "\r\nexpectAll(\t${1} ).${2:toBe}( ${3} );\r\n",
-		"description": "TestBox ExpectAll",
 		"scope": "source,text"
 	},
 	"expectFalse": {
 		"prefix": "expectFalse",
-		"body": "\r\nexpect(\t${1} ).toBeFalse();\r\n",
+		"body": "\nexpect(\t${1} ).toBeFalse();\n",
 		"description": "TestBox Expect False",
 		"scope": "source,text"
 	},
 	"expectTrue": {
 		"prefix": "expectTrue",
-		"body": "\r\nexpect(\t${1} ).toBeTrue();\r\n",
+		"body": "\nexpect(\t${1} ).toBeTrue();\n",
 		"description": "TestBox Expect True",
+		"scope": "source,text"
+	},
+	"expectall": {
+		"prefix": "expectall",
+		"body": "\nexpectAll(\t${1} ).${2:toBe}( ${3} );\n",
+		"description": "TestBox ExpectAll",
 		"scope": "source,text"
 	},
 	"feature": {
 		"prefix": "feature",
-		"body": "\r\nfeature( \"${1:A suite}\", function(){\r\n${0}\r\n\r\n});",
+		"body": "\nfeature( \"${1:A suite}\", function(){\n${0}\n\n});",
 		"description": "TestBox BDD Feature",
 		"scope": "source,text"
 	},
 	"featureFull": {
 		"prefix": "featureFull",
-		"body": "\r\nfeature( title=\"${1:A suite}\", labels=\"\", asyncAll=false, skip=false, body=function(){\r\n${0}\r\n\r\n});",
+		"body": "\nfeature( title=\"${1:A suite}\", labels=\"\", asyncAll=false, skip=false, body=function(){\n${0}\n\n});",
 		"description": "TestBox BDD Feature With Arguments",
 		"scope": "source,text"
 	},
 	"given": {
 		"prefix": "given",
-		"body": "\r\ngiven( \"${1:A suite}\", function(){\r\n${0}\r\n\r\n});",
+		"body": "\ngiven( \"${1:A suite}\", function(){\n${0}\n\n});",
 		"description": "TestBox BDD Given",
 		"scope": "source,text"
 	},
 	"givenFull": {
 		"prefix": "givenFull",
-		"body": "\r\ngiven( title=\"${1:A suite}\", labels=\"\", asyncAll=false, skip=false, body=function(){\r\n${0}\r\n\r\n});",
+		"body": "\ngiven( title=\"${1:A suite}\", labels=\"\", asyncAll=false, skip=false, body=function(){\n${0}\n\n});",
 		"description": "TestBox BDD Given With Arguments",
-		"scope": "source,text"
-	},
-	"handlerTest": {
-		"prefix": "handlerTest",
-		"body": "\r\ncomponent extends=\"coldbox.system.testing.BaseHandlerTest\" handler=\"${1:HandlerPath}\"{\r\n\t\r\n\t/**\r\n\t* You can remove this setup method if you do not have anything to setup\r\n\t*/\r\n\tvoid function setup(){\r\n\t\tsuper.setup();\r\n\t\t\r\n\t\t// Your own setup here if needed\r\n\t\t${0}\r\n\t}\r\n\r\n\tfunction testSomething(){\r\n\t\r\n\t}\r\n\r\n}\r\n",
-		"description": "ColdBox Handler Test",
-		"scope": "source,text"
-	},
-	"testaction": {
-		"prefix": "testaction",
-		"body": "\r\nit( \"${1:}\", function(){\r\n\tvar event = execute( event=\"${2:main.index}\", renderResults=${3:true|false} );\r\n\r\n});\r\n",
-		"description": "ColdBox Integration Test Case",
-		"scope": "source,text"
-	},
-	"integrationTest": {
-		"prefix": "integrationTest",
-		"body": "\r\n/*******************************************************************************\r\n*\tIntegration Test as BDD (CF10+ or Railo 4.1 Plus)\r\n*\r\n*\tExtends the integration class: coldbox.system.testing.BaseTestCase\r\n*\r\n*\tso you can test your ColdBox application headlessly. The 'appMapping' points by default to\r\n*\tthe '/root' mapping created in the test folder Application.cfc.  Please note that this\r\n*\tApplication.cfc must mimic the real one in your root, including ORM settings if needed.\r\n*\r\n*\tThe 'execute()' method is used to execute a ColdBox event, with the following arguments\r\n*\t* event : the name of the event\r\n*\t* private : if the event is private or not\r\n*\t* prePostExempt : if the event needs to be exempt of pre post interceptors\r\n*\t* eventArguments : The struct of args to pass to the event\r\n*\t* renderResults : Render back the results of the event\r\n*******************************************************************************/\r\ncomponent extends=\"coldbox.system.testing.BaseTestCase\" appMapping=\"/root\"{\r\n\r\n\t/*********************************** LIFE CYCLE Methods ***********************************/\r\n\r\n\tfunction beforeAll(){\r\n\t\tsuper.beforeAll();\r\n\t\t// do your own stuff here\r\n\t}\r\n\r\n\tfunction afterAll(){\r\n\t\t// do your own stuff here\r\n\t\tsuper.afterAll();\r\n\t}\r\n\r\n/*********************************** BDD SUITES ***********************************/\r\n\r\n\tfunction run(){\r\n\r\n\t\tdescribe( \"Main Handler\", function(){\r\n\r\n\t\t\tbeforeEach(function( currentSpec ){\r\n\t\t\t\t// Setup as a new ColdBox request, VERY IMPORTANT. ELSE EVERYTHING LOOKS LIKE THE SAME REQUEST.\r\n\t\t\t\tsetup();\r\n\t\t\t});\r\n\r\n\t\t\tit( \"+homepage renders\", function(){\r\n\t\t\t\tvar event = execute( event=\"main.index\", renderResults=true );\r\n\t\t\t\texpect(\tevent.getValue( name=\"welcomemessage\", private=true ) ).toBe( \"Welcome to ColdBox!\" );\r\n\t\t\t});\r\n\r\n\t\t});\r\n\r\n\t}\r\n\r\n}\r\n",
-		"description": "ColdBox Integration Test",
-		"scope": "source,text"
-	},
-	"interceptorTest": {
-		"prefix": "interceptorTest",
-		"body": "\r\ncomponent extends=\"coldbox.system.testing.BaseInterceptorTest\" interceptor=\"${1:InterceptorPath}\"{\r\n\t\r\n\t/**\r\n\t* You can remove this setup method if you do not have anything to setup\r\n\t*/\r\n\tvoid function setup(){\r\n\t\t// interceptor configuration properties, if any\r\n\t\tconfigProperties = {};\r\n\t\t// init and configure interceptor\r\n\t\tsuper.setup();\r\n\t\t// we are now ready to test this interceptor\r\n\t}\r\n\t\r\n\tfunction testConfigure(){\r\n\t\t// any mocking here\r\n\t\t\r\n\t\t// test configure\r\n\t\tinterceptor.configure();\r\n\t}\r\n\r\n}\r\n",
-		"description": "ColdBox Interceptor Test",
 		"scope": "source,text"
 	},
 	"it": {
 		"prefix": "it",
-		"body": "\r\nit( \"${1:A Spec}\", function(){\r\n${0}\r\n});",
+		"body": "\nit( \"${1:A Spec}\", function(){\n${0}\n});",
 		"description": "TestBox Spec",
 		"scope": "source,text"
 	},
 	"itFull": {
 		"prefix": "itFull",
-		"body": "\r\nit( title=\"${1:A Spec}\", labels=\"\", skip=false, body=function(){\r\n${0}\r\n});",
+		"body": "\nit( title=\"${1:A Spec}\", labels=\"\", skip=false, body=function(){\n${0}\n});",
 		"description": "TestBox Spec With Arguments",
-		"scope": "source,text"
-	},
-	"modelTest": {
-		"prefix": "modelTest",
-		"body": "\r\ncomponent extends=\"coldbox.system.testing.BaseModelTest\" model=\"${1:ModelPath}\"{\r\n\t\r\n\t/**\r\n\t* You can remove this setup method if you do not have anything to setup\r\n\t*/\r\n\tvoid function setup(){\r\n\t\tsuper.setup();\r\n\t\t\r\n\t\t// model constructor\r\n\t\tmodel.init();\r\n\t}\r\n\r\n}\r\n",
-		"description": "ColdBox Model Test",
 		"scope": "source,text"
 	},
 	"setup": {
 		"prefix": "setup",
-		"body": "\r\nfunction setup( currentMethod ){\r\n\t${0}\r\n});",
+		"body": "\nfunction setup( currentMethod ){\n\t${0}\n});",
 		"description": "TestBox Setup",
 		"scope": "source,text"
 	},
 	"story": {
 		"prefix": "story",
-		"body": "\r\nstory( \"${1:A suite}\", function(){\r\n${0}\r\n\r\n});",
+		"body": "\nstory( \"${1:A suite}\", function(){\n${0}\n\n});",
 		"description": "TestBox BDD Story",
 		"scope": "source,text"
 	},
 	"storyFull": {
 		"prefix": "storyFull",
-		"body": "\r\nstory( title=\"${1:A suite}\", labels=\"\", asyncAll=false, skip=false, body=function(){\r\n${0}\r\n\r\n});",
+		"body": "\nstory( title=\"${1:A suite}\", labels=\"\", asyncAll=false, skip=false, body=function(){\n${0}\n\n});",
 		"description": "TestBox BDD Story With Arguments",
 		"scope": "source,text"
 	},
 	"teardown": {
 		"prefix": "teardown",
-		"body": "\r\nfunction teardown( currentMethod ){\r\n\t${0}\r\n});",
+		"body": "\nfunction teardown( currentMethod ){\n\t${0}\n});",
 		"description": "TestBox Teardown",
 		"scope": "source,text"
 	},
 	"bdd": {
 		"prefix": "bdd",
-		"body": "\r\n/**\r\n* ${1:My BDD Test}\r\n*/\r\ncomponent extends=\"testbox.system.BaseSpec\"{\r\n\t\r\n/*********************************** LIFE CYCLE Methods ***********************************/\r\n\r\n\t// executes before all suites+specs in the run() method\r\n\tfunction beforeAll(){\r\n\t\t\r\n\t}\r\n\r\n\t// executes after all suites+specs in the run() method\r\n\tfunction afterAll(){\r\n\t\t\r\n\t}\r\n\r\n/*********************************** BDD SUITES ***********************************/\r\n\r\n\tfunction run( testResults, testBox ){\r\n\t\t// all your suites go here.\r\n\t\tdescribe( \"My First Suite\", function(){\r\n\r\n\t\t\tit( \"A Spec\", function(){\r\n\t\t\t\tfail( 'implement' );\r\n\t\t\t});\r\n\r\n\t\t});\r\n\t}\r\n\t\r\n}\r\n",
+		"body": "\n/**\n * My BDD Test\n */\ncomponent extends=\"testbox.system.BaseSpec\"{\n\n/*********************************** LIFE CYCLE Methods ***********************************/\n\n\t/**\n\t * executes before all suites+specs in the run() method\n\t */\n\tfunction beforeAll(){\n\n\t}\n\n\t/**\n\t * executes after all suites+specs in the run() method\n\t */\n\tfunction afterAll(){\n\n\t}\n\n\t/*********************************** BDD SUITES ***********************************/\n\n\tfunction run( testResults, testBox ){\n\t\t// all your suites go here.\n\t\tdescribe( \"My First Suite\", function(){\n\n\t\t\tit( \"A Spec\", function(){\n\t\t\t\tfail( 'implement' );\n\t\t\t} );\n\n\t\t} );\n\t}\n\n}\n",
 		"description": "TestBox BDD Bundle",
 		"scope": "source,text"
 	},
 	"unit": {
 		"prefix": "unit",
-		"body": "\r\n/**\r\n* ${1:My xUnit Test}\r\n*/\r\ncomponent extends=\"testbox.system.BaseSpec\"{\r\n\t\r\n/*********************************** LIFE CYCLE Methods ***********************************/\r\n\r\n\t// executes before all test cases\r\n\tfunction beforeTests(){\r\n\t}\r\n\r\n\t// executes after all test cases\r\n\tfunction afterTests(){\r\n\t}\r\n\r\n\t// executes before every test case\r\n\tfunction setup( currentMethod ){\r\n\t}\r\n\r\n\t// executes after every test case\r\n\tfunction teardown( currentMethod ){\r\n\t}\r\n\r\n/*********************************** TEST CASES BELOW ***********************************/\r\n\t\r\n\t// Remember that test cases MUST have the keyword 'test' in them\r\n\tfunction myMethodTest(){\r\n\r\n\t}\r\n\t\r\n}\r\n",
+		"body": "\n/**\n * ${1:My xUnit Test}\n */\ncomponent extends=\"testbox.system.BaseSpec\"{\n\t\n/*********************************** LIFE CYCLE Methods ***********************************/\n\n\t// executes before all test cases\n\tfunction beforeTests(){\n\t}\n\n\t// executes after all test cases\n\tfunction afterTests(){\n\t}\n\n\t// executes before every test case\n\tfunction setup( currentMethod ){\n\t}\n\n\t// executes after every test case\n\tfunction teardown( currentMethod ){\n\t}\n\n/*********************************** TEST CASES BELOW ***********************************/\n\t\n\t// Remember that test cases MUST have the keyword 'test' in them\n\tfunction myMethodTest(){\n\n\t}\n\t\n}\n",
 		"description": "TestBox xUnit Bundle",
 		"scope": "source,text"
 	},
 	"then": {
 		"prefix": "then",
-		"body": "\r\nthen( \"${1:A Spec}\", function(){\r\n${0}\r\n});",
+		"body": "\nthen( \"${1:A Spec}\", function(){\n${0}\n});",
 		"description": "TestBox Spec Then",
 		"scope": "source,text"
 	},
 	"thenFull": {
 		"prefix": "thenFull",
-		"body": "\r\nthen( title=\"${1:A Spec}\", labels=\"\", skip=false, body=function(){\r\n${0}\r\n});",
+		"body": "\nthen( title=\"${1:A Spec}\", labels=\"\", skip=false, body=function(){\n${0}\n});",
 		"description": "TestBox Spec Then Arguments",
 		"scope": "source,text"
 	},
 	"when": {
 		"prefix": "when",
-		"body": "\r\nwhen( \"${1:A suite}\", function(){\r\n${0}\r\n\r\n});",
+		"body": "\nwhen( \"${1:A suite}\", function(){\n${0}\n\n});",
 		"description": "TestBox BDD When",
 		"scope": "source,text"
 	},
 	"whenFull": {
 		"prefix": "whenFull",
-		"body": "\r\nwhen( title=\"${1:A suite}\", labels=\"\", asyncAll=false, skip=false, body=function(){\r\n${0}\r\n\r\n});",
+		"body": "\nwhen( title=\"${1:A suite}\", labels=\"\", asyncAll=false, skip=false, body=function(){\n${0}\n\n});",
 		"description": "TestBox BDD When With Arguments",
 		"scope": "source,text"
 	}
