@@ -20,20 +20,20 @@
         "Snippets"
     ],
     "activationEvents": [
-        "onCommand:extension.jumpToTestBoxSpec"
+        "onCommand:testbox.jumpToSpec"
     ],
     "main": "./src/extension",
     "contributes": {
         "commands": [
             {
-                "command": "extension.jumpToTestBoxSpec",
+                "command": "testbox.jumpToSpec",
                 "title": "Jump to specific TestBox spec"
             }
         ],
         "keybindings": [
             {
                 "key": "shift+cmd+t",
-                "command": "extension.jumpToTestBoxSpec",
+                "command": "testbox.jumpToSpec",
                 "when": "editorLangId == 'cfml' && editorTextFocus"
             }
         ],

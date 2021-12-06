@@ -7,13 +7,13 @@ const vscode = require( "vscode" );
 function activate( context ) {
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
-    console.log( 'Congratulations, your extension "testbox-jump" is now active!' );
+    console.log( 'Congratulations, your extension "TestBox" is now active!' );
 
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
-    let disposable = vscode.commands.registerCommand( 
-        "extension.jumpToTestBoxSpec",
+    let disposable = vscode.commands.registerCommand(
+        "testbox.jumpToSpec",
         function() {
             let editor = vscode.window.activeTextEditor;
             if ( !editor ) {
@@ -30,7 +30,7 @@ function activate( context ) {
                 });
 
                 vscode.window.showQuickPick(
-                    arr, 
+                    arr,
                     { placeHolder : "Select a spec to jump" }
                     ).then( selection => {
                         if (
@@ -54,7 +54,9 @@ function activate( context ) {
 exports.activate = activate;
 
 // this method is called when your extension is deactivated
-function deactivate() {}
+function deactivate() {
+    // Nothing yet
+}
 exports.deactivate = deactivate;
 
 function goToLine( line ) {
