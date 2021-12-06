@@ -1,4 +1,12 @@
 node_modules
+.vscode-test/
 .vsix
+
+# Sublime Build Folder
 target/**
 cbox-coldbox-sublime/**
+
+# Test Harness Dependencies
+test-harness/coldbox/**
+test-harness/testbox/**
+test-harness/modules/**

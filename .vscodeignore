@@ -1,6 +1,8 @@
 .vscode/**
 .vscode-test/**
+test-harness/**
 .gitignore
 vsc-extension-quickstart.md
 build.sh
 node_modules/**
+.eslintrc.js
