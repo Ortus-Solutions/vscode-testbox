@@ -8,7 +8,7 @@
             "request": "launch",
             "runtimeExecutable": "${execPath}",
             "args": [
-                "${workspaceFolder}/test-harness",
+                "${workspaceFolder}/test/app",
                 "--extensionDevelopmentPath=${workspaceFolder}"
             ]
         }

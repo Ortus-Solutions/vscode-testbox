@@ -7,6 +7,6 @@ target/**
 cbox-coldbox-sublime/**
 
 # Test Harness Dependencies
-test-harness/coldbox/**
-test-harness/testbox/**
-test-harness/modules/**
+test/app/coldbox/**
+test/app/testbox/**
+test/app/modules/**
