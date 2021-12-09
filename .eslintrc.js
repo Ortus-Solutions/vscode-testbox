@@ -22,13 +22,13 @@ module.exports = {
 		// but leave only one uncommented!
 		// See https://eslint.vuejs.org/rules/#available-rules
 		// "plugin:vue/essential" // Priority A: Essential (Error Prevention)
-		"plugin:vue/strongly-recommended" // Priority B: Strongly Recommended (Improving Readability)
+		// "plugin:vue/strongly-recommended" // Priority B: Strongly Recommended (Improving Readability)
 		// "plugin:vue/recommended" // Priority C: Recommended (Minimizing Arbitrary Choices and Cognitive Overhead)
 	],
 
 	// required to lint *.vue files
 	plugins: [
-		"vue"
+		//"vue"
 	],
 
 	globals: {
@@ -93,13 +93,13 @@ module.exports = {
 			"named": "never",
 			"asyncArrow": "never"
 		}],
-		"vue/html-indent": ["error", "tab"],
-		"vue/html-self-closing": [ "error", {
-			"html": {
-				"void": "any",
-				"normal": "always",
-				"component": "always"
-			}
-		} ]
+		// "vue/html-indent": ["error", "tab"],
+		// "vue/html-self-closing": [ "error", {
+		// 	"html": {
+		// 		"void": "any",
+		// 		"normal": "always",
+		// 		"component": "always"
+		// 	}
+		// } ]
 	}
 }

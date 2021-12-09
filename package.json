@@ -21,7 +21,9 @@
     ],
     "activationEvents": [
         "onCommand:testbox.jumpToSpec",
-        "onCommand:testbox.run-harness"
+        "onCommand:testbox.run-harness",
+        "onCommand:testbox.run-bundle",
+        "onCommand:testbox.run-previous"
     ],
     "main": "./src/extension",
     "contributes": {
@@ -33,12 +35,30 @@
             {
                 "command": "testbox.run-harness",
                 "title": "TestBox: Run Harness"
+            },
+            {
+                "command": "testbox.run-bundle",
+                "title": "TestBox: Run Bundle"
+            },
+            {
+                "command": "testbox.run-previous",
+                "title": "TestBox: Run Previous"
             }
         ],
         "keybindings": [
             {
                 "key": "cmd+k cmd+r",
                 "command": "testbox.run-harness"
+            },
+            {
+                "key": "cmd+k cmd+f",
+                "command": "testbox.run-bundle",
+                "when": "editorLangId == 'cfml' && editorTextFocus"
+            },
+            {
+                "key": "cmd+k cmd+p",
+                "command": "testbox.run-previous",
+                "when": "editorLangId == 'cfml' && editorTextFocus"
             },
             {
                 "key": "shift+cmd+t",
@@ -55,6 +75,62 @@
                 "language": "cfml",
                 "path": "./snippets/snippets.json"
             }
+        ],
+        "configuration": {
+            "title": "TestBox Configuration",
+            "properties": {
+                "testbox.harnessSuffix": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "default": null,
+                    "description": "Specify command options to appended only to the 'testbox run' command, for example add options like 'outputFormats=json,html labels='' excludes=''. Run 'testbox run ?' for more options."
+                },
+                "testbox.bundleSuffix": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "default": null,
+                    "description": "Specify command options to appended only to the 'testbox run bundles={File}' command, for example add options like 'outputFormats=json,html labels='' excludes=''. Run 'testbox run ?' for more options."
+                }
+            }
+        },
+        "problemMatchers": [
+            {
+                "name": "testbox",
+                "owner": "testbox",
+                "fileLocation": "absolute",
+                "pattern": [
+                    {
+                        "regexp": "^\\d+\\)\\s.*$"
+                    },
+                    {
+                        "regexp": "^(.*)$",
+                        "message": 1
+                    },
+                    {
+                        "regexp": "^(.*):(\\d+)$",
+                        "file": 1,
+                        "location": 2
+                    }
+                ]
+            }
+        ],
+        "taskDefinitions": [
+            {
+                "type": "testbox",
+                "required": [
+                    "testbox"
+                ],
+                "properties": {
+                    "task": {
+                        "type": "string",
+                        "description": "The task to execute"
+                    }
+                }
+            }
         ]
     },
     "keywords": [
@@ -68,10 +144,12 @@
         "convert-snippets-to-vscode": "^1.0.2"
     },
     "devDependencies": {
+        "babel-eslint": "^10.1.0",
+        "eslint": "^8.4.1",
+        "eslint-config-prettier": "^8.3.0",
+        "mocha": "^4.1.0",
         "typescript": "^2.9.2",
-        "vscode": "^1.1.36",
-        "eslint": "^4.6.1",
-        "mocha": "^4.1.0"
+        "vscode": "^1.1.36"
     },
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install",
