@@ -20,7 +20,8 @@
         "Snippets"
     ],
     "activationEvents": [
-        "onCommand:testbox.jumpToSpec"
+        "onCommand:testbox.jumpToSpec",
+        "onCommand:testbox.run-harness"
     ],
     "main": "./src/extension",
     "contributes": {
@@ -28,9 +29,17 @@
             {
                 "command": "testbox.jumpToSpec",
                 "title": "Jump to specific TestBox spec"
+            },
+            {
+                "command": "testbox.run-harness",
+                "title": "TestBox: Run Harness"
             }
         ],
         "keybindings": [
+            {
+                "key": "cmd+k cmd+r",
+                "command": "testbox.run-harness"
+            },
             {
                 "key": "shift+cmd+t",
                 "command": "testbox.jumpToSpec",
