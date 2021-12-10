@@ -4,7 +4,7 @@ Get the latest Visual Studio Code from https://code.visualstudio.com/.
 
 ## Target Platforms
 
-- TestBox 2.X.X
+- TestBox 2.x
 
 ## Currently supported features
 
@@ -62,12 +62,18 @@ You can add a custom keyboard shortcut for this yourself in your Keyboard Shortc
 - `modelTest ➝` : Creates a model test case
 - `testaction ➝` : Creates an integration spec case for an event action
 
-## Installation instructions :
-
-### With Package Control ###
+## Installation instructions
 
 Install the latest *vscode-testbox* package from https://marketplace.visualstudio.com/.
 
-## References:
+## References
 
 - A ColdBox Platform Bundle v2.0.0 for Sublime Text 2/3 - https://github.com/lmajano/cbox-coldbox-sublime
+
+
+## Todo
+
+[] - Document new features
+[] - Fix problem matchers
+[] - Ability to run just a single spec
+[] - HTTP runner to avoid box startup times
