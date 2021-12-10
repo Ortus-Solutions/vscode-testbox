@@ -10,7 +10,6 @@ component extends="coldbox.system.testing.BaseModelTest" model="Calculator"{
     function beforeAll(){
         // setup the model
         super.setup();
-
         // init the model object
         model.init();
     }
