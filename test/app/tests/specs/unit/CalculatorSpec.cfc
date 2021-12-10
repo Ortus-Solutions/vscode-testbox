@@ -3,7 +3,7 @@
 * and then create it, prepare it for mocking and then place it in the variables scope as 'model'. It is your
 * responsibility to update the model annotation instantiation path and init your model.
 */
-component extends="coldbox.system.testing.BaseModelTest" model="Calculator"{
+component extends="coldbox.system.testing.BaseModelTest" model="models.Calculator"{
 
     /*********************************** LIFE CYCLE Methods ***********************************/
 

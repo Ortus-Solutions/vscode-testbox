@@ -38,24 +38,89 @@ module.exports = class BoxCommand {
 
 		// Run Bundle
 		if ( this.runBundle ) {
-			this.lastOutput = `${this.binary} testbox run directory='' bundles=${this.file}${this.bundleSuffix}`;
+			this.lastOutput = `${this.binary} testbox run directory='' bundles=${this.file}${this.bundleSuffix}${this.bundleOptions}`;
 		}
 		else if ( this.runSpec ){
 			// TODO
 		}
-		// Run Harness
+		// Run Entire Test Harness
 		else {
-			this.lastOutput = `${this.binary} testbox run${this.harnessSuffix}`;
+			this.lastOutput = `${this.binary} testbox run${this.harnessSuffix}${this.harnessOptions}`;
 		}
 
 		return this.lastOutput;
 	}
 
 	/**
-     * Get the normalized file path to the doc
+     * Build out all the runner options for running a test bundle
+     */
+	get bundleOptions(){
+		let options = "";
+
+		// Code Coverage
+		if ( vscode.workspace.getConfiguration( "testbox" ).has( "testbox.codeCoverage" ) ){
+			options += " codeCoverage=" + vscode.workspace.getConfiguration( "testbox" ).get( "testbox.codeCoverage" );
+		}
+
+		// Labels
+		if ( vscode.workspace.getConfiguration( "testbox" ).has( "testbox.labels" ) ){
+			options += " labels=" + vscode.workspace.getConfiguration( "testbox" ).get( "testbox.labels" );
+		}
+		if ( vscode.workspace.getConfiguration( "testbox" ).has( "testbox.excludes" ) ){
+			options += " excludes=" + vscode.workspace.getConfiguration( "testbox" ).get( "testbox.excludes" );
+		}
+
+		return options;
+	}
+
+	/**
+     * Build out all the runner options for running a full test harness.
+     */
+	get harnessOptions(){
+		let options = "";
+
+		// Code Coverage
+		if ( vscode.workspace.getConfiguration( "testbox" ).has( "testbox.codeCoverage" ) ){
+			options += " codeCoverage=" + vscode.workspace.getConfiguration( "testbox" ).get( "testbox.codeCoverage" );
+		}
+
+		// Labels
+		if ( vscode.workspace.getConfiguration( "testbox" ).has( "testbox.labels" ) ){
+			options += " labels=" + vscode.workspace.getConfiguration( "testbox" ).get( "testbox.labels" );
+		}
+		if ( vscode.workspace.getConfiguration( "testbox" ).has( "testbox.excludes" ) ){
+			options += " excludes=" + vscode.workspace.getConfiguration( "testbox" ).get( "testbox.excludes" );
+		}
+
+		// Directory
+		if ( vscode.workspace.getConfiguration( "testbox" ).has( "testbox.directory" ) ){
+			options += " directory=" + vscode.workspace.getConfiguration( "testbox" ).get( "testbox.directory" );
+		}
+
+		// Bundles
+		if ( vscode.workspace.getConfiguration( "testbox" ).has( "testbox.bundles" ) ){
+			options += " bundles=" + vscode.workspace.getConfiguration( "testbox" ).get( "testbox.bundles" );
+		}
+
+		// Recurse
+		if ( vscode.workspace.getConfiguration( "testbox" ).has( "testbox.recurse" ) ){
+			options += " recurse=" + vscode.workspace.getConfiguration( "testbox" ).get( "testbox.recurse" );
+		}
+
+		return options;
+	}
+
+	/**
+     * Get the normalized file path to the spec bundle to execute
      */
 	get file() {
-		return this._normalizePath( vscode.window.activeTextEditor.document.fileName );
+		return this._normalizePath( vscode.window.activeTextEditor.document.fileName )
+		    // Cleanup up everything up to the specs folder
+			.replace( /^(.*)(\/tests\/specs)/, "tests.specs" )
+		    // remove / to . for dot notation
+			.replace( /\//g, "." )
+		    // Remove .cfc
+			.replace( ".cfc", "" );
 	}
 
 	/**
@@ -86,10 +151,11 @@ module.exports = class BoxCommand {
      * - Convention
      */
 	get binary() {
+		// Do we have a setting?
 		if ( vscode.workspace.getConfiguration( "testbox" ).get( "boxBinary" ) ) {
 			return vscode.workspace.getConfiguration( "testbox" ).get( "boxBinary" );
 		}
-		// Global registered box binary
+		// Use the global commandbox namespace
 		return "box";
 	}
 
