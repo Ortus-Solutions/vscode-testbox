@@ -30,7 +30,7 @@
         "commands": [
             {
                 "command": "testbox.jumpToSpec",
-                "title": "Jump to specific TestBox spec"
+                "title": "TestBox: Jump to spec"
             },
             {
                 "command": "testbox.run-harness",

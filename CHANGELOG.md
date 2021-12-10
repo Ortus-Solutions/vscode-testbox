@@ -9,9 +9,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-- Default shortcut for running jump to spec command: `shift+cmd+t`
+- Added default shortcuts for running jump to spec command: `shift+cmd+t`
+- Added several new commands to Run your test harness, your bundle and a single spec, with tons of configuration options (Please see readme)
 - Linting files for eslint
 - File formatting and code quality updates
+- Refactoring to a single `testbox` namespace for commands, snippets, etc
 
 ----
 
