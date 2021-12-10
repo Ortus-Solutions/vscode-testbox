@@ -68,10 +68,6 @@
         ],
         "snippets": [
             {
-                "language": "lang-cfml",
-                "path": "./snippets/snippets.json"
-            },
-            {
                 "language": "cfml",
                 "path": "./snippets/snippets.json"
             }
@@ -141,7 +137,8 @@
         "BDD/TDD"
     ],
     "dependencies": {
-        "convert-snippets-to-vscode": "^1.0.2"
+        "convert-snippets-to-vscode": "^1.0.2",
+        "findup": "^0.1.5"
     },
     "devDependencies": {
         "babel-eslint": "^10.1.0",
