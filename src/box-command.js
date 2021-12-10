@@ -7,7 +7,7 @@ module.exports = class BoxCommand {
 	/**
      * Constructor
      *
-     * @param {*} options The runnable options: { runBundle, runSpec, runHarness }
+     * @param {*} options The runnable options: { runBundle, runHarness }
      */
 	constructor( options ) {
 		this.runBundle = options !== undefined
@@ -16,10 +16,6 @@ module.exports = class BoxCommand {
 
 		this.runHarness = options !== undefined
 			? options.runHarness
-			: false;
-
-		this.runSpec = options !== undefined
-			? options.runSpec
 			: false;
 
 		this.lastOutput = null;
@@ -39,9 +35,6 @@ module.exports = class BoxCommand {
 		// Run Bundle
 		if ( this.runBundle ) {
 			this.lastOutput = `${this.binary} testbox run directory='' bundles=${this.file}${this.bundleSuffix}${this.bundleOptions}`;
-		}
-		else if ( this.runSpec ){
-			// TODO
 		}
 		// Run Entire Test Harness
 		else {

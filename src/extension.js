@@ -51,7 +51,7 @@ module.exports.activate = function( context ) {
 					"testbox",
 					// Shell execution via the command output() method
 					new vscode.ShellExecution( globalCommand.output ),
-					// The problem matcher id => packaage.json
+					// The problem matcher id => package.json
 					"$testbox"
 				)
 			];
