@@ -116,31 +116,36 @@ function jumpToSpec(){
 		return;
 	}
 
-	getTests( editor.document ).then( tests => {
-		console.log( "Found tests:", tests );
-		const aTestsMetadata = tests.map( test => {
-			return {
-				label  : test.lineText.text,
-				detail : `Line number: ${test.lineText.lineNumber + 1}`
-			};
-		} );
+	getTests( editor.document )
+		.then( tests => {
+			// console.log( "Found tests:", tests );
+			const aTestsMetadata = tests.map( test => {
+				return {
+					label       : test.lineText.text.replace( /,\s?function\(\)\s?\{/, " " ),
+					//detail : `Line number: ${test.lineText.lineNumber + 1}`
+					description : "",
+					lineNumber  : test.lineText.lineNumber + 1
+				};
+			} );
 
-		vscode.window.showQuickPick(
-			aTestsMetadata,
-			{ placeHolder: "Select a spec to jump" }
-		).then( selection => {
-			if (
-				!selection ||
-                    !selection.detail ||
-                    !selection.detail.split( ": " )[1]
-			) {
-				console.log( "No valid selection made!" );
-				return;
-			}
-
-			goToLine( Number( selection.detail.split( ": " )[ 1 ] ) );
+			vscode.window.showQuickPick(
+				aTestsMetadata,
+				{ placeHolder: "Select a spec to jump to", title: "TestBox Spec Jump" }
+			).then( selection => {
+				if (
+					!selection ||
+                        !selection.lineNumber
+				) {
+					console.log( "No valid selection made!" );
+					return;
+				}
+				goToLine( Number( selection.lineNumber ) );
+			} );
+		} )
+		.catch( ( error ) => {
+			console.error( error );
+			vscode.window.showWarningMessage( error );
 		} );
-	} );
 }
 
 /**
@@ -163,8 +168,9 @@ function goToLine( line ) {
 /**
  * Get the promise of all the tests in the document
  *
- * @param {*} document The vscode document
- * @returns Promise due to parsing of the dom
+ * @param {vscode.TextDocument} document The vscode document
+ *
+ * @returns {Promise} A promise of the found tests or none at all
  */
 function getTests( document ) {
 	// Return a promise, since this might take a while for large documents
@@ -172,22 +178,25 @@ function getTests( document ) {
 		let testsToReturn = [];
 		let lineCount = document.lineCount;
 
+		// Parse each line of the doc for tests
 		for ( let lineNumber = 0; lineNumber < lineCount; lineNumber++ ) {
 			let lineText = document.lineAt( lineNumber );
-			// Does it match the testbox regex
+			// Skip know no code scenarios
+			if ( lineText.isEmptyOrWhitespace ){
+				continue;
+			}
+			// Does it match the testbox regex patterns
 			let tests = lineText.text.match(
-				/(it\(|describe\(|given\(|when\(|then\(|feature\(|scenario\(|story\()/g
+				/\sx?(it\(|describe\(|given\(|when\(|then\(|feature\(|scenario\(|story\()/g
 			);
+			// Did we find any?
 			if ( tests ) {
-				for ( let i = 0; i < tests.length; i++ ) {
-					testsToReturn.push( { lineText: lineText } );
-				}
+				testsToReturn.push( { lineText: lineText } );
 			}
 		}
-		if ( testsToReturn.length > 0 ) {
-			resolve( testsToReturn );
-		} else {
-			reject( "Found no tests" );
-		}
-	} ).catch();
+		// Resolve or reject
+		testsToReturn.length > 0
+			?  resolve( testsToReturn )
+			:  reject( "Found no tests" );
+	} );
 }

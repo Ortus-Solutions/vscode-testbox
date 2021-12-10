@@ -15,6 +15,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - File formatting and code quality updates
 - Refactoring to a single `testbox` namespace for commands, snippets, etc
 
+### Improved
+
+- The lookup for spec to jump regex was finely tuned and optimized to avoid whitespace lookups, and so much more.
+
+
 ----
 
 ## [1.0.0] - 2020-05-04
