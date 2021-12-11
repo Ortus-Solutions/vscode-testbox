@@ -23,7 +23,8 @@
         "onCommand:testbox.jumpToSpec",
         "onCommand:testbox.run-harness",
         "onCommand:testbox.run-bundle",
-        "onCommand:testbox.run-previous"
+        "onCommand:testbox.run-previous",
+        "onCommand:testbox.run-spec"
     ],
     "main": "./src/extension",
     "contributes": {
@@ -41,6 +42,10 @@
                 "title": "TestBox: Run Bundle"
             },
             {
+                "command": "testbox.run-spec",
+                "title": "TestBox: Run Spec"
+            },
+            {
                 "command": "testbox.run-previous",
                 "title": "TestBox: Run Previous"
             }
@@ -49,6 +54,10 @@
             {
                 "key": "cmd+k cmd+r",
                 "command": "testbox.run-harness"
+            },
+            {
+                "key": "cmd+k cmd+s",
+                "command": "testbox.run-spec"
             },
             {
                 "key": "cmd+k cmd+f",
@@ -75,64 +84,64 @@
         "configuration": {
             "title": "TestBox Configuration",
             "properties": {
-                "testbox.boxBinary" : {
-                    "type" : [
+                "testbox.boxBinary": {
+                    "type": [
                         "string",
                         "null"
                     ],
                     "default": null,
                     "description": "The CommandBox binary executable. Ex: 'box', '/usr/local/bin/box'"
                 },
-                "testbox.runnerURL" : {
-                    "type" : [
+                "testbox.runnerURL": {
+                    "type": [
                         "string",
                         "null"
                     ],
                     "default": null,
                     "description": "Use a specific runner HTTP/s URL instead of discovering it via CommandBox"
                 },
-                "testbox.labels" : {
-                    "type" : [
+                "testbox.labels": {
+                    "type": [
                         "string",
                         "null"
                     ],
                     "default": null,
                     "description": "A list of labels to apply ALWAYS to the runners"
                 },
-                "testbox.excludes" : {
-                    "type" : [
+                "testbox.excludes": {
+                    "type": [
                         "string",
                         "null"
                     ],
                     "default": null,
                     "description": "A list of labels to EXCLUDE from the runner."
                 },
-                "testbox.bundles" : {
-                    "type" : [
+                "testbox.bundles": {
+                    "type": [
                         "string",
                         "null"
                     ],
                     "default": null,
                     "description": "The path or list of paths of the spec bundles CFCs to execute.  Do not include the .cfc."
                 },
-                "testbox.directory" : {
-                    "type" : [
+                "testbox.directory": {
+                    "type": [
                         "string",
                         "null"
                     ],
                     "default": null,
                     "description": "The directory to use specifically for running your tests. It defaults to whatever is in your 'runner.cfm'"
                 },
-                "testbox.recurse" : {
-                    "type" : [
+                "testbox.recurse": {
+                    "type": [
                         "boolean",
                         "null"
                     ],
                     "default": null,
                     "description": "Recurse your directory for specs to test or not.  Default is in your 'runner.cfm'"
                 },
-                "testbox.codeCoverage" : {
-                    "type" : [
+                "testbox.codeCoverage": {
+                    "type": [
                         "boolean",
                         "null"
                     ],
@@ -162,20 +171,20 @@
                 "name": "testbox",
                 "owner": "testbox",
                 "fileLocation": "absolute",
-                "severity" : "error",
+                "severity": "error",
                 "pattern": [
                     {
                         "regexp": "(GLOBAL BUNDLE EXCEPTION\\n)(->.*)\\n->\\sat\\s(.*):(\\d+)",
-                        "message" : 2,
-                        "file" : 3,
-                        "location" : 4,
-                        "loop":true
+                        "message": 2,
+                        "file": 3,
+                        "location": 4,
+                        "loop": true
                     },
                     {
                         "regexp": "(Failure):(.*)",
                         "severity": 1,
                         "message": 2,
-                        "loop":true
+                        "loop": true
                     },
                     {
                         "regexp": "(Error):(.*)\\n(\\s)*->\\sat\\s(.*):(\\d+)",
@@ -183,7 +192,7 @@
                         "message": 2,
                         "file": 3,
                         "location": 4,
-                        "loop":true
+                        "loop": true
                     }
                 ]
             }

@@ -18,6 +18,10 @@ module.exports = class BoxCommand {
 			? options.runHarness
 			: false;
 
+		this.runSpec = options !== undefined
+			? options.runSpec
+			: false;
+
 		this.lastOutput = null;
 	}
 
@@ -36,12 +40,38 @@ module.exports = class BoxCommand {
 		if ( this.runBundle ) {
 			this.lastOutput = `${this.binary} testbox run directory='' bundles=${this.file}${this.bundleSuffix}${this.bundleOptions}`;
 		}
+		// Run a spec: cursor must be on the actual spec line
+		if ( this.runSpec ){
+			this.lastOutput = `${this.binary} testbox run directory='' bundles=${this.file} testSpecs=${this.testSpecs}${this.bundleSuffix}${this.bundleOptions}`;
+		}
 		// Run Entire Test Harness
 		else {
 			this.lastOutput = `${this.binary} testbox run${this.harnessSuffix}${this.harnessOptions}`;
 		}
 
 		return this.lastOutput;
+	}
+
+	/**
+     * Get the current spec nearest to the cursor to act as the testSpecs filter
+     */
+	get testSpecs(){
+		let line = vscode.window.activeTextEditor.selection.active.line;
+		let specName;
+
+		while ( line > 0 ) {
+			const lineText = vscode.window.activeTextEditor.document.lineAt( line ).text;
+			const match = lineText.match( /\s*(?:describe|it|feature|story|scenario|given|when|then)\(\s(.*),/ );
+			if ( match ) {
+				// Group 1 contains the name of the spec
+				specName = match[ 1 ];
+				break;
+			}
+			// go up the line to find it
+			line = line - 1;
+		}
+
+		return specName;
 	}
 
 	/**
