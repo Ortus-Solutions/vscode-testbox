@@ -28,11 +28,11 @@ component extends="coldbox.system.testing.BaseModelTest" model="models.Calculato
             });
 
             it( "should add", function(){
-				expect( model.add( 1, 3 ), 4 );
+				expect( model.add( 1, 3 ) ).toBe( 4 );
             });
 
             it( "should fail", function(){
-				expect( model.bad( 1, 3 ), 4 );
+				expect( model.bad( 4, 4 ) ).toBe( 4 );
             });
 
 

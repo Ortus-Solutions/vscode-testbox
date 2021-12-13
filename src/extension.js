@@ -20,7 +20,7 @@ module.exports.activate = function( context ) {
 	// The `commandId` parameter must match the command field in package.json
 	disposables.push( vscode.commands.registerCommand( "testbox.jumpToSpec", () => jumpToSpec() ) );
 
-	// Run Test Harness
+	// Run the entire test harness
 	disposables.push( vscode.commands.registerCommand( "testbox.run-harness", async() => {
 		await runCommand( new BoxCommand( { runHarness: true } ) );
 	} ) );

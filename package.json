@@ -174,25 +174,12 @@
                 "severity": "error",
                 "pattern": [
                     {
-                        "regexp": "(GLOBAL BUNDLE EXCEPTION\\n)(->.*)\\n->\\sat\\s(.*):(\\d+)",
-                        "message": 2,
-                        "file": 3,
-                        "location": 4,
-                        "loop": true
-                    },
-                    {
-                        "regexp": "(Failure):(.*)",
-                        "severity": 1,
-                        "message": 2,
-                        "loop": true
-                    },
-                    {
-                        "regexp": "(Error):(.*)\\n(\\s)*->\\sat\\s(.*):(\\d+)",
+                        "regexp": "(Error|Failure):(.*)\\n(\\s)*->\\sat\\s(.*):(\\d+)",
                         "severity": 1,
                         "message": 2,
                         "file": 3,
                         "location": 4,
-                        "loop": true
+                        "loop" : true
                     }
                 ]
             }

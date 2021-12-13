@@ -36,18 +36,22 @@ module.exports = class BoxCommand {
 			return this.lastOutput;
 		}
 
+		// console.log( `bundle:${this.runBundle}, harness:${this.runHarness}, spec: ${this.runSpec}` );
+
 		// Run Bundle
 		if ( this.runBundle ) {
-			this.lastOutput = `${this.binary} testbox run${this.runnerUrl} directory='' bundles=${this.file}${this.bundleSuffix}${this.bundleOptions}`;
+			this.lastOutput = `${this.binary} testbox run${this.runnerUrl} recurse=false bundles=${this.file}${this.bundleSuffix}${this.bundleOptions}`;
 		}
 		// Run a spec: cursor must be within the spec to test.
-		if ( this.runSpec ){
-			this.lastOutput = `${this.binary} testbox run${this.runnerUrl} directory='' bundles=${this.file} testSpecs=${this.testSpecs}${this.bundleSuffix}${this.bundleOptions}`;
+		else if ( this.runSpec ){
+			this.lastOutput = `${this.binary} testbox run${this.runnerUrl} directory='' recurse=false bundles=${this.file} testSpecs=${this.testSpecs}${this.bundleSuffix}${this.bundleOptions}`;
 		}
 		// Run Entire Test Harness
 		else {
 			this.lastOutput = `${this.binary} testbox run${this.runnerUrl}${this.harnessSuffix}${this.harnessOptions}`;
 		}
+
+		// console.log( `Command Output: ${this.lastOutput}` );
 
 		return this.lastOutput;
 	}
