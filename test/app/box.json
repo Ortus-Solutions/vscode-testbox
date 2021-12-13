@@ -31,6 +31,5 @@
         "coldbox":"^6.0.0"
     },
     "scripts":{},
-    "testbox":{
-    }
+    "testbox":{}
 }

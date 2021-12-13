@@ -38,24 +38,36 @@ module.exports = class BoxCommand {
 
 		// Run Bundle
 		if ( this.runBundle ) {
-			this.lastOutput = `${this.binary} testbox run directory='' bundles=${this.file}${this.bundleSuffix}${this.bundleOptions}`;
+			this.lastOutput = `${this.binary} testbox run${this.runnerUrl} directory='' bundles=${this.file}${this.bundleSuffix}${this.bundleOptions}`;
 		}
-		// Run a spec: cursor must be on the actual spec line
+		// Run a spec: cursor must be within the spec to test.
 		if ( this.runSpec ){
-			this.lastOutput = `${this.binary} testbox run directory='' bundles=${this.file} testSpecs=${this.testSpecs}${this.bundleSuffix}${this.bundleOptions}`;
+			this.lastOutput = `${this.binary} testbox run${this.runnerUrl} directory='' bundles=${this.file} testSpecs=${this.testSpecs}${this.bundleSuffix}${this.bundleOptions}`;
 		}
 		// Run Entire Test Harness
 		else {
-			this.lastOutput = `${this.binary} testbox run${this.harnessSuffix}${this.harnessOptions}`;
+			this.lastOutput = `${this.binary} testbox run${this.runnerUrl}${this.harnessSuffix}${this.harnessOptions}`;
 		}
 
 		return this.lastOutput;
 	}
 
 	/**
+     * Get the runner URL from the configuration or let CommandBox discover it.
+     */
+	get runnerUrl(){
+		let runnerUrl = vscode.workspace.getConfiguration( "testbox" ).get( "runnerUrl" );
+		if ( runnerUrl ){
+			return " runner=" + runnerUrl;
+		}
+		return "";
+	}
+
+	/**
      * Get the current spec nearest to the cursor to act as the testSpecs filter
      */
 	get testSpecs(){
+		// Get the line of code the cursor is in. This is cursor aware.
 		let line = vscode.window.activeTextEditor.selection.active.line;
 		let specName;
 
@@ -63,12 +75,12 @@ module.exports = class BoxCommand {
 			const lineText = vscode.window.activeTextEditor.document.lineAt( line ).text;
 			const match = lineText.match( /\s*(?:describe|it|feature|story|scenario|given|when|then)\(\s(.*),/ );
 			if ( match ) {
-				// Group 1 contains the name of the spec
+				// Group 1 contains the name of the spec with the quotes already single or double doesn't matter
 				specName = match[ 1 ];
 				break;
 			}
 			// go up the line to find it
-			line = line - 1;
+			line--;
 		}
 
 		return specName;

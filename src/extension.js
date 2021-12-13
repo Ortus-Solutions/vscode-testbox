@@ -30,6 +30,11 @@ module.exports.activate = function( context ) {
 		await runCommand( new BoxCommand( { runBundle: true } ) );
 	} ) );
 
+	// Run a Test Bundle Spec
+	disposables.push( vscode.commands.registerCommand( "testbox.run-spec", async() => {
+		await runCommand( new BoxCommand( { runSpec: true } ) );
+	} ) );
+
 	// Run Previous
 	disposables.push( vscode.commands.registerCommand( "testbox.run-previous", async() => {
 		await runPreviousCommand();

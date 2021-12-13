@@ -92,7 +92,7 @@
                     "default": null,
                     "description": "The CommandBox binary executable. Ex: 'box', '/usr/local/bin/box'"
                 },
-                "testbox.runnerURL": {
+                "testbox.runnerUrl": {
                     "type": [
                         "string",
                         "null"
