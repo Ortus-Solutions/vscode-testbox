@@ -1,23 +1,23 @@
 #!/bin/sh
 
 # Cleanup just in case
-rm -fr ./cbox-coldbox-sublime
+rm -fr ./coldbox-sublime
 rm -fr ./target
 
 # Clone sublime central data
-git clone https://github.com/lmajano/cbox-coldbox-sublime
+git clone https://github.com/ColdBox/coldbox-sublime
 
-npm install
-npm install convert-snippets-to-vscode
+#npm install
+#npm install convert-snippets-to-vscode
 
 mkdir ./target
 
 # Copy Snippets
-cp -v ./cbox-coldbox-sublime/snippets/testbox/*.* ./target
+cp -v ./coldbox-sublime/snippets/testbox/*.* ./target
 
 # Copy Skeletons
-cp -v ./cbox-coldbox-sublime/skeletons/test-bdd.sublime-snippet ./target
-cp -v ./cbox-coldbox-sublime/skeletons/test-unit.sublime-snippet ./target
+cp -v ./coldbox-sublime/skeletons/test-bdd.sublime-snippet ./target
+cp -v ./coldbox-sublime/skeletons/test-unit.sublime-snippet ./target
 
 # Convert Sublime Snippets to VS Code
 ./node_modules/.bin/snippetToVsCode -s ./target -o ./snippets/snippets.json
@@ -26,7 +26,7 @@ cp -v ./cbox-coldbox-sublime/skeletons/test-unit.sublime-snippet ./target
 
 ## Cleanup
 #npm uninstall convert-snippets-to-vscode
-rm -fr ./cbox-coldbox-sublime
+rm -fr ./coldbox-sublime
 rm -fr ./target
 
 echo "DONE."

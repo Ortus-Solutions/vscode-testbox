@@ -10,7 +10,12 @@
             "args": [
                 "${workspaceFolder}/test/app",
                 "--extensionDevelopmentPath=${workspaceFolder}"
-            ]
+            ],
+            "sourceMaps": true,
+            "outFiles": [
+                "${workspaceFolder}/out/**/*.js"
+            ],
+            "smartStep": true
         }
     ]
 }

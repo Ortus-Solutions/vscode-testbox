@@ -4,7 +4,7 @@ Get the latest Visual Studio Code from https://code.visualstudio.com/.
 
 ## Target Platforms
 
-- TestBox 2.x
+- TestBox 4.x+
 
 ## Currently supported features
 
@@ -69,11 +69,3 @@ Install the latest *vscode-testbox* package from https://marketplace.visualstudi
 ## References
 
 - A ColdBox Platform Bundle v2.0.0 for Sublime Text 2/3 - https://github.com/lmajano/cbox-coldbox-sublime
-
-
-## Todo
-
-[] - Document new features
-[] - Fix problem matchers
-[] - Ability to run just a single spec
-[] - HTTP runner to avoid box startup times

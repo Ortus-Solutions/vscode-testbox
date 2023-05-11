@@ -1,12 +1,26 @@
-node_modules
-.vscode-test/
-.vsix
-
 # Sublime Build Folder
+coldbox-sublime/**
+
+## Dependencies
+node_modules
+
+## out and testing
+out
+dist/
 target/**
-cbox-coldbox-sublime/**
 
 # Test Harness Dependencies
 test/app/coldbox/**
 test/app/testbox/**
 test/app/modules/**
+
+## Logs + IDEs
+.vsix
+*.vsix
+.vscode-test/
+.history/
+npm-debug.log
+
+## Mac
+.DS_Store
+Thumbs.db
