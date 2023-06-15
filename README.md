@@ -1,4 +1,4 @@
-# A TestBox Bundle v0.2.0 for Visual Studio Code
+# A TestBox Bundle for Visual Studio Code
 
 Get the latest Visual Studio Code from https://code.visualstudio.com/.
 
@@ -32,6 +32,12 @@ You can :
 - Run the bundle you have currently open
 - Run the spec you have your cursor on
 - Run the previous tests
+
+### TestBox Configuration
+
+We have now added a configuration panel so you can configure the runners and commands.  You can access it via the command pallete or the settings panel.
+
+<img src="images/testbox-config.png" alt="jump to spec">
 
 ### Code Skeleton Snippets
 
