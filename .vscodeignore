@@ -1,22 +1,31 @@
+# IDE Tooling, Git
 .github/**
 .history/**
-.markdownlintrc
 .vscode/**
 .vscode-test/**
-out/test/**
-out/**/*.map
-src/**
-test/**
-build/**
 .gitignore
+**/.gitignore
+
+# Support Files
+.markdownlintrc
 tsconfig.json
-vsc-extension-quickstart.md
 build.sh
-node_modules/**
-test-harness/**
+build.ps1
+webpack.config.js
+vsc-extension-quickstart.md
 **/*.map
 **/tsconfig.json
-**/.gitignore
 **/.eslintignore
 **/.eslintrc.js
-webpack.config.js
+
+# Generated Folders
+out/test/**
+out/**/*.map
+build/**
+
+# Managed Packages
+node_modules/**
+
+# Testing Folders
+test/**
+test-harness/**
