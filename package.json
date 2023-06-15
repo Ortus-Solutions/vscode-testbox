@@ -29,11 +29,6 @@
         "Testing"
     ],
     "activationEvents": [
-        "onCommand:testbox.jumpToSpec",
-        "onCommand:testbox.run-harness",
-        "onCommand:testbox.run-bundle",
-        "onCommand:testbox.run-previous",
-        "onCommand:testbox.run-spec"
     ],
     "main": "./src/extension",
     "contributes": {

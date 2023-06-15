@@ -4,6 +4,7 @@ Get the latest Visual Studio Code from https://code.visualstudio.com/.
 
 ## Target Platforms
 
+- TestBox 5.x+
 - TestBox 4.x+
 
 ## Currently supported features
@@ -12,10 +13,25 @@ This bundle includes functionality for TestBox BDD/TDD and MockBox.
 
 ### Jump to Spec
 
+<img src="images/jump-to-spec.png" alt="jump to spec">
+
 A "Jump to specific TestBox spec" is available in the command pallete.  This lets you
 quickly search for and jump to a specific spec in the currently open file.
 
-You can add a custom keyboard shortcut for this yourself in your Keyboard Shortcuts menu.
+You can add a custom keyboard shortcut for this yourself in your Keyboard Shortcuts menu or use the default of `shift+cmd+t`
+
+### TestBox Commands
+
+We have also added a few commands to the command pallete to help you with your testing:
+
+<img src="images/testbox-commands.png" alt="jump to spec">
+
+You can :
+
+- Run the entire test harness
+- Run the bundle you have currently open
+- Run the spec you have your cursor on
+- Run the previous tests
 
 ### Code Skeleton Snippets
 

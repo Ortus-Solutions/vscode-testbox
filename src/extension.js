@@ -3,7 +3,7 @@
 const vscode = require( "vscode" );
 const BoxCommand = require( "./box-command" );
 
-var globalCommand;
+let globalCommand;
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -141,10 +141,11 @@ function jumpToSpec(){
 					!selection ||
                         !selection.lineNumber
 				) {
-					console.log( "No valid selection made!" );
-					return;
-				}
-				goToLine( Number( selection.lineNumber ) );
+                    vscode.window.showWarningMessage( 'No spec selected.' );
+				} else {
+                    goToLine( Number( selection.lineNumber ) );
+                    vscode.window.showInformationMessage( `Jumping to ${selection.label}` );
+                }
 			} );
 		} )
 		.catch( ( error ) => {

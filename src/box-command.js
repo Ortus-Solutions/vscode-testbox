@@ -77,7 +77,7 @@ module.exports = class BoxCommand {
 
 		while ( line > 0 ) {
 			const lineText = vscode.window.activeTextEditor.document.lineAt( line ).text;
-			const match = lineText.match( /\s*(?:describe|it|feature|story|scenario|given|when|then)\(\s(.*),/ );
+			const match = RegExp( /\s*(?:describe|it|feature|story|scenario|given|when|then)\(\s(.*),/ ).exec( lineText );
 			if ( match ) {
 				// Group 1 contains the name of the spec with the quotes already single or double doesn't matter
 				specName = match[ 1 ];
