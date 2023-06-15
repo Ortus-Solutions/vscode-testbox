@@ -16,8 +16,9 @@
         "url": "https://github.com/Ortus-Solutions/vscode-testbox/issues"
     },
     "categories": [
-        "Other",
-        "Snippets"
+        "Testing",
+        "Snippets",
+        "Other"
     ],
     "keywords": [
         "CFML",

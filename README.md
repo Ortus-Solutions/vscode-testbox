@@ -1,15 +1,13 @@
-# A TestBox Bundle for Visual Studio Code
+# TestBox Support for Visual Studio Code
 
-Get the latest Visual Studio Code from https://code.visualstudio.com/.
+This extension provides support for the TestBox BDD/TDD framework in Visual Studio Code by [Ortus Solutions](https://www.ortussolutions.com).
 
 ## Target Platforms
 
 - TestBox 5.x+
 - TestBox 4.x+
 
-## Currently supported features
-
-This bundle includes functionality for TestBox BDD/TDD and MockBox.
+## Features
 
 ### Jump to Spec
 
@@ -20,7 +18,7 @@ quickly search for and jump to a specific spec in the currently open file.
 
 You can add a custom keyboard shortcut for this yourself in your Keyboard Shortcuts menu or use the default of `shift+cmd+t`
 
-### TestBox Commands
+### TestBox Run Commands
 
 We have also added a few commands to the command pallete to help you with your testing:
 
@@ -88,6 +86,10 @@ We have now added a configuration panel so you can configure the runners and com
 
 Install the latest *vscode-testbox* package from https://marketplace.visualstudio.com/.
 
-## References
+## Support
 
-- A ColdBox Platform Bundle v2.0.0 for Sublime Text 2/3 - https://github.com/lmajano/cbox-coldbox-sublime
+You can get official support in the following channels:
+
+- https://github.com/Ortus-Solutions/vscode-testbox/issues
+- https://community.ortussolutions.com/c/communities/testbox/11
+- https://www.ortussolutions.com/services/support
