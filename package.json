@@ -30,6 +30,7 @@
         "Testing"
     ],
     "activationEvents": [
+        "onStartupFinished"
     ],
     "main": "./src/extension",
     "contributes": {
@@ -87,7 +88,7 @@
             }
         ],
         "configuration": {
-            "title": "TestBox Configuration",
+            "title": "TestBox",
             "properties": {
                 "testbox.boxBinary": {
                     "type": [
@@ -168,6 +169,32 @@
                     ],
                     "default": null,
                     "description": "Specify command options to appended only to the 'testbox run bundles={File}' command, for example add options like 'outputFormats=json,html labels='' excludes=''. Run 'testbox run ?' for more options."
+                },
+                "testbox.pathMappings": {
+                    "type": "array",
+                    "default": [],
+                    "description": "Define custom path mappings. Each mapping is an object with a 'source' (the original path) and a 'target' (the new alias). For example, mapping 'unit_tests/tests/specs' to 'tests/specs'. The mappings are relative to the root path of the workspace.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "source": {
+                                "type": "string",
+                                "description": "The original path to map from."
+                            },
+                            "target": {
+                                "type": "string",
+                                "description": "The new alias to map to."
+                            }
+                        }
+                    }
+                },
+                "testbox.excludedPaths": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "default": null,
+                    "description": "Glob patterns for files to ignore in the testing view."
                 }
             }
         },
@@ -184,7 +211,7 @@
                         "message": 2,
                         "file": 3,
                         "location": 4,
-                        "loop" : true
+                        "loop": true
                     }
                 ]
             }
@@ -202,7 +229,10 @@
                     }
                 }
             }
-        ]
+        ],
+        "testing": {
+            "testExplorer": {}
+        }
     },
     "dependencies": {
         "convert-snippets-to-vscode": "^1.0.2",
