@@ -4,7 +4,7 @@ const vscode = require("vscode");
 const BoxCommand = require("./box-command");
 const { LOG } = require('./utils/logger');
 
-let globalCommand;
+let globalCommand = new BoxCommand({ runHarness: true });
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -44,46 +44,30 @@ module.exports.activate = function (context) {
 
 	// Register the TestBox Runnable Task
 	// https://code.visualstudio.com/api/extension-guides/task-provider
-	// disposables.push(vscode.tasks.registerTaskProvider("testbox", {
-	// 	provideTasks: () => {
-	// 		return [
-	// 			new vscode.Task(
-	// 				// The task definition
-	// 				{ type: "testbox", task: "run" },
-	// 				// Workspace task, Global task = 1
-	// 				2,
-	// 				// The task name to register: used everywhere as testbox: run
-	// 				"run",
-	// 				// The task's source, in our case our registered name of 'testbox'
-	// 				"testbox",
-	// 				// Shell execution via the command output() method
-	// 				new vscode.ShellExecution(globalCommand.output),
-	// 				// The problem matcher id => package.json
-	// 				"$testbox"
-	// 			)
-	// 		];
-	// 	}
-	// }));
-
-	// Add all commands
-
+	// TODO: this fails on startup since globalCommand is not set yet
+	disposables.push(vscode.tasks.registerTaskProvider("testbox", {
+		provideTasks: () => {
+			return [
+				new vscode.Task(
+					// The task definition
+					{ type: "testbox", task: "run" },
+					// Workspace task, Global task = 1
+					2,
+					// The task name to register: used everywhere as testbox: run
+					"run",
+					// The task's source, in our case our registered name of 'testbox'
+					"testbox",
+					// Shell execution via the command output() method
+					new vscode.ShellExecution(globalCommand.output),
+					// The problem matcher id => package.json
+					"$testbox"
+				)
+			];
+		}
+	}));
 
 	// Add the UI Panel for the TestBox Runner
 	const controller = vscode.tests.createTestController('cfmlTestController', 'CFML Tests');
-	controller.resolveHandler = async (item) => {
-		console.log("Resolving", item);
-
-
-		const document = await vscode.workspace.openTextDocument(item.uri)
-		const tests = await getTests(document);
-		for (const test of tests) {
-			console.log(test.lineText.text);
-		}
-		// controller.createTestItem("Meine childen", testName, file)
-		return [];
-	}
-
-
 
 	disposables.push(controller);
 	discoverTests(controller);
@@ -99,33 +83,30 @@ module.exports.activate = function (context) {
 	// Also change on config
 	disposables.push(
 		vscode.workspace.onDidChangeConfiguration(e => {
-			if (
-				e.affectsConfiguration('testbox.excludedPaths') ||
-				e.affectsConfiguration('testbox.pathMappings')
-			) {
-				discoverTests(controller);
-			}
+			// We could filter this out more but for now just re-discover the tests
+			// if (
+			// 	e.affectsConfiguration('testbox.excludedPaths') ||
+			// 	e.affectsConfiguration('testbox.pathMappings') ||
+			// 	e.affectsConfiguration('testbox.runnerUrl')
+			// ) {
+			discoverTests(controller);
+			// }
 		})
 	);
 
 
 	disposables.push(watcher);
-	// context.subscriptions.push(watcher);
+
 
 	// Create a run profile that runs tests
 	controller.createRunProfile('Run Tests', vscode.TestRunProfileKind.Run, (request, token) => {
-		console.log("Running Tests", request, token);
 		runTestsViaURL(request, token, controller);
-		// return runCommand(new BoxCommand({ runHarness: true }));
 	});
 
 
 	// Listen for configuration changes
 
-
 	context.subscriptions.push(disposables);
-
-
 	LOG.info("Congratulations, the \"TestBox\" Extension is now active!");
 
 };
@@ -142,11 +123,11 @@ module.exports.activate = function (context) {
  */
 async function runTestsViaURL(request, token, controller) {
 	const run = controller.createTestRun(request);
-	let runnerUrl = vscode.workspace.getConfiguration("testbox").get("runnerUrl");
+	let runnerUrl = vscode.workspace.getConfiguration("testbox").get("runnerUrl", null);
 
-	// Ensure runnerUrl is defined
 	if (!runnerUrl) {
-		LOG.error("No runnerUrl configured in settings.");
+
+		vscode.window.showErrorMessage("No Testbox Runner URL configured in settings.");
 		run.end();
 		return;
 	}
@@ -155,10 +136,7 @@ async function runTestsViaURL(request, token, controller) {
 		if (token.isCancellationRequested) {
 			break;
 		}
-
-		console.log({ test });
-		const testUrl = runnerUrl + "?reporter=JSON&recurse=false&bundles=" + test.label;
-		console.log("Running test url", testUrl);
+		const testUrl = test.id;
 		run.started(test);
 
 		try {
@@ -169,9 +147,16 @@ async function runTestsViaURL(request, token, controller) {
 			}
 
 			const json = await response.json();
-			console.log({ json });
+			console.log("Test result JSON", { json });
 
-			if (json.totalFailed > 0) {
+
+
+			// Caught errored
+			if (json.totalError > 0) {
+				run.errored(test, "Not implemented");
+			}
+			// Caught test failures 
+			if (json.totalFail > 0) {
 				run.failed(test, "Test failed");
 			}
 			else {
@@ -214,8 +199,6 @@ function applyPathMappings(relativeFilePath) {
 	return relativeFilePath;
 }
 
-
-
 /**
  * Discovers test files and adds them to the test controller.
  *
@@ -229,8 +212,9 @@ function applyPathMappings(relativeFilePath) {
  */
 async function discoverTests(controller) {
 	// Clear out previous items
+	let runnerUrl = vscode.workspace.getConfiguration("testbox").get("runnerUrl");
+	// console.log(runnerUrl);
 	controller.items.replace([]);
-
 
 
 	const excludedPaths = vscode.workspace.getConfiguration("testbox").get("excludedPaths");
@@ -238,8 +222,21 @@ async function discoverTests(controller) {
 	for (const file of files) {
 		const mappedPath = applyPathMappings(vscode.workspace.asRelativePath(file.fsPath));
 		const testName = convertTestPathToTestName(mappedPath);
-		const testItem = controller.createTestItem(file.fsPath, testName, file);
-		testItem.canResolveChildren = false;
+		const testUrl = runnerUrl + "?reporter=JSON&recurse=true&testBundles=" + testName;
+		// If we have a suite we should also add &testSuites=testsuite
+		// const testItem = controller.createTestItem(file.fsPath, testName, file);
+		const testItem = controller.createTestItem(testUrl, testName, file);
+		// testItem.canResolveChildren = true;
+		// controller.resolveHandler = async (item) => {
+		// 	console.log("Resolving", item);
+		// 	const document = await vscode.workspace.openTextDocument(item.uri)
+		// 	const tests = await getBDDTests(document);
+		// 	for (const test of tests) {
+		// 		console.log(test.lineText.text);
+		// 	}
+		// 	// controller.createTestItem("Meine childen", testName, file)
+		// 	return [];
+		// }
 		// TODO: we can get specs and what have you for a document. 
 		// getTests(document) 
 		// const subTest = controller.createTestItem("Meine childen", testName, file)
