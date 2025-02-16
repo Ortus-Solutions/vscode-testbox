@@ -1,15 +1,15 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 const vscode = require("vscode");
 const BoxCommand = require("./box-command");
 const { LOG } = require('./utils/logger');
+
+const { createTestingViewController } = require('./testingExplorer');
 
 let globalCommand = new BoxCommand({ runHarness: true });
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 
-const testFileGlob = '**/*{Spec,Test}.cfc';
+
 
 module.exports.activate = function (context) {
 	// Use the console to output diagnostic information (LOG.info) and errors (console.error)
@@ -67,20 +67,11 @@ module.exports.activate = function (context) {
 	}));
 
 	// Add the UI Panel for the TestBox Runner
-	const controller = vscode.tests.createTestController('cfmlTestController', 'CFML Tests');
-
+	const { controller, watcher } = createTestingViewController();
 	disposables.push(controller);
-	discoverTests(controller);
-	// What do we match for tests?
-	// TODO: externalize the glob pattern
-	const watcher = vscode.workspace.createFileSystemWatcher(testFileGlob);
-	watcher.onDidCreate(() => discoverTests(controller));
-	watcher.onDidChange(() => discoverTests(controller));
-	watcher.onDidDelete(() => discoverTests(controller));
+	disposables.push(watcher);
 
-
-
-	// Also change on config
+	// Update the test view when the configuration changes
 	disposables.push(
 		vscode.workspace.onDidChangeConfiguration(e => {
 			// We could filter this out more but for now just re-discover the tests
@@ -94,16 +85,6 @@ module.exports.activate = function (context) {
 		})
 	);
 
-
-	disposables.push(watcher);
-
-
-	// Create a run profile that runs tests
-	controller.createRunProfile('Run Tests', vscode.TestRunProfileKind.Run, (request, token) => {
-		runTestsViaURL(request, token, controller);
-	});
-
-
 	// Listen for configuration changes
 
 	context.subscriptions.push(disposables);
@@ -111,155 +92,7 @@ module.exports.activate = function (context) {
 
 };
 
-// Run raw, without box command abstraction
-/**
- * Runs tests via a specified URL rather than using the BoxCommand abstraction as it willl be faster and the user doesnt need to 
- * install commandbox to run tests
- *
- * @param {vscode.TestRunRequest} request - The test run request.
- * @param {vscode.CancellationToken} token - The cancellation token.
- * @param {vscode.TestController} controller - The test controller.
- * @returns {Promise<void>} A promise that resolves when the tests have been run.
- */
-async function runTestsViaURL(request, token, controller) {
-	const run = controller.createTestRun(request);
-	let runnerUrl = vscode.workspace.getConfiguration("testbox").get("runnerUrl", null);
 
-	if (!runnerUrl) {
-
-		vscode.window.showErrorMessage("No Testbox Runner URL configured in settings.");
-		run.end();
-		return;
-	}
-
-	for (const test of request.include ?? []) {
-		if (token.isCancellationRequested) {
-			break;
-		}
-		const testUrl = test.id;
-		run.started(test);
-
-		try {
-			const response = await fetch(testUrl);
-
-			if (!response.ok) {
-				throw new Error(`HTTP error! Status: ${response.status}`);
-			}
-
-			const json = await response.json();
-			console.log("Test result JSON", { json });
-
-
-
-			// Caught errored
-			if (json.totalError > 0) {
-				run.errored(test, "Not implemented");
-			}
-			// Caught test failures 
-			if (json.totalFail > 0) {
-				run.failed(test, "Test failed");
-			}
-			else {
-				run.passed(test);
-			}
-		} catch (error) {
-			// Log and mark the test as failed
-			LOG.error(`Error running test ${test.label}: ${error}`);
-			// run.failed(test, error.message);
-			run.errored(test, error.message);
-		}
-	}
-	run.end();
-}
-
-
-/**
- * Applies path mappings to a given relative file path.
- *
- * This function retrieves path mappings from the VSCode configuration for "testbox"
- * and replaces the start of the relative file path with the corresponding target path
- * if a matching source path is found.
- *
- * @param {string} relativeFilePath - The relative file path to apply mappings to.
- * @returns {string} - The new file path after applying the mappings, or the original
- *                     relative file path if no mappings match.
- */
-function applyPathMappings(relativeFilePath) {
-	const mappings = vscode.workspace.getConfiguration("testbox").get("pathMappings");
-
-	for (const mapping of mappings) {
-		if (relativeFilePath.startsWith(mapping.source)) {
-			// This might not be correct, just have to replace the start
-
-			const newPath = mapping.target + relativeFilePath.slice(mapping.source.length);
-			return newPath;
-		}
-	}
-
-	return relativeFilePath;
-}
-
-/**
- * Discovers test files and adds them to the test controller.
- *
- * This function clears out any previous test items from the controller,
- * retrieves the list of test files based on the specified glob pattern
- * and excluded paths from the workspace configuration, and then maps
- * each file path to a test name before adding it to the controller.
- *
- * @param {vscode.TestController} controller - The test controller to which discovered tests will be added.
- * @returns {Promise<void>} A promise that resolves when the test discovery is complete.
- */
-async function discoverTests(controller) {
-	// Clear out previous items
-	let runnerUrl = vscode.workspace.getConfiguration("testbox").get("runnerUrl");
-	// console.log(runnerUrl);
-	controller.items.replace([]);
-
-
-	const excludedPaths = vscode.workspace.getConfiguration("testbox").get("excludedPaths");
-	const files = await vscode.workspace.findFiles(testFileGlob, excludedPaths);
-	for (const file of files) {
-		const mappedPath = applyPathMappings(vscode.workspace.asRelativePath(file.fsPath));
-		const testName = convertTestPathToTestName(mappedPath);
-		const testUrl = runnerUrl + "?reporter=JSON&recurse=true&testBundles=" + testName;
-		// If we have a suite we should also add &testSuites=testsuite
-		// const testItem = controller.createTestItem(file.fsPath, testName, file);
-		const testItem = controller.createTestItem(testUrl, testName, file);
-		// testItem.canResolveChildren = true;
-		// controller.resolveHandler = async (item) => {
-		// 	console.log("Resolving", item);
-		// 	const document = await vscode.workspace.openTextDocument(item.uri)
-		// 	const tests = await getBDDTests(document);
-		// 	for (const test of tests) {
-		// 		console.log(test.lineText.text);
-		// 	}
-		// 	// controller.createTestItem("Meine childen", testName, file)
-		// 	return [];
-		// }
-		// TODO: we can get specs and what have you for a document. 
-		// getTests(document) 
-		// const subTest = controller.createTestItem("Meine childen", testName, file)
-		// subTest.
-		// 	testItem.children.add(subTest);
-		controller.items.add(testItem);
-	}
-}
-
-/**
- * Converts a given file path to a test name by removing the .cfc extension
- * and replacing both forward and backslashes with dots.
- *
- * @param {string} filePath - The file path to convert.
- * @returns {string} - The converted test name.
- */
-function convertTestPathToTestName(filePath) {
-	// Remove the .cfc extension (case-insensitive)
-	const withoutExtension = filePath.replace(/\.cfc$/i, '');
-	// Replace both forward and backslashes with dots
-	const dottedPath = withoutExtension.replace(/[/\\]/g, '.');
-	return dottedPath;
-}
 
 // this method is called when your extension is deactivated
 module.exports.deactivate = () => {

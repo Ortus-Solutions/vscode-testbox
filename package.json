@@ -2,7 +2,7 @@
     "name": "vscode-testbox",
     "displayName": "TestBox TDD/BDD Support",
     "description": "TestBox Support for Visual Studio Code",
-    "version": "2.0.0",
+    "version": "2.0.2",
     "publisher": "ortus-solutions",
     "icon": "images/icon.png",
     "engines": {
@@ -173,7 +173,7 @@
                 "testbox.pathMappings": {
                     "type": "array",
                     "default": [],
-                    "description": "Define custom path mappings. Each mapping is an object with a 'source' (the original path) and a 'target' (the new alias). For example, mapping 'unit_tests/tests/specs' to 'tests/specs'. The mappings are relative to the root path of the workspace.",
+                    "description": "Define custom path mappings. Each mapping is an object with a 'source' (the original path) and a 'target' (the new alias). For example, mapping 'unit_tests/tests/specs' to 'tests/specs'. The mappings are relative to the root path of the workspace and enables the package name to be resolved correctly.",
                     "items": {
                         "type": "object",
                         "properties": {
@@ -235,23 +235,25 @@
         }
     },
     "dependencies": {
-        "convert-snippets-to-vscode": "^1.0.2",
         "findup": "^0.1.5"
     },
     "devDependencies": {
         "babel-eslint": "^10.1.0",
-        "@types/node": "^7.10.14",
-        "@types/vscode": "^1.74.0",
-        "@typescript-eslint/eslint-plugin": "^5.38.1",
-        "@typescript-eslint/parser": "^5.38.1",
-        "@vscode/vsce": "^2.19.0",
-        "eslint": "^8.24.0",
-        "eslint-plugin-jsdoc": "^39.3.6",
-        "eslint-config-prettier": "^8.3.0",
-        "typescript": "^5.0.4",
-        "mocha": "^10.2.0"
+        "@types/node": "^22.13.4",
+        "@types/vscode": "^1.97.0",
+        "@typescript-eslint/eslint-plugin": "^8.24.0",
+        "@typescript-eslint/parser": "^8.24.0",
+        "@vscode/vsce": "^3.2.2",
+        "eslint": "^9.20.1",
+        "eslint-plugin-jsdoc": "^50.6.3",
+        "eslint-config-prettier": "^10.0.1",
+        "typescript": "^5.7.3",
+        "mocha": "^11.1.0"
     },
     "scripts": {
+        "vscode:prepublish": "npm version patch --no-git-tag-version && npm run lint && npm run test && npm run vscode:package",
+        "vscode:publish": "vsce publish",
+        "vscode:package": "vsce package",
         "lint": "eslint -c .eslintrc.js ./src/**/*.js",
         "test": "node ./node_modules/vscode/bin/test",
         "pack": "vsce package",

@@ -25,9 +25,53 @@ component extends="testbox.system.BaseSpec"{
     function run( testResults, testBox ){
         // all your suites go here.
         describe( "My First Suite", function(){
-
             it( "A Spec", function(){
-                fail( 'implement' );
+                fail( 'spec has not been implemented' );
+            } );
+
+            
+            describe( "A Child Suite", function(){
+                
+                it( title="A Spec Thing", labels="", skip=false, body=function(){
+                    expect( 1 ).toBe( 5 );
+                });
+                it( "a child spec", function(){
+                    expect( 1 ).toBe( 32 );
+                });
+
+
+                
+                describe( "A Child Child Suite", function(){
+                    
+                    it( "a child child spec", function(){
+                        expect( 1 ).toBe( 1 );
+                    });
+                    it( "a child spec", function(){
+                        expect( 1 ).toBe( 1 );
+                    });
+                
+                });
+            
+            });
+
+        } );
+
+
+        describe( "My Second Suite", function(){
+
+            it( "should fail", function(){
+                expect( 2 ).toBe( 2 );
+                // fail( 'Second spec has not been implemented' );
+            } );
+            it( "should throw", function(){
+                // throw( 'A full thrown error!' );
+            } );
+            it( "should throw2", function(){
+                // throw( 'A full thrown error!' );
+            } );
+
+            xit( "should be skipped", function(){
+                // fail( 'This spec should have been skipped' );
             } );
 
         } );
