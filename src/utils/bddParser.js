@@ -30,7 +30,8 @@ function getLineColumn(text, offset) {
  */
 function parseTestBlocks(text, startIndex = 0, stopIndex = text.length) {
     const blocks = [];
-    const regex = /\b(it|describe|given|when|then|feature|scenario|story|xit|xdescribe)\s*\(/g;
+    // Todo: add support for commented out blocks. These will show up in the explorer.
+    const regex = /\b(it|describe|given|when|then|feature|scenario|story)\s*\(/g;
     let index = startIndex;
 
     while (index < stopIndex) {

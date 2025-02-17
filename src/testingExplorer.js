@@ -161,6 +161,8 @@ async function runTestsViaURL(request, token, controller) {
         return;
     }
 
+    // If we dont have an include, we are just running all the tests ??
+
     //Filter the tests so if we are asking to run a bundle, we only run the bundle, rather than all the tests in the bundle
     let requestedBundles = {};
     for (const test of request.include) {
