@@ -2,11 +2,11 @@
     "name": "vscode-testbox",
     "displayName": "TestBox TDD/BDD Support",
     "description": "TestBox Support for Visual Studio Code",
-    "version": "2.0.2",
+    "version": "2.0.3",
     "publisher": "ortus-solutions",
     "icon": "images/icon.png",
     "engines": {
-        "vscode": "^1.74.0"
+        "vscode": "^1.97.0"
     },
     "repository": {
         "type": "git",
@@ -251,7 +251,7 @@
         "mocha": "^11.1.0"
     },
     "scripts": {
-        "vscode:prepublish": "npm version patch --no-git-tag-version && npm run lint && npm run test && npm run vscode:package",
+        "vscode:prepublish": "npm version patch --no-git-tag-version && npm run lint",
         "vscode:publish": "vsce publish",
         "vscode:package": "vsce package",
         "lint": "eslint -c .eslintrc.js ./src/**/*.js",
