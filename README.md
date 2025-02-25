@@ -9,6 +9,10 @@ This extension provides support for the TestBox BDD/TDD framework in Visual Stud
 
 ## Features
 
+### Test Explorer
+<img src="images/run-from-explorer.gif" alt="Run from Explorer">
+Tests are discovered automatically and a test explorer view is available from the Activity Bar.  You can run tests from the explorer view by clicking on the play icon as well as being able to run the tests right from the editor. 
+
 ### Jump to Spec
 
 <img src="images/jump-to-spec.png" alt="jump to spec">
