@@ -32,7 +32,7 @@ component extends="coldbox.system.testing.BaseModelTest" model="models.Calculato
             });
 
             it( "should fail", function(){
-				expect( model.bad( 4, 4 ) ).toBe( 4 );
+				expect( model.add( 4, 4 ) ).toBe( 8 );
             });
 
 
