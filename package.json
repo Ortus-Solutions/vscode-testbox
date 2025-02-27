@@ -8,6 +8,7 @@
     "engines": {
         "vscode": "^1.97.0"
     },
+    "type": "commonjs",
     "repository": {
         "type": "git",
         "url": "https://github.com/Ortus-Solutions/vscode-testbox.git"
@@ -238,24 +239,26 @@
         "findup": "^0.1.5"
     },
     "devDependencies": {
-        "babel-eslint": "^10.1.0",
-        "@types/node": "^22.13.4",
+        "@types/node": "^22.13.5",
         "@types/vscode": "^1.97.0",
-        "@typescript-eslint/eslint-plugin": "^8.24.0",
-        "@typescript-eslint/parser": "^8.24.0",
+        "@typescript-eslint/eslint-plugin": "^8.25.0",
+        "@typescript-eslint/parser": "^8.25.0",
+        "@vscode/test-cli": "^0.0.10",
+        "@vscode/test-electron": "^2.4.1",
         "@vscode/vsce": "^3.2.2",
-        "eslint": "^9.20.1",
+        "babel-eslint": "^10.1.0",
+        "eslint": "^9.21.0",
+        "eslint-config-prettier": "^10.0.2",
         "eslint-plugin-jsdoc": "^50.6.3",
-        "eslint-config-prettier": "^10.0.1",
-        "typescript": "^5.7.3",
-        "mocha": "^11.1.0"
+        "mocha": "^11.1.0",
+        "typescript": "^5.7.3"
     },
     "scripts": {
         "vscode:prepublish": "npm version patch --no-git-tag-version && npm run lint",
         "vscode:publish": "vsce publish",
         "vscode:package": "vsce package",
         "lint": "eslint -c .eslintrc.js ./src/**/*.js",
-        "test": "node ./node_modules/vscode/bin/test",
+        "test": "vscode-test --install-extensions cfmleditor.cfmleditor -silent=false --fullTrace",
         "pack": "vsce package",
         "sublime:convert": "bash ./build.sh"
     }
