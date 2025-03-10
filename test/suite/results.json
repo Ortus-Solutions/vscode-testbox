@@ -1,0 +1,409 @@
+{
+    "totalSuites": 4,
+    "CFMLEngineVersion": "5.4.6.9",
+    "startTime": 1739640614873,
+    "bundleStats": [
+        {
+            "totalSuites": 4,
+            "startTime": 1739640614941,
+            "totalPass": 7,
+            "totalDuration": 44,
+            "totalSkipped": 1,
+            "totalFail": 1,
+            "totalSpecs": 9,
+            "path": "tests.specs.unit.CalculatorTest",
+            "endTime": 1739640614985,
+            "debugBuffer": [],
+            "totalError": 0,
+            "name": "tests.specs.unit.CalculatorTest",
+            "id": "661D7DF7131DBD8D1DD12844AEBBA36A",
+            "suiteStats": [
+                {
+                    "startTime": 1739640614941,
+                    "totalPass": 4,
+                    "totalDuration": 44,
+                    "totalSkipped": 0,
+                    "totalFail": 1,
+                    "totalSpecs": 1,
+                    "bundleID": "661D7DF7131DBD8D1DD12844AEBBA36A",
+                    "status": "Failed",
+                    "parentID": "",
+                    "specStats": [
+                        {
+                            "error": {},
+                            "startTime": 1739640614941,
+                            "failExtendedInfo": "",
+                            "totalDuration": 43,
+                            "failStacktrace": "lucee.runtime.exp.CustomTypeException: spec has not been implemented\n\tat lucee.runtime.tag.Throw._doStartTag(Throw.java:212)\n\tat lucee.runtime.tag.Throw.doStartTag(Throw.java:201)\n\tat throw_cfm$cf.udfCall(/throw.cfm:11)\n\tat lucee.runtime.type.UDFImpl.implementation(UDFImpl.java:112)\n\tat lucee.runtime.type.UDFImpl._call(UDFImpl.java:358)\n\tat lucee.runtime.type.UDFImpl.callWithNamedValues(UDFImpl.java:213)\n\tat lucee.runtime.functions.system.CFFunction.call(CFFunction.java:109)\n\tat testbox.system.assertion_cfc$cf.udfCall1(/testbox/system/Assertion.cfc:20)\n\tat testbox.system.assertion_cfc$cf.udfCall(/testbox/system/Assertion.cfc)\n\tat lucee.runtime.type.UDFImpl.implementation(UDFImpl.java:112)\n\tat lucee.runtime.type.UDFImpl._call(UDFImpl.java:358)\n\tat lucee.runtime.type.UDFImpl.callWithNamedValues(UDFImpl.java:213)\n\tat lucee.runtime.ComponentImpl._call(ComponentImpl.java:699)\n\tat lucee.runtime.ComponentImpl._call(ComponentImpl.java:586)\n\tat lucee.runtime.ComponentImpl.callWithNamedValues(ComponentImpl.java:1952)\n\tat lucee.runtime.util.VariableUtilImpl.callFunctionWithNamedValues(VariableUtilImpl.java:866)\n\tat lucee.runtime.PageContextImpl.getFunctionWithNamedValues(PageContextImpl.java:1795)\n\tat testbox.system.basespec_cfc$cf.udfCall1(/testbox/system/BaseSpec.cfc:86)\n\tat testbox.system.basespec_cfc$cf.udfCall(/testbox/system/BaseSpec.cfc)\n\tat lucee.runtime.type.UDFImpl.implementation(UDFImpl.java:112)\n\tat lucee.runtime.type.UDFImpl._call(UDFImpl.java:358)\n\tat lucee.runtime.type.UDFImpl.call(UDFImpl.java:223)\n\tat lucee.runtime.type.scope.UndefinedImpl.call(UndefinedImpl.java:786)\n\tat lucee.runtime.util.VariableUtilImpl.callFunctionWithoutNamedValues(VariableUtilImpl.java:787)\n\tat lucee.runtime.PageContextImpl.getFunction(PageContextImpl.java:1776)\n\tat specs.unit.calculatortest_cfc$cf.udfCall1(/tests/specs/unit/CalculatorTest.cfc:29)\n\tat specs.unit.calculatortest_cfc$cf.udfCall(/tests/specs/unit/CalculatorTest.cfc)\n\tat lucee.runtime.type.UDFImpl.implementation(UDFImpl.java:112)\n\tat lucee.runtime.type.UDFImpl._call(UDFImpl.java:358)\n\tat lucee.runtime.type.UDFImpl.call(UDFImpl.java:223)\n\tat lucee.runtime.type.EnvUDF.call(EnvUDF.java:97)\n\tat lucee.runtime.type.util.StructSupport.call(StructSupport.java:274)\n\tat lucee.runtime.util.VariableUtilImpl.callFunctionWithoutNamedValues(VariableUtilImpl.java:787)\n\tat lucee.runtime.PageContextImpl.getFunction(PageContextImpl.java:1776)\n\tat testbox.system.basespec_cfc$cf.udfCall7(/testbox/system/BaseSpec.cfc:1494)\n\tat testbox.system.basespec_cfc$cf.udfCall(/testbox/system/BaseSpec.cfc)\n\tat lucee.runtime.type.UDFImpl.implementation(UDFImpl.java:112)\n\tat lucee.runtime.type.UDFImpl._call(UDFImpl.java:358)\n\tat lucee.runtime.type.UDFImpl.callWithNamedValues(UDFImpl.java:213)\n\tat lucee.runtime.type.util.StructSupport.callWithNamedValues(StructSupport.java:284)\n\tat lucee.runtime.util.VariableUtilImpl.callFunctionWithNamedValues(VariableUtilImpl.java:866)\n\tat lucee.runtime.PageContextImpl.getFunctionWithNamedValues(PageContextImpl.java:1795)\n\tat testbox.system.basespec_cfc$cf.udfCall5(/testbox/system/BaseSpec.cfc:1125)\n\tat testbox.system.basespec_cfc$cf.udfCall(/testbox/system/BaseSpec.cfc)\n\tat lucee.runtime.type.UDFImpl.implementation(UDFImpl.java:112)\n\tat lucee.runtime.type.UDFImpl._call(UDFImpl.java:358)\n\tat lucee.runtime.type.UDFImpl.call(UDFImpl.java:223)\n\tat lucee.runtime.type.EnvUDF.call(EnvUDF.java:97)\n\tat lucee.runtime.type.scope.UndefinedImpl.call(UndefinedImpl.java:786)\n\tat lucee.runtime.util.VariableUtilImpl.callFunctionWithoutNamedValues(VariableUtilImpl.java:787)\n\tat lucee.runtime.PageContextImpl.getFunction(PageContextImpl.java:1776)\n\tat testbox.system.basespec_cfc$cf.udfCall5(/testbox/system/BaseSpec.cfc:1093)\n\tat testbox.system.basespec_cfc$cf.udfCall(/testbox/system/BaseSpec.cfc)\n\tat lucee.runtime.type.UDFImpl.implementation(UDFImpl.java:112)\n\tat lucee.runtime.type.UDFImpl._call(UDFImpl.java:358)\n\tat lucee.runtime.type.UDFImpl.call(UDFImpl.java:223)\n\tat lucee.runtime.type.scope.UndefinedImpl.call(UndefinedImpl.java:786)\n\tat lucee.runtime.util.VariableUtilImpl.callFunctionWithoutNamedValues(VariableUtilImpl.java:787)\n\tat lucee.runtime.PageContextImpl.getFunction(PageContextImpl.java:1776)\n\tat testbox.system.basespec_cfc$cf.udfCall4(/testbox/system/BaseSpec.cfc:931)\n\tat testbox.system.basespec_cfc$cf.udfCall(/testbox/system/BaseSpec.cfc)\n\tat lucee.runtime.type.UDFImpl.implementation(UDFImpl.java:112)\n\tat lucee.runtime.type.UDFImpl._call(UDFImpl.java:358)\n\tat lucee.runtime.type.UDFImpl.callWithNamedValues(UDFImpl.java:213)\n\tat lucee.runtime.ComponentImpl._call(ComponentImpl.java:699)\n\tat lucee.runtime.ComponentImpl._call(ComponentImpl.java:586)\n\tat lucee.runtime.ComponentImpl.callWithNamedValues(ComponentImpl.java:1952)\n\tat lucee.runtime.util.VariableUtilImpl.callFunctionWithNamedValues(VariableUtilImpl.java:866)\n\tat lucee.runtime.PageContextImpl.getFunctionWithNamedValues(PageContextImpl.java:1795)\n\tat testbox.system.runners.bddrunner_cfc$cf.udfCall(/testbox/system/runners/BDDRunner.cfc:258)\n\tat lucee.runtime.type.UDFImpl.implementation(UDFImpl.java:112)\n\tat lucee.runtime.type.UDFImpl._call(UDFImpl.java:358)\n\tat lucee.runtime.type.UDFImpl.callWithNamedValues(UDFImpl.java:213)\n\tat lucee.runtime.type.scope.UndefinedImpl.callWithNamedValues(UndefinedImpl.java:804)\n\tat lucee.runtime.util.VariableUtilImpl.callFunctionWithNamedValues(VariableUtilImpl.java:866)\n\tat lucee.runtime.PageContextImpl.getFunctionWithNamedValues(PageContextImpl.java:1795)\n\tat testbox.system.runners.bddrunner_cfc$cf.udfCall(/testbox/system/runners/BDDRunner.cfc:95)\n\tat lucee.runtime.type.UDFImpl.implementation(UDFImpl.java:112)\n\tat lucee.runtime.type.UDFImpl._call(UDFImpl.java:358)\n\tat lucee.runtime.type.UDFImpl.call(UDFImpl.java:223)\n\tat lucee.runtime.ComponentImpl._call(ComponentImpl.java:698)\n\tat lucee.runtime.ComponentImpl._call(ComponentImpl.java:586)\n\tat lucee.runtime.ComponentImpl.call(ComponentImpl.java:1933)\n\tat lucee.runtime.util.VariableUtilImpl.callFunctionWithoutNamedValues(VariableUtilImpl.java:787)\n\tat lucee.runtime.PageContextImpl.getFunction(PageContextImpl.java:1776)\n\tat testbox.system.testbox_cfc$cf.udfCall2(/testbox/system/TestBox.cfc:535)\n\tat testbox.system.testbox_cfc$cf.udfCall(/testbox/system/TestBox.cfc)\n\tat lucee.runtime.type.UDFImpl.implementation(UDFImpl.java:112)\n\tat lucee.runtime.type.UDFImpl._call(UDFImpl.java:358)\n\tat lucee.runtime.type.UDFImpl.callWithNamedValues(UDFImpl.java:213)\n\tat lucee.runtime.type.scope.UndefinedImpl.callWithNamedValues(UndefinedImpl.java:804)\n\tat lucee.runtime.util.VariableUtilImpl.callFunctionWithNamedValues(VariableUtilImpl.java:866)\n\tat lucee.runtime.PageContextImpl.getFunctionWithNamedValues(PageContextImpl.java:1795)\n\tat testbox.system.testbox_cfc$cf.udfCall1(/testbox/system/TestBox.cfc:275)\n\tat testbox.system.testbox_cfc$cf.udfCall(/testbox/system/TestBox.cfc)\n\tat lucee.runtime.type.UDFImpl.implementation(UDFImpl.java:112)\n\tat lucee.runtime.type.UDFImpl._call(UDFImpl.java:358)\n\tat lucee.runtime.type.UDFImpl.callWithNamedValues(UDFImpl.java:213)\n\tat lucee.runtime.type.scope.UndefinedImpl.callWithNamedValues(UndefinedImpl.java:804)\n\tat lucee.runtime.util.VariableUtilImpl.callFunctionWithNamedValues(VariableUtilImpl.java:866)\n\tat lucee.runtime.PageContextImpl.getFunctionWithNamedValues(PageContextImpl.java:1795)\n\tat testbox.system.testbox_cfc$cf.udfCall1(/testbox/system/TestBox.cfc:164)\n\tat testbox.system.testbox_cfc$cf.udfCall(/testbox/system/TestBox.cfc)\n\tat lucee.runtime.type.UDFImpl.implementation(UDFImpl.java:112)\n\tat lucee.runtime.type.UDFImpl._call(UDFImpl.java:358)\n\tat lucee.runtime.type.UDFImpl.callWithNamedValues(UDFImpl.java:213)\n\tat lucee.runtime.ComponentImpl._call(ComponentImpl.java:699)\n\tat lucee.runtime.ComponentImpl._call(ComponentImpl.java:586)\n\tat lucee.runtime.ComponentImpl.callWithNamedValues(ComponentImpl.java:1952)\n\tat lucee.runtime.util.VariableUtilImpl.callFunctionWithNamedValues(VariableUtilImpl.java:866)\n\tat lucee.runtime.PageContextImpl.getFunctionWithNamedValues(PageContextImpl.java:1795)\n\tat testbox.system.runners.htmlrunner_cfm$cf.call(/testbox/system/runners/HTMLRunner.cfm:49)\n\tat lucee.runtime.PageContextImpl._doInclude(PageContextImpl.java:1057)\n\tat lucee.runtime.PageContextImpl._doInclude(PageContextImpl.java:949)\n\tat lucee.runtime.PageContextImpl.doInclude(PageContextImpl.java:930)\n\tat tests.runner_cfm$cf.call(/tests/runner.cfm:22)\n\tat lucee.runtime.PageContextImpl._doInclude(PageContextImpl.java:1057)\n\tat lucee.runtime.PageContextImpl._doInclude(PageContextImpl.java:949)\n\tat lucee.runtime.listener.ModernAppListener._onRequest(ModernAppListener.java:219)\n\tat lucee.runtime.listener.MixedAppListener.onRequest(MixedAppListener.java:44)\n\tat lucee.runtime.PageContextImpl.execute(PageContextImpl.java:2494)\n\tat lucee.runtime.PageContextImpl._execute(PageContextImpl.java:2479)\n\tat lucee.runtime.PageContextImpl.executeCFML(PageContextImpl.java:2450)\n\tat lucee.runtime.engine.Request.exe(Request.java:45)\n\tat lucee.runtime.engine.CFMLEngineImpl._service(CFMLEngineImpl.java:1215)\n\tat lucee.runtime.engine.CFMLEngineImpl.serviceCFML(CFMLEngineImpl.java:1161)\n\tat lucee.loader.engine.CFMLEngineWrapper.serviceCFML(CFMLEngineWrapper.java:97)\n\tat lucee.loader.servlet.CFMLServlet.service(CFMLServlet.java:51)\n\tat javax.servlet.http.HttpServlet.service(HttpServlet.java:590)\n\tat io.undertow.servlet.handlers.ServletHandler.handleRequest(ServletHandler.java:74)\n\tat io.undertow.servlet.handlers.FilterHandler$FilterChainImpl.doFilter(FilterHandler.java:129)\n\tat org.cfmlprojects.regexpathinfofilter.RegexPathInfoFilter.doFilter(RegexPathInfoFilter.java:54)\n\tat io.undertow.servlet.core.ManagedFilter.doFilter(ManagedFilter.java:67)\n\tat io.undertow.servlet.handlers.FilterHandler$FilterChainImpl.doFilter(FilterHandler.java:131)\n\tat jdk.internal.reflect.GeneratedMethodAccessor106.invoke(Unknown Source)\n\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:566)\n\tat com.intergral.fusionreactor.j2ee.filterchain.WrappedFilterChain.doFilter(WrappedFilterChain.java:134)\n\tat com.intergral.fusionreactor.j2ee.filter.FusionReactorRequestHandler.doNext(FusionReactorRequestHandler.java:698)\n\tat com.intergral.fusionreactor.j2ee.filter.FusionReactorRequestHandler.doHttpServletRequest(FusionReactorRequestHandler.java:256)\n\tat com.intergral.fusionreactor.j2ee.filter.FusionReactorRequestHandler.doFusionRequest(FusionReactorRequestHandler.java:119)\n\tat com.intergral.fusionreactor.j2ee.filter.FusionReactorRequestHandler.handle(FusionReactorRequestHandler.java:736)\n\tat com.intergral.fusionreactor.j2ee.filter.FusionReactorCoreFilter.doFilter(FusionReactorCoreFilter.java:36)\n\tat jdk.internal.reflect.GeneratedMethodAccessor105.invoke(Unknown Source)\n\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:566)\n\tat com.intergral.fusionreactor.j2ee.filterchain.WrappedFilterChain.doFilter(WrappedFilterChain.java:71)\n\tat jdk.internal.reflect.GeneratedMethodAccessor104.invoke(Unknown Source)\n\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:566)\n\tat com.intergral.fusionreactor.agent.filter.FusionReactorStaticFilter.doFilter(FusionReactorStaticFilter.java:54)\n\tat com.intergral.fusionreactor.agent.pointcuts.NewFilterChainPointCut$1.invoke(NewFilterChainPointCut.java:50)\n\tat io.undertow.servlet.handlers.FilterHandler$FilterChainImpl.doFilter(FilterHandler.java)\n\tat io.undertow.servlet.handlers.FilterHandler.handleRequest(FilterHandler.java:84)\n\tat io.undertow.servlet.handlers.security.ServletSecurityRoleHandler.handleRequest(ServletSecurityRoleHandler.java:62)\n\tat io.undertow.servlet.handlers.ServletChain$1.handleRequest(ServletChain.java:68)\n\tat io.undertow.servlet.handlers.ServletDispatchingHandler.handleRequest(ServletDispatchingHandler.java:36)\n\tat runwar.undertow.SSLCertHeaderHandler.handleRequest(SSLCertHeaderHandler.java:161)\n\tat io.undertow.servlet.handlers.RedirectDirHandler.handleRequest(RedirectDirHandler.java:68)\n\tat io.undertow.servlet.handlers.security.SSLInformationAssociationHandler.handleRequest(SSLInformationAssociationHandler.java:117)\n\tat io.undertow.servlet.handlers.security.ServletAuthenticationCallHandler.handleRequest(ServletAuthenticationCallHandler.java:57)\n\tat io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)\n\tat io.undertow.security.handlers.AbstractConfidentialityHandler.handleRequest(AbstractConfidentialityHandler.java:46)\n\tat io.undertow.servlet.handlers.security.ServletConfidentialityConstraintHandler.handleRequest(ServletConfidentialityConstraintHandler.java:64)\n\tat io.undertow.security.handlers.AuthenticationMechanismsHandler.handleRequest(AuthenticationMechanismsHandler.java:60)\n\tat io.undertow.servlet.handlers.security.CachedAuthenticatedSessionHandler.handleRequest(CachedAuthenticatedSessionHandler.java:77)\n\tat io.undertow.security.handlers.AbstractSecurityContextAssociationHandler.handleRequest(AbstractSecurityContextAssociationHandler.java:43)\n\tat io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)\n\tat io.undertow.servlet.handlers.SendErrorPageHandler.handleRequest(SendErrorPageHandler.java:52)\n\tat io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)\n\tat io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:275)\n\tat io.undertow.servlet.handlers.ServletInitialHandler.access$100(ServletInitialHandler.java:79)\n\tat io.undertow.servlet.handlers.ServletInitialHandler$2.call(ServletInitialHandler.java:134)\n\tat io.undertow.servlet.handlers.ServletInitialHandler$2.call(ServletInitialHandler.java:131)\n\tat io.undertow.servlet.core.ServletRequestContextThreadSetupAction$1.call(ServletRequestContextThreadSetupAction.java:48)\n\tat io.undertow.servlet.core.ContextClassLoaderSetupAction$1.call(ContextClassLoaderSetupAction.java:43)\n\tat io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:255)\n\tat io.undertow.servlet.handlers.ServletInitialHandler.handleRequest(ServletInitialHandler.java:175)\n\tat io.undertow.server.handlers.HttpContinueReadHandler.handleRequest(HttpContinueReadHandler.java:69)\n\tat io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)\n\tat runwar.undertow.WelcomeFileHandler.handleRequest(WelcomeFileHandler.java:49)\n\tat io.undertow.server.handlers.PathHandler.handleRequest(PathHandler.java:104)\n\tat runwar.undertow.SiteDeployment$1.handleRequest(SiteDeployment.java:164)\n\tat io.undertow.predicate.PredicatesHandler.handleRequest(PredicatesHandler.java:141)\n\tat io.undertow.predicate.PredicatesHandler.handleRequest(PredicatesHandler.java:141)\n\tat io.undertow.predicate.PredicatesHandler.handleRequest(PredicatesHandler.java:113)\n\tat io.undertow.server.handlers.DisallowedMethodsHandler.handleRequest(DisallowedMethodsHandler.java:62)\n\tat io.undertow.predicate.PredicatesHandler.handleRequest(PredicatesHandler.java:113)\n\tat io.undertow.server.handlers.encoding.EncodingHandler.handleRequest(EncodingHandler.java:72)\n\tat runwar.undertow.LifecyleHandler.handleRequest(LifecyleHandler.java:143)\n\tat runwar.undertow.SiteDeployment$4.handleRequest(SiteDeployment.java:354)\n\tat io.undertow.server.Connectors.executeRootHandler(Connectors.java:395)\n\tat io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:854)\n\tat org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)\n\tat org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:2019)\n\tat org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1558)\n\tat org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1449)\n\tat org.xnio.XnioWorker$WorkerThreadFactory$1$1.run(XnioWorker.java:1282)\n\tat java.base/java.lang.Thread.run(Thread.java:829)\n",
+                            "failOrigin": [
+                                {
+                                    "Raw_Trace": "testbox.system.assertion_cfc$cf.udfCall1(/testbox/system/Assertion.cfc:20)",
+                                    "codePrintPlain": "18: \t\t\ttype = \"TestBox.AssertionFailed\",\n19: \t\t\tmessage = arguments.message,\n20: \t\t\tdetail = arguments.detail\n21: \t\t);\n22: \t}\n",
+                                    "column": 0,
+                                    "line": 20,
+                                    "template": "/Users/markdrew/Code/VSCode/vscode-testbox/test/app/testbox/system/Assertion.cfc",
+                                    "id": "??",
+                                    "type": "cfml",
+                                    "codePrintHTML": "18: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;TestBox.AssertionFailed&quot;,<br>\n19: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;message&nbsp;=&nbsp;arguments.message,<br>\n<b>20: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;detail&nbsp;&nbsp;=&nbsp;arguments.detail</b><br>\n21: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);<br>\n22: &nbsp;&nbsp;&nbsp;}<br>\n"
+                                },
+                                {
+                                    "Raw_Trace": "testbox.system.basespec_cfc$cf.udfCall1(/testbox/system/BaseSpec.cfc:86)",
+                                    "codePrintPlain": "84: \t */\n85: \tfunction fail( message = \"\", detail = \"\" ){\n86: \t\tthis.$assert.fail( argumentCollection = arguments );\n87: \t}\n88: \n",
+                                    "column": 0,
+                                    "line": 86,
+                                    "template": "/Users/markdrew/Code/VSCode/vscode-testbox/test/app/testbox/system/BaseSpec.cfc",
+                                    "id": "??",
+                                    "type": "cfml",
+                                    "codePrintHTML": "84: &nbsp;&nbsp;&nbsp;&nbsp;*/<br>\n85: &nbsp;&nbsp;&nbsp;function&nbsp;fail(&nbsp;message&nbsp;=&nbsp;&quot;&quot;,&nbsp;detail&nbsp;=&nbsp;&quot;&quot;&nbsp;){<br>\n<b>86: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.$assert.fail(&nbsp;argumentCollection&nbsp;=&nbsp;arguments&nbsp;);</b><br>\n87: &nbsp;&nbsp;&nbsp;}<br>\n88: <br>\n"
+                                },
+                                {
+                                    "Raw_Trace": "specs.unit.calculatortest_cfc$cf.udfCall1(/tests/specs/unit/CalculatorTest.cfc:29)",
+                                    "codePrintPlain": "27: describe( \"My First Suite\", function(){\n28: it( \"A Spec\", function(){\n29: fail( 'spec has not been implemented' );\n30: } );\n31: \n",
+                                    "column": 0,
+                                    "line": 29,
+                                    "template": "/Users/markdrew/Code/VSCode/vscode-testbox/test/app/tests/specs/unit/CalculatorTest.cfc",
+                                    "id": "??",
+                                    "type": "cfml",
+                                    "codePrintHTML": "27: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;describe(&nbsp;&quot;My&nbsp;First&nbsp;Suite&quot;,&nbsp;function(){<br>\n28: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it(&nbsp;&quot;A&nbsp;Spec&quot;,&nbsp;function(){<br>\n<b>29: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fail(&nbsp;'spec&nbsp;has&nbsp;not&nbsp;been&nbsp;implemented'&nbsp;);</b><br>\n30: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;);<br>\n31: <br>\n"
+                                },
+                                {
+                                    "Raw_Trace": "testbox.system.basespec_cfc$cf.udfCall7(/testbox/system/BaseSpec.cfc:1494)",
+                                    "codePrintPlain": "1492: \t// Around Stub\n1493: \tfunction aroundStub( spec ){\n1494: \t\targuments.spec.body( arguments.spec.data );\n1495: \t}\n1496: \n",
+                                    "column": 0,
+                                    "line": 1494,
+                                    "template": "/Users/markdrew/Code/VSCode/vscode-testbox/test/app/testbox/system/BaseSpec.cfc",
+                                    "id": "??",
+                                    "type": "cfml",
+                                    "codePrintHTML": "1492: &nbsp;&nbsp;&nbsp;//&nbsp;Around&nbsp;Stub<br>\n1493: &nbsp;&nbsp;&nbsp;function&nbsp;aroundStub(&nbsp;spec&nbsp;){<br>\n<b>1494: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arguments.spec.body(&nbsp;arguments.spec.data&nbsp;);</b><br>\n1495: &nbsp;&nbsp;&nbsp;}<br>\n1496: <br>\n"
+                                },
+                                {
+                                    "Raw_Trace": "testbox.system.basespec_cfc$cf.udfCall5(/testbox/system/BaseSpec.cfc:1125)",
+                                    "codePrintPlain": "1123: \t\t\t\t\tspec = thread.spec,\n1124: \t\t\t\t\tsuite = thread.suite,\n1125: \t\t\t\t\tdata = nextClosure.data\n1126: \t\t\t\t);\n1127: \t\t\t};\n",
+                                    "column": 0,
+                                    "line": 1125,
+                                    "template": "/Users/markdrew/Code/VSCode/vscode-testbox/test/app/testbox/system/BaseSpec.cfc",
+                                    "id": "??",
+                                    "type": "cfml",
+                                    "codePrintHTML": "1123: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;spec&nbsp;&nbsp;=&nbsp;thread.spec,<br>\n1124: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;suite&nbsp;=&nbsp;thread.suite,<br>\n<b>1125: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;&nbsp;=&nbsp;nextClosure.data</b><br>\n1126: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);<br>\n1127: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>\n"
+                                },
+                                {
+                                    "Raw_Trace": "testbox.system.basespec_cfc$cf.udfCall5(/testbox/system/BaseSpec.cfc:1093)",
+                                    "codePrintPlain": "1091: \t\t);\n1092: \t\t// Run the specs\n1093: \t\tspecStack();\n1094: \n1095: \t\treturn this;\n",
+                                    "column": 0,
+                                    "line": 1093,
+                                    "template": "/Users/markdrew/Code/VSCode/vscode-testbox/test/app/testbox/system/BaseSpec.cfc",
+                                    "id": "??",
+                                    "type": "cfml",
+                                    "codePrintHTML": "1091: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);<br>\n1092: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Run&nbsp;the&nbsp;specs<br>\n<b>1093: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specStack();</b><br>\n1094: <br>\n1095: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;this;<br>\n"
+                                },
+                                {
+                                    "Raw_Trace": "testbox.system.basespec_cfc$cf.udfCall4(/testbox/system/BaseSpec.cfc:931)",
+                                    "codePrintPlain": "929: \n930: \t\t\t\ttry {\n931: \t\t\t\t\trunAroundEachClosures( arguments.suite, arguments.spec );\n932: \t\t\t\t} catch ( any e ) {\n933: \t\t\t\t\trethrow;\n",
+                                    "column": 0,
+                                    "line": 931,
+                                    "template": "/Users/markdrew/Code/VSCode/vscode-testbox/test/app/testbox/system/BaseSpec.cfc",
+                                    "id": "??",
+                                    "type": "cfml",
+                                    "codePrintHTML": "929: <br>\n930: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{<br>\n<b>931: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runAroundEachClosures(&nbsp;arguments.suite,&nbsp;arguments.spec&nbsp;);</b><br>\n932: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch&nbsp;(&nbsp;any&nbsp;e&nbsp;)&nbsp;{<br>\n933: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rethrow;<br>\n"
+                                },
+                                {
+                                    "Raw_Trace": "testbox.system.runners.bddrunner_cfc$cf.udfCall(/testbox/system/runners/BDDRunner.cfc:258)",
+                                    "codePrintPlain": "256: \t\t\t\t\t\tsuiteStats = thread.suiteStats,\n257: \t\t\t\t\t\trunner = this\n258: \t\t\t\t\t);\n259: \n260: \t\t\t\t\t// verify call backs\n",
+                                    "column": 0,
+                                    "line": 258,
+                                    "template": "/Users/markdrew/Code/VSCode/vscode-testbox/test/app/testbox/system/runners/BDDRunner.cfc",
+                                    "id": "??",
+                                    "type": "cfml",
+                                    "codePrintHTML": "256: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;suiteStats&nbsp;&nbsp;=&nbsp;thread.suiteStats,<br>\n257: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runner&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;this<br>\n<b>258: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);</b><br>\n259: <br>\n260: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;verify&nbsp;call&nbsp;backs<br>\n"
+                                },
+                                {
+                                    "Raw_Trace": "testbox.system.runners.bddrunner_cfc$cf.udfCall(/testbox/system/runners/BDDRunner.cfc:95)",
+                                    "codePrintPlain": "93: \t\t\t\t\t\ttestResults = arguments.testResults,\n94: \t\t\t\t\t\tbundleStats = bundleStats,\n95: \t\t\t\t\t\tcallbacks = arguments.callbacks\n96: \t\t\t\t\t);\n97: \n",
+                                    "column": 0,
+                                    "line": 95,
+                                    "template": "/Users/markdrew/Code/VSCode/vscode-testbox/test/app/testbox/system/runners/BDDRunner.cfc",
+                                    "id": "??",
+                                    "type": "cfml",
+                                    "codePrintHTML": "93: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;testResults&nbsp;=&nbsp;arguments.testResults,<br>\n94: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bundleStats&nbsp;=&nbsp;bundleStats,<br>\n<b>95: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;callbacks&nbsp;&nbsp;&nbsp;=&nbsp;arguments.callbacks</b><br>\n96: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);<br>\n97: <br>\n"
+                                },
+                                {
+                                    "Raw_Trace": "testbox.system.testbox_cfc$cf.udfCall2(/testbox/system/TestBox.cfc:535)",
+                                    "codePrintPlain": "533: \t\t\t\t\ttarget,\n534: \t\t\t\t\targuments.testResults,\n535: \t\t\t\t\targuments.callbacks\n536: \t\t\t\t);\n537: \t\t\t} else {\n",
+                                    "column": 0,
+                                    "line": 535,
+                                    "template": "/Users/markdrew/Code/VSCode/vscode-testbox/test/app/testbox/system/TestBox.cfc",
+                                    "id": "??",
+                                    "type": "cfml",
+                                    "codePrintHTML": "533: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;target,<br>\n534: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arguments.testResults,<br>\n<b>535: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arguments.callbacks</b><br>\n536: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);<br>\n537: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br>\n"
+                                },
+                                {
+                                    "Raw_Trace": "testbox.system.testbox_cfc$cf.udfCall1(/testbox/system/TestBox.cfc:275)",
+                                    "codePrintPlain": "273: \t\t\t\tbundlePath = thisBundlePath,\n274: \t\t\t\ttestResults = results,\n275: \t\t\t\tcallbacks = arguments.callbacks\n276: \t\t\t);\n277: \n",
+                                    "column": 0,
+                                    "line": 275,
+                                    "template": "/Users/markdrew/Code/VSCode/vscode-testbox/test/app/testbox/system/TestBox.cfc",
+                                    "id": "??",
+                                    "type": "cfml",
+                                    "codePrintHTML": "273: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bundlePath&nbsp;&nbsp;=&nbsp;thisBundlePath,<br>\n274: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;testResults&nbsp;=&nbsp;results,<br>\n<b>275: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;callbacks&nbsp;&nbsp;&nbsp;=&nbsp;arguments.callbacks</b><br>\n276: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);<br>\n277: <br>\n"
+                                },
+                                {
+                                    "Raw_Trace": "testbox.system.testbox_cfc$cf.udfCall1(/testbox/system/TestBox.cfc:164)",
+                                    "codePrintPlain": "162: \t\t}\n163: \t\t// run it and get results\n164: \t\tvar results = runRaw( argumentCollection = arguments );\n165: \t\t// store latest results\n166: \t\tvariables.result = results;\n",
+                                    "column": 0,
+                                    "line": 164,
+                                    "template": "/Users/markdrew/Code/VSCode/vscode-testbox/test/app/testbox/system/TestBox.cfc",
+                                    "id": "??",
+                                    "type": "cfml",
+                                    "codePrintHTML": "162: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>\n163: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;run&nbsp;it&nbsp;and&nbsp;get&nbsp;results<br>\n<b>164: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;results&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;runRaw(&nbsp;argumentCollection&nbsp;=&nbsp;arguments&nbsp;);</b><br>\n165: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;store&nbsp;latest&nbsp;results<br>\n166: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variables.result&nbsp;=&nbsp;results;<br>\n"
+                                },
+                                {
+                                    "Raw_Trace": "testbox.system.runners.htmlrunner_cfm$cf.call(/testbox/system/runners/HTMLRunner.cfm:49)",
+                                    "codePrintPlain": "47: \n48: // Run Tests using correct reporter\n49: results = testbox.run( reporter=url.reporter );\n50: \n51: function escapePropertyValue( required string value ) {\n",
+                                    "column": 0,
+                                    "line": 49,
+                                    "template": "/Users/markdrew/Code/VSCode/vscode-testbox/test/app/testbox/system/runners/HTMLRunner.cfm",
+                                    "id": "??",
+                                    "type": "cfml",
+                                    "codePrintHTML": "47: <br>\n48: //&nbsp;Run&nbsp;Tests&nbsp;using&nbsp;correct&nbsp;reporter<br>\n<b>49: results&nbsp;=&nbsp;testbox.run(&nbsp;reporter=url.reporter&nbsp;);</b><br>\n50: <br>\n51: function&nbsp;escapePropertyValue(&nbsp;required&nbsp;string&nbsp;value&nbsp;)&nbsp;{<br>\n"
+                                },
+                                {
+                                    "Raw_Trace": "tests.runner_cfm$cf.call(/tests/runner.cfm:22)",
+                                    "codePrintPlain": "20: \n21: <!--- Include the TestBox HTML Runner --->\n22: <cfinclude template=\"/testbox/system/runners/HTMLRunner.cfm\" >\n",
+                                    "column": 0,
+                                    "line": 22,
+                                    "template": "/Users/markdrew/Code/VSCode/vscode-testbox/test/app/tests/runner.cfm",
+                                    "id": "??",
+                                    "type": "cfml",
+                                    "codePrintHTML": "20: <br>\n21: &lt;!---&nbsp;Include&nbsp;the&nbsp;TestBox&nbsp;HTML&nbsp;Runner&nbsp;---&gt;<br>\n<b>22: &lt;cfinclude&nbsp;template=&quot;/testbox/system/runners/HTMLRunner.cfm&quot;&nbsp;&gt;</b><br>\n"
+                                }
+                            ],
+                            "status": "Failed",
+                            "suiteID": "9E19C5485573E212D4EE3933EB9D5519",
+                            "endTime": 1739640614984,
+                            "name": "A Spec",
+                            "id": "2B6E54AEDCBE709EC61B9FB47A8DFD3D",
+                            "failMessage": "spec has not been implemented",
+                            "failDetail": ""
+                        }
+                    ],
+                    "endTime": 1739640614985,
+                    "totalError": 0,
+                    "name": "My First Suite",
+                    "id": "9E19C5485573E212D4EE3933EB9D5519",
+                    "suiteStats": [
+                        {
+                            "startTime": 1739640614984,
+                            "totalPass": 4,
+                            "totalDuration": 1,
+                            "totalSkipped": 0,
+                            "totalFail": 0,
+                            "totalSpecs": 2,
+                            "bundleID": "661D7DF7131DBD8D1DD12844AEBBA36A",
+                            "status": "Passed",
+                            "parentID": "9E19C5485573E212D4EE3933EB9D5519",
+                            "specStats": [
+                                {
+                                    "error": {},
+                                    "startTime": 1739640614984,
+                                    "failExtendedInfo": "",
+                                    "totalDuration": 1,
+                                    "failStacktrace": "",
+                                    "failOrigin": {},
+                                    "status": "Passed",
+                                    "suiteID": "677DB3A0B321DD372F1F2917AB8758F3",
+                                    "endTime": 1739640614985,
+                                    "name": "A Spec Thing",
+                                    "id": "4778C8B9FB1BC4B043355D163A7E54E0",
+                                    "failMessage": "",
+                                    "failDetail": ""
+                                },
+                                {
+                                    "error": {},
+                                    "startTime": 1739640614985,
+                                    "failExtendedInfo": "",
+                                    "totalDuration": 0,
+                                    "failStacktrace": "",
+                                    "failOrigin": {},
+                                    "status": "Passed",
+                                    "suiteID": "677DB3A0B321DD372F1F2917AB8758F3",
+                                    "endTime": 1739640614985,
+                                    "name": "a child spec",
+                                    "id": "A21222D44C444022110B8302790168B4",
+                                    "failMessage": "",
+                                    "failDetail": ""
+                                }
+                            ],
+                            "endTime": 1739640614985,
+                            "totalError": 0,
+                            "name": "A Child Suite",
+                            "id": "677DB3A0B321DD372F1F2917AB8758F3",
+                            "suiteStats": [
+                                {
+                                    "startTime": 1739640614985,
+                                    "totalPass": 2,
+                                    "totalDuration": 0,
+                                    "totalSkipped": 0,
+                                    "totalFail": 0,
+                                    "totalSpecs": 2,
+                                    "bundleID": "661D7DF7131DBD8D1DD12844AEBBA36A",
+                                    "status": "Passed",
+                                    "parentID": "677DB3A0B321DD372F1F2917AB8758F3",
+                                    "specStats": [
+                                        {
+                                            "error": {},
+                                            "startTime": 1739640614985,
+                                            "failExtendedInfo": "",
+                                            "totalDuration": 0,
+                                            "failStacktrace": "",
+                                            "failOrigin": {},
+                                            "status": "Passed",
+                                            "suiteID": "FDC82E149B8537C5E3DAB53EAF6EF27A",
+                                            "endTime": 1739640614985,
+                                            "name": "a child child spec",
+                                            "id": "B9125BF870F2E2BC98AA8C73D726293A",
+                                            "failMessage": "",
+                                            "failDetail": ""
+                                        },
+                                        {
+                                            "error": {},
+                                            "startTime": 1739640614985,
+                                            "failExtendedInfo": "",
+                                            "totalDuration": 0,
+                                            "failStacktrace": "",
+                                            "failOrigin": {},
+                                            "status": "Passed",
+                                            "suiteID": "FDC82E149B8537C5E3DAB53EAF6EF27A",
+                                            "endTime": 1739640614985,
+                                            "name": "a child spec",
+                                            "id": "5105839D21B7E7D881D0125BA58BFCF8",
+                                            "failMessage": "",
+                                            "failDetail": ""
+                                        }
+                                    ],
+                                    "endTime": 1739640614985,
+                                    "totalError": 0,
+                                    "name": "A Child Child Suite",
+                                    "id": "FDC82E149B8537C5E3DAB53EAF6EF27A",
+                                    "suiteStats": []
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "startTime": 1739640614985,
+                    "totalPass": 3,
+                    "totalDuration": 0,
+                    "totalSkipped": 1,
+                    "totalFail": 0,
+                    "totalSpecs": 4,
+                    "bundleID": "661D7DF7131DBD8D1DD12844AEBBA36A",
+                    "status": "Passed",
+                    "parentID": "",
+                    "specStats": [
+                        {
+                            "error": {},
+                            "startTime": 1739640614985,
+                            "failExtendedInfo": "",
+                            "totalDuration": 0,
+                            "failStacktrace": "",
+                            "failOrigin": {},
+                            "status": "Passed",
+                            "suiteID": "7208E23DD6ED71557A6AA57A90C73BFE",
+                            "endTime": 1739640614985,
+                            "name": "should fail",
+                            "id": "B4DFC860ED7E34C693B21D7D5CFBA020",
+                            "failMessage": "",
+                            "failDetail": ""
+                        },
+                        {
+                            "error": {},
+                            "startTime": 1739640614985,
+                            "failExtendedInfo": "",
+                            "totalDuration": 0,
+                            "failStacktrace": "",
+                            "failOrigin": {},
+                            "status": "Passed",
+                            "suiteID": "7208E23DD6ED71557A6AA57A90C73BFE",
+                            "endTime": 1739640614985,
+                            "name": "should throw",
+                            "id": "C8FE42D99924496F1316536EA06E2178",
+                            "failMessage": "",
+                            "failDetail": ""
+                        },
+                        {
+                            "error": {},
+                            "startTime": 1739640614985,
+                            "failExtendedInfo": "",
+                            "totalDuration": 0,
+                            "failStacktrace": "",
+                            "failOrigin": {},
+                            "status": "Passed",
+                            "suiteID": "7208E23DD6ED71557A6AA57A90C73BFE",
+                            "endTime": 1739640614985,
+                            "name": "should throw2",
+                            "id": "129B97E36A263A6E8B84A3A4266458F6",
+                            "failMessage": "",
+                            "failDetail": ""
+                        },
+                        {
+                            "error": {},
+                            "startTime": 1739640614985,
+                            "failExtendedInfo": "",
+                            "totalDuration": 0,
+                            "failStacktrace": "",
+                            "failOrigin": {},
+                            "status": "Skipped",
+                            "suiteID": "7208E23DD6ED71557A6AA57A90C73BFE",
+                            "endTime": 1739640614985,
+                            "name": "should be skipped",
+                            "id": "040FC5E80F59A6F26300EAE05F44C2CF",
+                            "failMessage": "",
+                            "failDetail": ""
+                        }
+                    ],
+                    "endTime": 1739640614985,
+                    "totalError": 0,
+                    "name": "My Second Suite",
+                    "id": "7208E23DD6ED71557A6AA57A90C73BFE",
+                    "suiteStats": []
+                }
+            ],
+            "globalException": ""
+        },
+        {
+            "totalSuites": 0,
+            "startTime": 1739640614994,
+            "totalPass": 0,
+            "totalDuration": 0,
+            "totalSkipped": 0,
+            "totalFail": 0,
+            "totalSpecs": 0,
+            "path": "tests.specs.unit.CalculatorSpec",
+            "endTime": 1739640614994,
+            "debugBuffer": [],
+            "totalError": 0,
+            "name": "tests.specs.unit.CalculatorSpec",
+            "id": "F3B968517672BBD2677F828CD92EF5B1",
+            "suiteStats": [],
+            "globalException": ""
+        }
+    ],
+    "totalPass": 7,
+    "totalDuration": 121,
+    "version": "4.5.0",
+    "totalSkipped": 1,
+    "totalFail": 1,
+    "totalSpecs": 9,
+    "excludes": [],
+    "labels": [],
+    "resultID": "",
+    "endTime": 1739640614994,
+    "coverage": {
+        "data": {},
+        "enabled": false
+    },
+    "totalError": 0,
+    "CFMLEngine": "Lucee",
+    "totalBundles": 2
+}
