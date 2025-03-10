@@ -258,7 +258,7 @@
         "vscode:publish": "vsce publish",
         "vscode:package": "vsce package",
         "lint": "eslint -c .eslintrc.js ./src/**/*.js",
-        "test": "vscode-test --install-extensions cfmleditor.cfmleditor -silent=false --fullTrace",
+        "test": "vscode-test --install-extensions ortus-solutions.vscode-boxlang",
         "pack": "vsce package",
         "sublime:convert": "bash ./build.sh"
     }
