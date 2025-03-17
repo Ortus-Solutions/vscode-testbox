@@ -196,6 +196,7 @@ async function runTestsViaURL(request, token, controller) {
         try {
             const response = await fetch(test.id);
             if (!response.ok) {
+                vscode.workspace.showErrorMessage(`Can't reach RunnerURL [${test.id}]: HTTP error! Status: ${response.status}`);
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
             const json = await response.json();
@@ -204,8 +205,13 @@ async function runTestsViaURL(request, token, controller) {
 
             run.appendOutput(`URL: ${test.id}\r\n`);
         } catch (error) {
-            LOG.error(`Error running test ${test.label}: ${error}`);
+
             run.errored(test, error.message);
+            if (error.cause.code == "ECONNREFUSED") {
+                vscode.workspace.showErrorMessage(`Can't reach RunnerURL [${test.id}]. Connection refused.`);
+            }
+            LOG.error(error.stack);
+
             run.appendOutput(`Error running test ${test.label}: ${error.message}\r\n`);
             run.appendOutput(`URL:  ${test.id}\r\n`);
         }
