@@ -4,11 +4,12 @@
 const vscode = require( "vscode" );
 
 module.exports = class BoxCommand {
+
 	/**
-     * Constructor
-     *
-     * @param {*} options The runnable options: { runBundle, runHarness }
-     */
+	 * Constructor
+	 *
+	 * @param {*} options The runnable options: { runBundle, runHarness, runSpec }
+	 */
 	constructor( options ) {
 		this.runBundle = options !== undefined
 			? options.runBundle
@@ -23,13 +24,14 @@ module.exports = class BoxCommand {
 			: false;
 
 		this.lastOutput = null;
+		this.settings = vscode.workspace.getConfiguration( "testbox" );
 	}
 
 	/**
-     * Returns the command to execute in the shell, basically our CommandBox execution or native execution
-     *
-     * box testbox run ....
-     */
+	 * Returns the command to execute in the shell, basically our CommandBox execution or native execution
+	 *
+	 * box testbox run ....
+	 */
 	get output() {
 		// If we have output, return it, no need to run again
 		if ( this.lastOutput ) {
@@ -57,10 +59,10 @@ module.exports = class BoxCommand {
 	}
 
 	/**
-     * Get the runner URL from the configuration or let CommandBox discover it.
-     */
+	 * Get the runner URL from the configuration or let CommandBox discover it.
+	 */
 	get runnerUrl(){
-		let runnerUrl = vscode.workspace.getConfiguration( "testbox" ).get( "runnerUrl" );
+		const runnerUrl = this.settings.get( "runnerUrl" );
 		if ( runnerUrl ){
 			return " runner=" + runnerUrl;
 		}
@@ -68,15 +70,18 @@ module.exports = class BoxCommand {
 	}
 
 	/**
-     * Get the current spec nearest to the cursor to act as the testSpecs filter
-     */
+	 * Get the current spec nearest to the cursor to act as the testSpecs filter
+	 */
 	get testSpecs(){
+		const editor = vscode.window.activeTextEditor;
+		if ( !editor ) {return "";}
+
 		// Get the line of code the cursor is in. This is cursor aware.
-		let line = vscode.window.activeTextEditor.selection.active.line;
-		let specName;
+		let line = editor.selection.active.line;
+		let specName = "";
 
 		while ( line > 0 ) {
-			const lineText = vscode.window.activeTextEditor.document.lineAt( line ).text;
+			const lineText = editor.document.lineAt( line ).text;
 			const match = RegExp( /\s*(?:describe|it|feature|story|scenario|given|when|then)\(\s(.*),/ ).exec( lineText );
 			if ( match ) {
 				// Group 1 contains the name of the spec with the quotes already single or double doesn't matter
@@ -91,82 +96,88 @@ module.exports = class BoxCommand {
 	}
 
 	/**
-     * Build out all the runner options for running a test bundle
-     */
+	 * Build out all the runner options for running a test bundle
+	 */
 	get bundleOptions(){
 		let options = "";
 
 		// Code Coverage
-		if ( vscode.workspace.getConfiguration( "testbox" ).has( "testbox.codeCoverage" ) ){
-			options += " codeCoverage=" + vscode.workspace.getConfiguration( "testbox" ).get( "testbox.codeCoverage" );
+		if ( this.settings.has( "testbox.codeCoverage" ) ){
+			options += " codeCoverage=" + this.settings.get( "testbox.codeCoverage" );
 		}
 
 		// Labels
-		if ( vscode.workspace.getConfiguration( "testbox" ).has( "testbox.labels" ) ){
-			options += " labels=" + vscode.workspace.getConfiguration( "testbox" ).get( "testbox.labels" );
+		if ( this.settings.has( "testbox.labels" ) ){
+			options += " labels=" + this.settings.get( "testbox.labels" );
 		}
-		if ( vscode.workspace.getConfiguration( "testbox" ).has( "testbox.excludes" ) ){
-			options += " excludes=" + vscode.workspace.getConfiguration( "testbox" ).get( "testbox.excludes" );
+		if ( this.settings.has( "testbox.excludes" ) ){
+			options += " excludes=" + this.settings.get( "testbox.excludes" );
 		}
 
 		return options;
 	}
 
 	/**
-     * Build out all the runner options for running a full test harness.
-     */
+	 * Build out all the runner options for running a full test harness.
+	 */
 	get harnessOptions(){
 		let options = "";
 
 		// Code Coverage
-		if ( vscode.workspace.getConfiguration( "testbox" ).has( "testbox.codeCoverage" ) ){
-			options += " codeCoverage=" + vscode.workspace.getConfiguration( "testbox" ).get( "testbox.codeCoverage" );
+		if ( this.settings.has( "testbox.codeCoverage" ) ){
+			options += " codeCoverage=" + this.settings.get( "testbox.codeCoverage" );
 		}
 
 		// Labels
-		if ( vscode.workspace.getConfiguration( "testbox" ).has( "testbox.labels" ) ){
-			options += " labels=" + vscode.workspace.getConfiguration( "testbox" ).get( "testbox.labels" );
+		if ( this.settings.has( "testbox.labels" ) ){
+			options += " labels=" + this.settings.get( "testbox.labels" );
 		}
-		if ( vscode.workspace.getConfiguration( "testbox" ).has( "testbox.excludes" ) ){
-			options += " excludes=" + vscode.workspace.getConfiguration( "testbox" ).get( "testbox.excludes" );
+		if ( this.settings.has( "testbox.excludes" ) ){
+			options += " excludes=" + this.settings.get( "testbox.excludes" );
 		}
 
 		// Directory
-		if ( vscode.workspace.getConfiguration( "testbox" ).has( "testbox.directory" ) ){
-			options += " directory=" + vscode.workspace.getConfiguration( "testbox" ).get( "testbox.directory" );
+		if ( this.settings.has( "testbox.directory" ) ){
+			options += " directory=" + this.settings.get( "testbox.directory" );
 		}
 
 		// Bundles
-		if ( vscode.workspace.getConfiguration( "testbox" ).has( "testbox.bundles" ) ){
-			options += " bundles=" + vscode.workspace.getConfiguration( "testbox" ).get( "testbox.bundles" );
+		if ( this.settings.has( "testbox.bundles" ) ){
+			options += " bundles=" + this.settings.get( "testbox.bundles" );
 		}
 
 		// Recurse
-		if ( vscode.workspace.getConfiguration( "testbox" ).has( "testbox.recurse" ) ){
-			options += " recurse=" + vscode.workspace.getConfiguration( "testbox" ).get( "testbox.recurse" );
+		if ( this.settings.has( "testbox.recurse" ) ){
+			options += " recurse=" + this.settings.get( "testbox.recurse" );
 		}
 
 		return options;
 	}
 
 	/**
-     * Get the normalized file path to the spec bundle to execute
-     */
+	 * Get the normalized file path to the spec bundle to execute
+	 */
 	get file() {
-		return this._normalizePath( vscode.window.activeTextEditor.document.fileName )
+		const editor = vscode.window.activeTextEditor;
+		if ( !editor ) {
+			return ""; // Handle case where no file is open
+		}
+
+		return this._normalizePath( editor.document.fileName )
 		    // Cleanup up everything up to the specs folder
 			.replace( /^(.*)(\/tests\/specs)/, "tests.specs" )
+			.replace( /^(.*)(\/test\/spec)/, "test.specs" )
 		    // remove / to . for dot notation
 			.replace( /\//g, "." )
-		    // Remove .cfc
-			.replace( ".cfc", "" );
+		    // Remove .cfc and .bx
+			.replace( /\.(cfc|bx)$/, "" );
 	}
 
 	/**
-     * Get the bundle suffix inline or from config
-     */
+	 * Get the bundle suffix inline or from config
+	 */
 	get bundleSuffix() {
-		let suffix = vscode.workspace.getConfiguration( "testbox" ).get( "bundleSuffix" );
+		const suffix = this.settings.get( "bundleSuffix" );
 		if ( suffix ){
 			return " " + suffix;
 		}
@@ -174,10 +185,10 @@ module.exports = class BoxCommand {
 	}
 
 	/**
-     * Get the harness suffix inline or from config
-     */
+	 * Get the harness suffix inline or from config
+	 */
 	get harnessSuffix() {
-		let suffix = vscode.workspace.getConfiguration( "testbox" ).get( "harnessSuffix" );
+		const suffix = this.settings.get( "harnessSuffix" );
 		if ( suffix ){
 			return " " + suffix;
 		}
@@ -185,25 +196,31 @@ module.exports = class BoxCommand {
 	}
 
 	/**
-     * Get the CommandBox Binary location on disk
-     * - Config
-     * - Convention
-     */
+	 * Get the CommandBox Binary location on disk
+	 * - Config
+	 * - Convention
+	 */
 	get binary() {
 		// Do we have a setting?
-		if ( vscode.workspace.getConfiguration( "testbox" ).get( "boxBinary" ) ) {
-			return vscode.workspace.getConfiguration( "testbox" ).get( "boxBinary" );
+		if ( this.settings.get( "boxBinary" ) ) {
+			return this.settings.get( "boxBinary" );
 		}
 		// Use the global commandbox namespace
 		return "box";
 	}
 
+	/**
+	 * xUnit method to get the method name from the current cursor position
+	 */
 	get method() {
-		let line = vscode.window.activeTextEditor.selection.active.line;
+		const editor = vscode.window.activeTextEditor;
+		if ( !editor ) {return "";}
+
+		let line = editor.selection.active.line;
 		let method;
 
 		while ( line > 0 ) {
-			const lineText = vscode.window.activeTextEditor.document.lineAt( line ).text;
+			const lineText = editor.document.lineAt( line ).text;
 			const match = lineText.match( /^\s*(?:public|private|protected)?\s*function\s*(\w+)\s*\(.*$/ );
 			if ( match ) {
 				method = match[1];
@@ -216,11 +233,11 @@ module.exports = class BoxCommand {
 	}
 
 	/**
-     * Utility to normalize paths in different OS
-     *
-     * @param {*} path The path to normalize
-     * @returns
-     */
+	 * Utility to normalize paths in different OS
+	 *
+	 * @param {*} path The path to normalize
+	 * @returns
+	 */
 	_normalizePath( path ) {
 		return path
 			.replace( /\\/g, "/" ) // Convert backslashes from windows paths to forward slashes, otherwise the shell will ignore them.

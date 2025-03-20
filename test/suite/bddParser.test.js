@@ -1,18 +1,18 @@
 
-const assert = require('assert');
-const vscode = require('vscode');
-const { parseTestBlocks } = require('../../src/utils/bddParser.js');
-const fs = require('fs');
-const path = require('path');
+const assert = require( "assert" );
+const vscode = require( "vscode" );
+const { parseTestBlocks } = require( "../../src/utils/bddParser.js" );
+const fs = require( "fs" );
+const path = require( "path" );
 
-suite('TestBox BDD Parser', () => {
-  suiteTeardown(() => {
-    vscode.window.showInformationMessage('All tests done!');
-  });
+suite( "TestBox BDD Parser", () => {
+	suiteTeardown( () => {
+		vscode.window.showInformationMessage( "All tests done!" );
+	} );
 
-  test('Parse blocks in a spec', () => {
-    const filePath = path.join(__dirname, "../app/tests/specs/unit/CalculatorSpec.cfc");
-    const text = `
+	test( "Parse blocks in a spec", () => {
+		const filePath = path.join( __dirname, "../app/tests/specs/unit/CalculatorSpec.cfc" );
+		const text = `
 component extends="coldbox.system.testing.BaseModelTest" model = "models.Calculator"{
 
       function run() {
@@ -37,17 +37,17 @@ component extends="coldbox.system.testing.BaseModelTest" model = "models.Calcula
       }
 
     } `;
-    // // getCurrentPath
-    const blocks = parseTestBlocks(text, 0);
+		// // getCurrentPath
+		const blocks = parseTestBlocks( text, 0 );
 
-    assert.ok(Array.isArray(blocks), "Blocks should be an array");
-    assert.ok(blocks.length > 0, "We shold have found some items in the array");
-    assert.ok(blocks[0].name === "describe", "First block should be a describe block");
-    assert.equal(blocks[0].title, "Calculator");
-    assert.ok(blocks[0].startOffset === 120);
-    assert.ok(blocks[0].range.start.line === 5);
-    assert.ok(blocks[0].range.end.line === 20);
+		assert.ok( Array.isArray( blocks ), "Blocks should be an array" );
+		assert.ok( blocks.length > 0, "We shold have found some items in the array" );
+		assert.ok( blocks[0].name === "describe", "First block should be a describe block" );
+		assert.equal( blocks[0].title, "Calculator" );
+		assert.ok( blocks[0].startOffset === 120 );
+		assert.ok( blocks[0].range.start.line === 5 );
+		assert.ok( blocks[0].range.end.line === 20 );
 
 
-  });
-});
+	} );
+} );
