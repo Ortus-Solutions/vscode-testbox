@@ -11,6 +11,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
+- Test Explorer thanks to Mark Drew
+- TestBox v6 support
+- TestBox BoxLang Support
+- Updated all snippets
+- Updated all GitHub Actions
+
+## [2.0.0] - 2023-06-15
+
+### Added
+
 - TestBox v5 support
 - Added default shortcuts for running jump to spec command: `shift+cmd+t`
 - Added several new commands to Run your test harness, your bundle and a single spec, with tons of configuration options (Please see readme)

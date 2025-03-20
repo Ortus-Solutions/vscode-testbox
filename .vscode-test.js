@@ -5,7 +5,5 @@ module.exports = defineConfig(
         version: 'insiders',
         workspaceFolder: './test/app',
         files: './test/suite/**/*.test.js'
-
-
     }
 );

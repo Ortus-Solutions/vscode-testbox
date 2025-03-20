@@ -2,7 +2,7 @@
     "name": "vscode-testbox",
     "displayName": "TestBox TDD/BDD Support",
     "description": "TestBox Support for Visual Studio Code",
-    "version": "2.0.3",
+    "version": "3.0.0",
     "publisher": "ortus-solutions",
     "icon": "images/icon.png",
     "engines": {
@@ -22,13 +22,14 @@
         "Other"
     ],
     "keywords": [
-        "CFML",
-        "ColdFusion",
+        "BoxLang",
         "TestBox",
         "MockBox",
         "BDD/TDD",
         "Mocking",
-        "Testing"
+        "Testing",
+        "CFML",
+        "ColdFusion"
     ],
     "activationEvents": [
         "onStartupFinished"
@@ -69,28 +70,40 @@
             {
                 "key": "cmd+k cmd+f",
                 "command": "testbox.run-bundle",
-                "when": "editorLangId == 'cfml' && editorTextFocus"
+                "when": "( editorLangId == 'cfml' || editorLangId == 'boxlang' ) && editorTextFocus"
             },
             {
                 "key": "cmd+k cmd+p",
                 "command": "testbox.run-previous",
-                "when": "editorLangId == 'cfml' && editorTextFocus"
+                "when": "( editorLangId == 'cfml' || editorLangId == 'boxlang' ) && editorTextFocus"
             },
             {
                 "key": "shift+cmd+t",
                 "command": "testbox.jumpToSpec",
-                "when": "editorLangId == 'cfml' && editorTextFocus"
+                "when": "( editorLangId == 'cfml' || editorLangId == 'boxlang' ) && editorTextFocus"
             }
         ],
         "snippets": [
             {
                 "language": "cfml",
                 "path": "./snippets/snippets.json"
+            },
+            {
+                "language": "boxlang",
+                "path": "./snippets/snippets.json"
             }
         ],
         "configuration": {
             "title": "TestBox",
             "properties": {
+                "testbox.boxlangRunner": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "default": "testbox/bin/run",
+                    "description": "The TestBox BoxLang runner inside the TestBox package: 'testbox/bin/run"
+                },
                 "testbox.boxBinary": {
                     "type": [
                         "string",
@@ -239,6 +252,9 @@
         "findup": "^0.1.5"
     },
     "devDependencies": {
+        "@babel/eslint-parser": "^7.26.10",
+        "@eslint/eslintrc": "^3.3.0",
+        "@eslint/js": "^9.22.0",
         "@types/node": "^22.13.5",
         "@types/vscode": "^1.97.0",
         "@typescript-eslint/eslint-plugin": "^8.25.0",
@@ -249,7 +265,8 @@
         "babel-eslint": "^10.1.0",
         "eslint": "^9.21.0",
         "eslint-config-prettier": "^10.0.2",
-        "eslint-plugin-jsdoc": "^50.6.3",
+        "eslint-plugin-jsdoc": "^50.6.8",
+        "globals": "^16.0.0",
         "mocha": "^11.1.0",
         "typescript": "^5.7.3"
     },

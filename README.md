@@ -4,20 +4,23 @@ This extension provides support for the TestBox BDD/TDD framework in Visual Stud
 
 ## Target Platforms
 
+- TestBox 6.x+
 - TestBox 5.x+
 - TestBox 4.x+
 
 ## Features
 
 ### Test Explorer
+
 <img src="images/run-from-explorer.gif" alt="Run from Explorer">
-Tests are discovered automatically and a test explorer view is available from the Activity Bar.  You can run tests from the explorer view by clicking on the play icon as well as being able to run the tests right from the editor. 
+
+Tests are discovered automatically and a test explorer view is available from the Activity Bar.  You can run tests from the explorer view by clicking on the play icon as well as being able to run the tests right from the editor.
 
 ### Jump to Spec
 
 <img src="images/jump-to-spec.png" alt="jump to spec">
 
-A "Jump to specific TestBox spec" is available in the command pallete.  This lets you
+A "**Jump to specific TestBox spec**" is available in the command pallete.  This lets you
 quickly search for and jump to a specific spec in the currently open file.
 
 You can add a custom keyboard shortcut for this yourself in your Keyboard Shortcuts menu or use the default of `shift+cmd+t`

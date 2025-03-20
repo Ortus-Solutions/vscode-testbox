@@ -9,8 +9,6 @@ let globalCommand = new BoxCommand({ runHarness: true });
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 
-
-
 module.exports.activate = function (context) {
 	// Use the console to output diagnostic information (LOG.info) and errors (console.error)
 	LOG.info("Starting TestBox Extension");
