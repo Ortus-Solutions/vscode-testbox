@@ -1,38 +1,17 @@
 import globals from "globals";
+import pluginJs from "@eslint/js";
+import jsdoc from "eslint-plugin-jsdoc";
 
+/** @type {import('eslint').Linter.Config[]} */
 export default [
     {
-        files: [
-            "**/*.js",
-            "**/*.mjs"
-        ],
-
-        languageOptions: {
-            ecmaVersion: "latest",
-            sourceType: "module",
-            globals: {
-                ...globals.browser,
-                ...globals.node,
-                myCustomGlobal: "readonly"
-            }
+        files: [ "**/*.{js,mjs,cjs,ts}" ],
+        plugins: {
+            jsdoc: jsdoc
         },
-
-        extends: [
-            "eslint:recommend"
-        ],
-
-        parser: "@babel/eslint-parser",
-        parserOptions: {
-            ecmaVersion: "latest",
-            sourceType: "module"
-        },
-        "plugins": [
-            "jsdoc",
-            "@typescript-eslint"
-        ],
-
+        languageOptions: { globals: globals.node },
         rules: {
-            "array-bracket-spacing": [
+           "array-bracket-spacing": [
                 "error",
                 "always",
                 {
@@ -136,18 +115,8 @@ export default [
             ],
             "spaced-comment": "error",
             "jsdoc/check-alignment": "error",
-            "jsdoc/check-indentation": "error",
-            "jsdoc/newline-after-description": "error",
             "jsdoc/check-param-names": "error",
-            "@typescript-eslint/adjacent-overload-signatures": "error",
-            "@typescript-eslint/array-type": "error",
-            "@typescript-eslint/ban-types": "error",
-            "@typescript-eslint/consistent-type-assertions": "error",
-            "@typescript-eslint/explicit-function-return-type": "off",
-            "@typescript-eslint/member-delimiter-style": "error",
-            "@typescript-eslint/no-empty-interface": "error",
-            "@typescript-eslint/no-inferrable-types": "error",
-            "@typescript-eslint/prefer-for-of": "error"
-        },
+            "jsdoc/check-indentation": "off",
+        }
     }
 ];
