@@ -14,8 +14,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Test Explorer thanks to Mark Drew
 - TestBox v6 support
 - TestBox BoxLang Support
-- Updated all snippets
+- ESLinting updated and all JS files linted
+- Formatting and code quality updates
+- Updated all snippets thanks to Sublime Text snippets
 - Updated all GitHub Actions
+- Automated snapshots
 
 ## [2.0.0] - 2023-06-15
 

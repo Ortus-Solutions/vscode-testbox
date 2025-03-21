@@ -1,9 +1,11 @@
 name: Release
 
 on:
-  release:
-    types:
-      - published
+  # If you push to main this will trigger a stable release
+  push:
+    branches:
+      - master
+      - main
 
   # Reusable workflow : Usually called by a `snapshot` workflow
   workflow_call:
