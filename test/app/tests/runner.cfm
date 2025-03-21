@@ -1,4 +1,7 @@
+<cfsetting requesttimeout="999999" >
 <cfsetting showDebugOutput="false">
+<cfsetting enablecfoutputonly="true">
+
 <!--- Executes all tests in the 'specs' folder with simple reporter by default --->
 <cfparam name="url.reporter" 		default="simple">
 <cfparam name="url.directory" 		default="tests.specs">
@@ -15,7 +18,7 @@
 <cfparam name="url.coveragePathToCapture"			default="#expandPath( '/root' )#">
 <cfparam name="url.coverageWhitelist"				default="">
 <cfparam name="url.coverageBlacklist"				default="/testbox,/coldbox,/tests,/modules,Application.cfc,/index.cfm">
-<!---<cfparam name="url.coverageBrowserOutputDir"		default="#expandPath( '/tests/results/coverageReport' )#">--->
+<cfparam name="url.coverageBrowserOutputDir"		default="#expandPath( '/tests/results/coverageReport' )#">
 <!---<cfparam name="url.coverageSonarQubeXMLOutputPath"	default="#expandPath( '/tests/results/SonarQubeCoverage.xml' )#">--->
 
 <!--- Include the TestBox HTML Runner --->

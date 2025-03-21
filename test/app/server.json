@@ -1,10 +1,10 @@
 {
-    "web": {
-        "HTTP": {
-            "port": "64981"
+    "web":{
+        "HTTP":{
+            "port":"64981"
         },
-        "rewrites": {
-            "enable": "true"
+        "rewrites":{
+            "enable":"true"
         }
     }
 }
