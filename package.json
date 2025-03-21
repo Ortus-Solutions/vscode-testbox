@@ -270,7 +270,8 @@
         "vscode:publish": "vsce publish",
         "vscode:package": "vsce package",
         "lint": "eslint ./src/**/*.js",
-        "test": "NODE_OPTIONS=--force-node-api-uncaught-exceptions-policy vscode-test --install-extensions ortus-solutions.vscode-boxlang",
+        "test": "vscode-test --install-extensions ortus-solutions.vscode-boxlang",
+        "test-mac": "NODE_OPTIONS=--force-node-api-uncaught-exceptions-policy vscode-test --install-extensions ortus-solutions.vscode-boxlang",
         "pack": "vsce package",
         "sublime:convert": "bash ./build.sh"
     }
