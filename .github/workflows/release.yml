@@ -184,7 +184,7 @@ jobs:
       - name: Prepare Upload Folder
         run: |
             mkdir upload
-            mv ${{ needs.package.outputs.fileName }} upload/
+            cp ${{ needs.package.outputs.fileName }} upload/
             cp CHANGELOG.md upload/
 
       - name: Upload Distributions to S3
