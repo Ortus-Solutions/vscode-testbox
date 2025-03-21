@@ -1,0 +1,66 @@
+name: Snapshots
+
+on:
+  push:
+    branches:
+      - development
+
+#Cancel running builds if another push to branch is made while this build is running
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  PACKAGE_NAME: ${{ github.event.repository.name }}
+  NODE_VERSION: 18
+
+jobs:
+  ##########################################################################################
+  # Source Check First
+  ##########################################################################################
+  format_check:
+    name: Checks Source Code Formatting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install dependencies
+        run: npm i
+
+      - name: Run lint
+        run: npm run lint
+
+    #############################################
+    # Tests First baby! We fail, no build :(
+    #############################################
+  tests:
+    uses: ./.github/workflows/tests.yml
+    needs: format_check
+    secrets: inherit
+    permissions:
+        checks: write
+        pull-requests: write
+        contents: read
+        issues: read
+
+  #############################################
+  # Build Snapshot Release
+  #############################################
+  build:
+    uses: ./.github/workflows/release.yml
+    needs: [ format_check, tests ]
+    secrets: inherit
+    permissions:
+      checks: write
+      pull-requests: write
+      contents: write
+      issues: write
+    with:
+      snapshot: true

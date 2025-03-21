@@ -1,3 +1,5 @@
+// npm version patch --no-git-tag-version
+
 const vscode = require( "vscode" );
 const BoxCommand = require( "./box-command" );
 const { LOG } = require( "./utils/logger" );

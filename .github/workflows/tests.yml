@@ -1,0 +1,49 @@
+name: Test Suites
+
+# We are a reusable Workflow only
+on:
+  workflow_call:
+    secrets:
+      SLACK_WEBHOOK_URL:
+        required: false
+
+env:
+  PACKAGE_NAME: ${{ github.event.repository.name }}
+  NODE_VERSION: 18
+
+jobs:
+  tests:
+    name: Tests
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ "ubuntu-latest", "windows-latest" ]
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install dependencies
+        run: npm i
+
+      - name: Test
+        run: |
+          npm run test
+
+      - name: Inform Slack
+        if: ${{ failure() && github.ref == 'refs/heads/development' }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_CHANNEL: coding
+          SLACK_COLOR: ${{ job.status }} # or a specific color like 'green' or '#ff00ff'
+          SLACK_ICON_EMOJI: ":bell:"
+          SLACK_MESSAGE: "${{ env.PACKAGE_NAME }} Tests FAILED!  You broke the build! :("
+          SLACK_TITLE: "${{ env.PACKAGE_NAME }} Build Failure"
+          SLACK_USERNAME: CI
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}

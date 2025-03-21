@@ -266,11 +266,11 @@
         "typescript-eslint": "^8.27.0"
     },
     "scripts": {
-        "vscode:prepublish": "npm version patch --no-git-tag-version && npm run lint",
+        "vscode:prepublish": "npm run lint",
         "vscode:publish": "vsce publish",
         "vscode:package": "vsce package",
         "lint": "eslint ./src/**/*.js",
-        "test": "vscode-test --install-extensions ortus-solutions.vscode-boxlang",
+        "test": "NODE_OPTIONS=--force-node-api-uncaught-exceptions-policy vscode-test --install-extensions ortus-solutions.vscode-boxlang",
         "pack": "vsce package",
         "sublime:convert": "bash ./build.sh"
     }
