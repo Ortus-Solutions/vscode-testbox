@@ -1,175 +1,175 @@
 {
 	"afterall": {
 		"prefix": "afterall",
-		"body": "\nfunction afterAll(){\n\t${0}\n});",
+		"body": "\nfunction afterAll(){\n\t${0}\n})",
 		"description": "TestBox BDD After All",
 		"scope": "source,text"
 	},
 	"after": {
 		"prefix": "after",
-		"body": "\nafterEach(function( currentSpec ){\n\t${0}\n});",
+		"body": "\nafterEach( ( currentSpec ) => {\n\t${0}\n});",
 		"description": "TestBox BDD After Each",
 		"scope": "source,text"
 	},
 	"aftertests": {
 		"prefix": "aftertests",
-		"body": "\nfunction afterTests(){\n\t${0}\n});",
+		"body": "\nfunction afterTests(){\n\t${0}\n})",
 		"description": "TestBox xUnit After Tests",
 		"scope": "source,text"
 	},
 	"around": {
 		"prefix": "around",
-		"body": "\naroundEach(function( spec, suite ){\n\t${0}\n\targuments.spec.body();\n});",
+		"body": "\naroundEach( ( spec, suite ) => {\n\t${0}\n\targuments.spec.body();\n});",
 		"description": "TestBox BDD Around Each",
 		"scope": "source,text"
 	},
 	"assert": {
 		"prefix": "assert",
-		"body": "\nassert(\t${1}, ${2:'Message'});\n",
+		"body": "\nassert(\t${1}, ${2:'Message'})\n",
 		"description": "TestBox Assert",
 		"scope": "source,text"
 	},
 	"beforeall": {
 		"prefix": "beforeall",
-		"body": "\nfunction beforeAll(){\n\t${0}\n});",
+		"body": "\nfunction beforeAll(){\n\t${0}\n})",
 		"description": "TestBox BDD Before All",
 		"scope": "source,text"
 	},
 	"before": {
 		"prefix": "before",
-		"body": "\nbeforeEach(function( currentSpec ){\n\t${0}\n});",
+		"body": "\nbeforeEach( ( currentSpec ) => {\n\t${0}\n});",
 		"description": "TestBox BDD Before Each",
 		"scope": "source,text"
 	},
 	"beforetests": {
 		"prefix": "beforetests",
-		"body": "\nfunction beforeTests(){\n\t${0}\n});",
+		"body": "\nfunction beforeTests(){\n\t${0}\n})",
 		"description": "TestBox xUnit Before Tests",
 		"scope": "source,text"
 	},
 	"console": {
 		"prefix": "console",
-		"body": "\nconsole( $1 );\n",
+		"body": "\nconsole( $1 )\n",
 		"description": "TestBox Send To Console",
 		"scope": "source,text"
 	},
 	"debug": {
 		"prefix": "debug",
-		"body": "\ndebug( $1 );\n",
+		"body": "\ndebug( $1 )\n",
 		"description": "TestBox Debug",
 		"scope": "source,text"
 	},
 	"debugduplicate": {
 		"prefix": "debugduplicate",
-		"body": "\ndebug( var=$1, duplicate=true, top=999 );\n",
+		"body": "\ndebug( var=$1, duplicate=true, top=999 )\n",
 		"description": "TestBox Debug Duplicate",
 		"scope": "source,text"
 	},
 	"describe": {
 		"prefix": "describe",
-		"body": "\ndescribe( \"${1:A suite}\", function(){\n${0}\n\n});",
+		"body": "\ndescribe( \"${1:A suite}\", () => {\n${0}\n\n})",
 		"description": "TestBox BDD Suite",
 		"scope": "source,text"
 	},
 	"describeFull": {
 		"prefix": "describeFull",
-		"body": "\ndescribe( title=\"${1:A suite}\", labels=\"\", asyncAll=false, skip=false, body=function(){\n${0}\n\n});",
+		"body": "\ndescribe(\n    title=\"${1:A suite}\",\n    labels=\"\",\n    asyncAll=false,\n    skip=false,\n    body=() => {\n${0}\n\n})",
 		"description": "TestBox BDD Suite With Arguments",
 		"scope": "source,text"
 	},
 	"expectToThrow": {
 		"prefix": "expectToThrow",
-		"body": "\nexpect(\tfunction(){\n\t${1}\n} ).toThrow();\n",
+		"body": "\nexpect(\t() => {\n\t${1}\n} ).toThrow()\n",
 		"description": "TestBox Expect To Throw",
 		"scope": "source,text"
 	},
 	"expect": {
 		"prefix": "expect",
-		"body": "\nexpect(\t${1} ).${2:toBe}(${3});\n",
+		"body": "\nexpect(\t${1} ).${2:toBe}( ${3} )\n",
 		"description": "TestBox Expect",
 		"scope": "source,text"
 	},
 	"expectFalse": {
 		"prefix": "expectFalse",
-		"body": "\nexpect(\t${1} ).toBeFalse();\n",
+		"body": "\nexpect(\t${1} ).toBeFalse()\n",
 		"description": "TestBox Expect False",
 		"scope": "source,text"
 	},
 	"expectTrue": {
 		"prefix": "expectTrue",
-		"body": "\nexpect(\t${1} ).toBeTrue();\n",
+		"body": "\nexpect(\t${1} ).toBeTrue()\n",
 		"description": "TestBox Expect True",
 		"scope": "source,text"
 	},
 	"expectall": {
 		"prefix": "expectall",
-		"body": "\nexpectAll(\t${1} ).${2:toBe}( ${3} );\n",
+		"body": "\nexpectAll(\t${1} ).${2:toBe}( ${3} )\n",
 		"description": "TestBox ExpectAll",
 		"scope": "source,text"
 	},
 	"feature": {
 		"prefix": "feature",
-		"body": "\nfeature( \"${1:A suite}\", function(){\n${0}\n\n});",
+		"body": "\nfeature( \"${1:A suite}\", () => {\n${0}\n\n})",
 		"description": "TestBox BDD Feature",
 		"scope": "source,text"
 	},
 	"featureFull": {
 		"prefix": "featureFull",
-		"body": "\nfeature( title=\"${1:A suite}\", labels=\"\", asyncAll=false, skip=false, body=function(){\n${0}\n\n});",
+		"body": "\nfeature(\n    title=\"${1:A suite}\",\n    labels=\"\",\n    asyncAll=false,\n    skip=false,\n    body=() => {\n${0}\n\n})",
 		"description": "TestBox BDD Feature With Arguments",
 		"scope": "source,text"
 	},
 	"given": {
 		"prefix": "given",
-		"body": "\ngiven( \"${1:A suite}\", function(){\n${0}\n\n});",
+		"body": "\ngiven( \"${1:A suite}\", () => {\n${0}\n\n})",
 		"description": "TestBox BDD Given",
 		"scope": "source,text"
 	},
 	"givenFull": {
 		"prefix": "givenFull",
-		"body": "\ngiven( title=\"${1:A suite}\", labels=\"\", asyncAll=false, skip=false, body=function(){\n${0}\n\n});",
+		"body": "\ngiven(\n    title=\"${1:A suite}\",\n    labels=\"\",\n    asyncAll=false,\n    skip=false,\n    body=() => {\n${0}\n\n})",
 		"description": "TestBox BDD Given With Arguments",
 		"scope": "source,text"
 	},
 	"it": {
 		"prefix": "it",
-		"body": "\nit( \"${1:A Spec}\", function(){\n${0}\n});",
+		"body": "\nit( \"${1:A Spec}\", () => {\n${0}\n})",
 		"description": "TestBox Spec",
 		"scope": "source,text"
 	},
 	"itFull": {
 		"prefix": "itFull",
-		"body": "\nit( title=\"${1:A Spec}\", labels=\"\", skip=false, body=function(){\n${0}\n});",
+		"body": "\nit(\n    title=\"${1:A Spec}\",\n    labels=\"\",\n    skip=false,\n    body=() => {\n${0}\n})",
 		"description": "TestBox Spec With Arguments",
 		"scope": "source,text"
 	},
 	"setup": {
 		"prefix": "setup",
-		"body": "\nfunction setup( currentMethod ){\n\t${0}\n});",
+		"body": "\nfunction setup( currentMethod ){\n\t${0}\n})",
 		"description": "TestBox Setup",
 		"scope": "source,text"
 	},
 	"story": {
 		"prefix": "story",
-		"body": "\nstory( \"${1:A suite}\", function(){\n${0}\n\n});",
+		"body": "\nstory( \"${1:A suite}\", () => {\n${0}\n\n})",
 		"description": "TestBox BDD Story",
 		"scope": "source,text"
 	},
 	"storyFull": {
 		"prefix": "storyFull",
-		"body": "\nstory( title=\"${1:A suite}\", labels=\"\", asyncAll=false, skip=false, body=function(){\n${0}\n\n});",
+		"body": "\nstory(\n    title=\"${1:A suite}\",\n    labels=\"\",\n    asyncAll=false,\n    skip=false,\n    body=() => {\n${0}\n\n})",
 		"description": "TestBox BDD Story With Arguments",
 		"scope": "source,text"
 	},
 	"teardown": {
 		"prefix": "teardown",
-		"body": "\nfunction teardown( currentMethod ){\n\t${0}\n});",
+		"body": "\nfunction teardown( currentMethod ){\n\t${0}\n})",
 		"description": "TestBox Teardown",
 		"scope": "source,text"
 	},
 	"bdd": {
 		"prefix": "bdd",
-		"body": "\n/**\n * My BDD Test\n */\ncomponent extends=\"testbox.system.BaseSpec\"{\n\n/*********************************** LIFE CYCLE Methods ***********************************/\n\n\t/**\n\t * executes before all suites+specs in the run() method\n\t */\n\tfunction beforeAll(){\n\n\t}\n\n\t/**\n\t * executes after all suites+specs in the run() method\n\t */\n\tfunction afterAll(){\n\n\t}\n\n\t/*********************************** BDD SUITES ***********************************/\n\n\tfunction run( testResults, testBox ){\n\t\t// all your suites go here.\n\t\tdescribe( \"My First Suite\", function(){\n\n\t\t\tit( \"A Spec\", function(){\n\t\t\t\tfail( 'implement' );\n\t\t\t} );\n\n\t\t} );\n\t}\n\n}\n",
+		"body": "\n/**\n * My BDD Test\n */\ncomponent extends=\"testbox.system.BaseSpec\"{\n\n/*********************************** LIFE CYCLE Methods ***********************************/\n\n\t/**\n\t * executes before all suites+specs in the run() method\n\t */\n\tfunction beforeAll(){\n\n\t}\n\n\t/**\n\t * executes after all suites+specs in the run() method\n\t */\n\tfunction afterAll(){\n\n\t}\n\n\t/*********************************** BDD SUITES ***********************************/\n\n\tfunction run( testResults, testBox ){\n\t\t// all your suites go here.\n\t\tdescribe( \"My First Suite\", () => {\n\n\t\t\tit( \"A Spec\", () => {\n\t\t\t\tfail( 'implement' )\n\t\t\t} )\n\n\t\t} )\n\t}\n\n}\n",
 		"description": "TestBox BDD Bundle",
 		"scope": "source,text"
 	},
@@ -181,25 +181,25 @@
 	},
 	"then": {
 		"prefix": "then",
-		"body": "\nthen( \"${1:A Spec}\", function(){\n${0}\n});",
+		"body": "\nthen( \"${1:A Spec}\", () => {\n${0}\n})",
 		"description": "TestBox Spec Then",
 		"scope": "source,text"
 	},
 	"thenFull": {
 		"prefix": "thenFull",
-		"body": "\nthen( title=\"${1:A Spec}\", labels=\"\", skip=false, body=function(){\n${0}\n});",
+		"body": "\nthen(\n    title=\"${1:A Spec}\",\n    labels=\"\",\n    skip=false,\n    body=() => {\n${0}\n})",
 		"description": "TestBox Spec Then Arguments",
 		"scope": "source,text"
 	},
 	"when": {
 		"prefix": "when",
-		"body": "\nwhen( \"${1:A suite}\", function(){\n${0}\n\n});",
+		"body": "\nwhen( \"${1:A suite}\", () => {\n${0}\n\n})",
 		"description": "TestBox BDD When",
 		"scope": "source,text"
 	},
 	"whenFull": {
 		"prefix": "whenFull",
-		"body": "\nwhen( title=\"${1:A suite}\", labels=\"\", asyncAll=false, skip=false, body=function(){\n${0}\n\n});",
+		"body": "\nwhen(\n    title=\"${1:A suite}\",\n    labels=\"\",\n    asyncAll=false,\n    skip=false,\n    body=() => {\n${0}\n\n})",
 		"description": "TestBox BDD When With Arguments",
 		"scope": "source,text"
 	}
