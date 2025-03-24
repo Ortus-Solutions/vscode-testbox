@@ -172,7 +172,6 @@ jobs:
         with:
           files: |
             ${{ needs.package.outputs.fileName }}
-            CHANGELOG.md
           release-tag: v${{ needs.package.outputs.version }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
