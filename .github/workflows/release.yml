@@ -36,7 +36,7 @@ jobs:
     name: Package
     runs-on: ubuntu-latest
     outputs:
-      version: ${{ steps.setup-tag.outputs.version }}
+      version: ${{ steps.setup-env.outputs.version }}
       fileName: ${{ steps.setup-env.outputs.fileName }}
     steps:
       - name: Checkout source
@@ -156,7 +156,7 @@ jobs:
 
       - name: Create Release
         id: create-release
-        uses: actions/create-release@v1
+        uses: actions/create-release@v1.1.4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -181,17 +181,23 @@ jobs:
           name: CHANGELOG
           path: CHANGELOG.md
 
-      # Download development branch
+  prepNextRelease:
+    name: Prep a new release
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    needs: [ publishGH ]
+    steps:
+      # Checkout development
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-            ref: development d
+          ref: development
 
       # Download build artifacts
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
-            name: CHANGELOG
+          name: CHANGELOG
 
       # NPM Minor Bump
       - name: Bump Version
@@ -202,13 +208,12 @@ jobs:
       - name: Commit Version Bump
         uses: EndBug/add-and-commit@v9.1.1
         with:
-           author_name: Github Actions
-           author_email: info@ortussolutions.com
-           message: 'Version bump'
-           add: |
-              package.json
-              CHANGELOG.md
-
+          author_name: Github Actions
+          author_email: info@ortussolutions.com
+          message: 'Version bump'
+          add: |
+            package.json
+            CHANGELOG.md
 
   # Publish artifact to S3
   publishS3:
