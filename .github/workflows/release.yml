@@ -126,7 +126,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
 
       - name: Update changelog [unreleased] with latest version
-        uses: thomaseizinger/keep-a-changelog-new-release@1.3.0
+        uses: thomaseizinger/keep-a-changelog-new-release@3.1.0
         with:
           changelogPath: ./CHANGELOG.md
           tag: v${{ needs.package.outputs.version }}
