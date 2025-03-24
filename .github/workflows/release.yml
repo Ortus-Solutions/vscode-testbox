@@ -66,7 +66,6 @@ jobs:
     name: Package
     runs-on: ubuntu-latest
     outputs:
-      tag: ${{ steps.setup-tag.outputs.tag }}
       version: ${{ steps.setup-tag.outputs.version }}
       fileName: ${{ steps.setup-env.outputs.fileName }}
     steps:
@@ -88,6 +87,7 @@ jobs:
             echo "PACKAGE_VERSION=`node -e "console.log( require('./package.json').version )"`" >> $GITHUB_ENV
             echo "PACKAGE_FILE_NAME=`node -e "console.log( require('./package.json').name + '-' + require('./package.json').version + '.vsix')"`" >> $GITHUB_ENV
             echo "fileName=$PACKAGE_FILE_NAME" >> $GITHUB_OUTPUT
+            echo "version=$PACKAGE_VERSION" >> $GITHUB_OUTPUT
             # Convert snippets to JSON
             ./buildSnippets.sh
 
@@ -101,17 +101,7 @@ jobs:
           name: ${{ env.PACKAGE_FILE_NAME }}
           path: |
             ./${{ env.PACKAGE_FILE_NAME }}
-            ./CHANGELOG.md
           if-no-files-found: error
-
-      - name: Setup tag
-        id: setup-tag
-        run: |
-          $version = (Get-Content ./package.json -Raw | ConvertFrom-Json).version
-          Write-Host "tag: release/$version"
-          "tag=release/$version" >> $env:GITHUB_OUTPUT
-          "version=$version" >> $env:GITHUB_OUTPUT
-        shell: pwsh
 
   # Publish to VS Marketplace
   publishMS:
@@ -162,10 +152,32 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           registry-url: https://registry.npmjs.org/
 
-      - name: Bump the minor and create tag and commit
+      - name: Update changelog [unreleased] with latest version
+        uses: thomaseizinger/keep-a-changelog-new-release@1.3.0
+        with:
+          changelogPath: ./CHANGELOG.md
+          tag: v${{ needs.package.outputs.version }}
+
+      # Needed due to bug above
+      - name: Fix Changelog
         run: |
-          npm version minor
-          git push --follow-tags
+            npm install -g markdownlint-cli
+            markdownlint CHANGELOG.md --fix
+
+      - name: Commit Changelog To Master
+        uses: EndBug/add-and-commit@v9.1.1
+        with:
+          author_name: Github Actions
+          author_email: info@ortussolutions.com
+          message: 'Finalized changelog for v${{ needs.package.outputs.version }}'
+          add: CHANGELOG.md
+
+      - name: Tag Version
+        uses: rickstaa/action-create-tag@v1.7.2
+        with:
+          tag: "${{ needs.package.outputs.tag }}"
+          force_push_tag: true
+          message: "Latest Release v${{ needs.package.outputs.version }}"
 
       - name: Create Release
         id: create-release
@@ -186,6 +198,42 @@ jobs:
             CHANGELOG.md
           release-tag: ${{ needs.package.outputs.tag }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Upload CHANGELOG to the artifacts
+      - name: Upload Changelog to Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: CHANGELOG
+          path: CHANGELOG.md
+
+      # Download development branch
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+            ref: development
+
+      # Download build artifacts
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+            name: CHANGELOG
+
+      # NPM Minor Bump
+      - name: Bump Version
+        run: |
+          npm version minor --no-git-tag-version
+
+      # Commit it back
+      - name: Commit Version Bump
+        uses: EndBug/add-and-commit@v9.1.1
+        with:
+           author_name: Github Actions
+           author_email: info@ortussolutions.com
+           message: 'Version bump'
+           add: |
+              package.json
+              CHANGELOG.md
+
 
   # Publish artifact to S3
   publishS3:
@@ -213,3 +261,45 @@ jobs:
             AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_SECRET }}
             SOURCE_DIR: "upload"
             DEST_DIR: "ortussolutions/vscode-boxlang/${{ needs.package.outputs.version }}"
+
+##########################################################################################
+# Prep Next Release
+##########################################################################################
+prep_next_release:
+  name: Prep Next Release
+  if: github.ref == 'refs/heads/master'
+  runs-on: ubuntu-latest
+  needs: [ publishGH ]
+  steps:
+    # Checkout development
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      with:
+        ref: development
+
+        - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+            name: testbox
+            path: .tmp
+
+        # Copy the changelog to the development branch
+        - name: Copy Changelog
+        run: |
+            cp .tmp/changelog.md changelog.md
+
+        # Bump to next version
+        - name: Bump Version
+        run: |
+            box bump --minor --!TagVersion
+
+        # Commit it back to development
+        - name: Commit Version Bump
+        uses: EndBug/add-and-commit@v9.1.1
+        with:
+            author_name: Github Actions
+            author_email: info@ortussolutions.com
+            message: 'Version bump'
+            add: |
+            box.json
+            changelog.md
