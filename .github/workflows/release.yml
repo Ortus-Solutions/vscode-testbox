@@ -15,18 +15,6 @@ on:
         required: false
         default: false
         type: boolean
-      publishMS:
-        type: boolean
-        required: false
-        default: false
-      publishOVSX:
-        type: boolean
-        required: false
-        default: false
-      publishGH:
-        type: boolean
-        required: false
-        default: false
 
   # Manually trigger the workflow
   workflow_dispatch:
@@ -36,21 +24,6 @@ on:
         required: false
         default: false
         type: boolean
-      publishMS:
-        description: 'Publish to the VS Marketplace'
-        type: boolean
-        required: true
-        default: false
-      publishOVSX:
-        description: 'Publish to OpenVSX'
-        type: boolean
-        required: true
-        default: false
-      publishGH:
-        description: 'Publish to GitHub Releases'
-        type: boolean
-        required: true
-        default: true
 
 env:
   PACKAGE_NAME: ${{ github.event.repository.name }}
@@ -105,7 +78,8 @@ jobs:
     name: Publish to VS marketplace
     runs-on: ubuntu-latest
     needs: package
-    if: inputs.publishMS == 'true'
+    # Only for master branch
+    if: false && github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v4
 
@@ -121,7 +95,8 @@ jobs:
     name: Publish to OpenVSX
     runs-on: ubuntu-latest
     needs: package
-    if: inputs.publishOVSX == 'true'
+    # Only for master branch
+    if: false && github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v4
 
@@ -137,7 +112,8 @@ jobs:
     name: Publish a GitHub release
     runs-on: ubuntu-latest
     needs: package
-    if: inputs.publishGH == 'true'
+    # Only for master branch
+    if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/download-artifact@v4
         with:
