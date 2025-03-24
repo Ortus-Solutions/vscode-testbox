@@ -9,7 +9,7 @@ on:
 
 env:
   PACKAGE_NAME: ${{ github.event.repository.name }}
-  NODE_VERSION: 18
+  NODE_VERSION: 20
 
 jobs:
   tests:
