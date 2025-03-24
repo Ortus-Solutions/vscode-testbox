@@ -40,12 +40,12 @@ on:
         description: 'Publish to the VS Marketplace'
         type: boolean
         required: true
-        default: true
+        default: false
       publishOVSX:
         description: 'Publish to OpenVSX'
         type: boolean
         required: true
-        default: true
+        default: false
       publishGH:
         description: 'Publish to GitHub Releases'
         type: boolean
@@ -57,9 +57,6 @@ env:
   NODE_VERSION: 18
   SNAPSHOT: ${{ inputs.snapshot || false }}
   BUILD_ID: ${{ github.run_number }}
-  PUBLISH_MS: ${{ inputs.publishMS || false }}
-  PUBLISH_OVSX: ${{ inputs.publishOVSX || false }}
-  PUBLISH_GH: ${{ inputs.publishGH || true }}
 
 jobs:
   package:
@@ -108,7 +105,7 @@ jobs:
     name: Publish to VS marketplace
     runs-on: ubuntu-latest
     needs: package
-    if: ${{ env.PUBLISH_MS == 'true' }}
+    if: inputs.publishMS == 'true'
     steps:
       - uses: actions/checkout@v4
 
@@ -124,7 +121,7 @@ jobs:
     name: Publish to OpenVSX
     runs-on: ubuntu-latest
     needs: package
-    if: env.PUBLISH_OVSX == 'true'
+    if: inputs.publishOVSX == 'true'
     steps:
       - uses: actions/checkout@v4
 
@@ -140,7 +137,7 @@ jobs:
     name: Publish a GitHub release
     runs-on: ubuntu-latest
     needs: package
-    if: env.PUBLISH_GH == 'true'
+    if: inputs.publishGH == 'true'
     steps:
       - uses: actions/download-artifact@v4
         with:
@@ -175,7 +172,7 @@ jobs:
       - name: Tag Version
         uses: rickstaa/action-create-tag@v1.7.2
         with:
-          tag: "${{ needs.package.outputs.tag }}"
+          tag: "v${{ needs.package.outputs.version }}"
           force_push_tag: true
           message: "Latest Release v${{ needs.package.outputs.version }}"
 
@@ -210,7 +207,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-            ref: development
+            ref: development d
 
       # Download build artifacts
       - name: Download build artifacts
@@ -261,45 +258,3 @@ jobs:
             AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_SECRET }}
             SOURCE_DIR: "upload"
             DEST_DIR: "ortussolutions/vscode-boxlang/${{ needs.package.outputs.version }}"
-
-##########################################################################################
-# Prep Next Release
-##########################################################################################
-  prep_next_release:
-    name: Prep Next Release
-    if: github.ref == 'refs/heads/master'
-    runs-on: ubuntu-latest
-    needs: [ publishGH ]
-    steps:
-      # Checkout development
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          ref: development
-
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: testbox
-          path: .tmp
-
-      # Copy the changelog to the development branch
-      - name: Copy Changelog
-        run: |
-          cp .tmp/changelog.md changelog.md
-
-        # Bump to next version
-      - name: Bump Version
-        run: |
-          box bump --minor --!TagVersion
-
-        # Commit it back to development
-      - name: Commit Version Bump
-        uses: EndBug/add-and-commit@v9.1.1
-        with:
-          author_name: Github Actions
-          author_email: info@ortussolutions.com
-          message: 'Version bump'
-          add: |
-            box.json
-            changelog.md
