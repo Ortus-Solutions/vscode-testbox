@@ -137,7 +137,7 @@ jobs:
     name: Publish a GitHub release
     runs-on: ubuntu-latest
     needs: package
-    if: inputs.publishGH == 'true'
+    if: inputs.publishGH
     steps:
       - uses: actions/download-artifact@v4
         with:
