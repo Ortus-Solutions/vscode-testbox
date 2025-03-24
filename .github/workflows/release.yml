@@ -164,6 +164,7 @@ jobs:
         with:
           tag_name: v${{ needs.package.outputs.version }}
           release_name: v${{ needs.package.outputs.version }}
+          body_path: CHANGELOG.md
           draft: false
           prerelease: false
 
