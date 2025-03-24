@@ -9,8 +9,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [] - 2025-03-24
-
 ### Added
 
 - Test Explorer thanks to Mark Drew
@@ -53,6 +51,3 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Initial release.
 - Converted TestBox and MockBox snippets from <https://github.com/lmajano/cbox-coldbox-sublime>.
-
-[unreleased]: https://github.com/Ortus-Solutions/vscode-testbox/compare/v...HEAD
-[]: https://github.com/Ortus-Solutions/vscode-testbox/compare/61050b130ff703055af56dce15c21b901199fd82...v
