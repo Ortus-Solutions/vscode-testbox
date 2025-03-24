@@ -57,8 +57,8 @@ env:
   NODE_VERSION: 18
   SNAPSHOT: ${{ inputs.snapshot || false }}
   BUILD_ID: ${{ github.run_number }}
-  PUBLISH_MS: ${{ inputs.publishMS || true }}
-  PUBLISH_OVSX: ${{ inputs.publishOVSX || true }}
+  PUBLISH_MS: ${{ inputs.publishMS || false }}
+  PUBLISH_OVSX: ${{ inputs.publishOVSX || false }}
   PUBLISH_GH: ${{ inputs.publishGH || true }}
 
 jobs:
@@ -185,7 +185,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ needs.package.outputs.tag }}
+          tag_name: v${{ needs.package.outputs.version }}
           release_name: v${{ needs.package.outputs.version }}
           draft: false
           prerelease: false
@@ -196,7 +196,7 @@ jobs:
           files: |
             ${{ needs.package.outputs.fileName }}
             CHANGELOG.md
-          release-tag: ${{ needs.package.outputs.tag }}
+          release-tag: v${{ needs.package.outputs.version }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       # Upload CHANGELOG to the artifacts
