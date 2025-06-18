@@ -16,6 +16,16 @@ This extension provides support for the TestBox BDD/TDD framework in Visual Stud
 
 Tests are discovered automatically and a test explorer view is available from the Activity Bar.  You can run tests from the explorer view by clicking on the play icon as well as being able to run the tests right from the editor.
 
+
+----
+### *Heads up!*
+The test explorer uses the [cftokens](https://github.com/jcberquist/cftokens) library to parse the test files.  On macOS you will get a warning about the cftokens library not being notarized.  This is a macOS security feature.  You can bypass this by either:
+1. Right clicking on the cftokens binary and selecting "Open".  or
+1. Opening System Settings -> Privacy & Security > Developer Tools and allowing the cftokens binary to run. 
+
+This will allow you to run the extension without any issues
+-----
+
 ### Jump to Spec
 
 <img src="images/jump-to-spec.png" alt="jump to spec">

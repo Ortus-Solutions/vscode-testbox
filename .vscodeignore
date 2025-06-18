@@ -5,7 +5,8 @@
 .vscode-test/**
 .gitignore
 **/.gitignore
-
+__mocks__/
+coverage/
 # Support Files
 .markdownlintrc
 tsconfig.json
@@ -24,7 +25,7 @@ out/**/*.map
 build/**
 
 # Managed Packages
-node_modules/**
+# node_modules/**
 
 # Testing Folders
 test/**

@@ -1,9 +1,8 @@
-// npm version patch --no-git-tag-version
-
 const vscode = require( "vscode" );
 const BoxCommand = require( "./box-command" );
 const { LOG } = require( "./utils/logger" );
-const { createTestingViewController, discoverTests } = require( "./testingExplorer" );
+
+const { createTestExplorerView } = require( "./views/TestExplorerView" );
 
 let globalCommand = new BoxCommand( { runHarness: true } );
 
@@ -65,28 +64,13 @@ module.exports.activate = function( context ) {
 		}
 	} ) );
 
+
+
+
 	// Add the UI Panel for the TestBox Runner
-	const { controller, watcher } = createTestingViewController();
+	const { controller } = createTestExplorerView( context );
 	disposables.push( controller );
-	disposables.push( watcher );
 
-	// Update the test view when the configuration changes
-	disposables.push(
-		vscode.workspace.onDidChangeConfiguration( e => {
-			if ( e.affectsConfiguration( "testbox" ) ) {
-				LOG.info( "Configuration changed, rediscovering tests..." );
-
-				try {
-					discoverTests( controller );
-					// Force UI refresh
-				    vscode.commands.executeCommand( "testing.refreshTests" );
-				} catch ( error ) {
-					LOG.error( "Error discovering tests:" );
-					LOG.error( error.message );
-				}
-			}
-		} )
-	);
 
 	// Listen for configuration changes
 	context.subscriptions.push( disposables );

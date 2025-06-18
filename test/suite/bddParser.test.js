@@ -49,5 +49,5 @@ component extends="coldbox.system.testing.BaseModelTest" model = "models.Calcula
 		assert.ok( blocks[0].range.end.line === 20 );
 
 
-	} );
-} );
+  });
+});

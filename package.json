@@ -2,7 +2,7 @@
     "name": "vscode-testbox",
     "displayName": "TestBox TDD/BDD Support",
     "description": "TestBox Support for Visual Studio Code",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "publisher": "ortus-solutions",
     "icon": "images/icon.png",
     "engines": {
@@ -30,12 +30,26 @@
         "Testing",
         "CFML",
         "ColdFusion"
-    ],
+      ],
     "activationEvents": [
-        "onStartupFinished"
+      "onStartupFinished"
     ],
     "main": "./src/extension",
     "contributes": {
+        "languages": [
+            {
+                "id": "boxlang",
+                "aliases": ["BoxLang"],
+                "extensions": [".bx",".bxm", ".bxs"]
+            }
+        ],
+        "menus": {
+          "testing/item/context": [
+            {
+              "command": "testbox.open-in-browser"
+            }
+          ]
+        },
         "commands": [
             {
                 "command": "testbox.jumpToSpec",
@@ -56,6 +70,10 @@
             {
                 "command": "testbox.run-previous",
                 "title": "TestBox: Run Previous"
+            },
+            {
+                "command": "testbox.open-in-browser",
+                "title": "TestBox: Run In browser"
             }
         ],
         "keybindings": [
@@ -96,7 +114,7 @@
         "configuration": {
             "title": "TestBox",
             "properties": {
-                "testbox.boxlangRunner": {
+              "testbox.boxlangRunner": {
                     "type": [
                         "string",
                         "null"
@@ -209,6 +227,15 @@
                     ],
                     "default": null,
                     "description": "Glob patterns for files to ignore in the testing view."
+                },
+                "testbox.excludedPackages": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "default": null,
+                    "description": "Comma separated list of packages names to exclide from the testing view. e.g [tests.testbox.tests, tests.testbox.mocks]"
+                  }
                 }
             }
         },
@@ -247,19 +274,63 @@
         "testing": {
             "testExplorer": {}
         }
+    ,
+    "jest": {
+      "preset": "ts-jest",
+      "transform": {
+        "^.+\\.(ts|tsx)$": "ts-jest"
+      },
+      "moduleNameMapper": {
+        "^vscode$": "<rootDir>/__mocks__/vscode.js"
+      },
+      "testMatch": [
+        "**/test/jest/**/*.test.(ts|js)"
+      ],
+      "moduleFileExtensions": [
+        "ts",
+        "js",
+        "json",
+        "node"
+      ],
+      "testEnvironment": "node",
+      "testPathIgnorePatterns": [
+        "<rootDir>/node_modules/"
+      ],
+      "coveragePathIgnorePatterns": [
+        "<rootDir>/node_modules/"
+      ],
+      "collectCoverageFrom": [
+        "src/**/*.js",
+        "!**/node_modules/**"
+      ],
+      "globals": {
+        "ts-jest": {
+          "diagnostics": false
+        }
+      }
     },
     "dependencies": {
-        "findup": "^0.1.5"
+        "findup": "^0.1.5",
+        "minimatch": "^10.0.1"
     },
     "devDependencies": {
+        "@babel/preset-typescript": "^7.27.1",
+        "@eslint/eslintrc": "^3.3.1",
+        "@types/jest": "^29.5.14",
+        "jest": "^29.7.0",
+        "ts-jest": "^29.3.4",
         "@eslint/js": "^9.22.0",
         "@types/node": "^22.13.5",
         "@types/vscode": "^1.97.0",
+        "@typescript-eslint/eslint-plugin": "^8.25.0",
+        "@typescript-eslint/parser": "^8.25.0",
         "@vscode/test-cli": "^0.0.10",
         "@vscode/test-electron": "^2.4.1",
         "@vscode/vsce": "^3.2.2",
         "convert-snippets-to-vscode": "^1.0.2",
-        "eslint": "^9.22.0",
+        "babel-eslint": "^10.1.0",
+        "eslint": "^9.21.0",
+        "eslint-config-prettier": "^10.0.2",
         "eslint-plugin-jsdoc": "^50.6.8",
         "globals": "^16.0.0",
         "mocha": "^11.1.0",
@@ -267,13 +338,18 @@
         "typescript-eslint": "^8.27.0"
     },
     "scripts": {
+        "compile": "tsc -p ./tsconfig.json",
+        "watch": "tsc -w",
         "vscode:prepublish": "npm run lint",
         "vscode:publish": "vsce publish",
         "vscode:package": "vsce package",
         "lint": "eslint ./src/**/*.js",
+        "pretest": "npm run compile",
         "test": "vscode-test --install-extensions ortus-solutions.vscode-boxlang",
         "test-mac": "NODE_OPTIONS=--force-node-api-uncaught-exceptions-policy vscode-test --install-extensions ortus-solutions.vscode-boxlang",
         "pack": "vsce package",
-        "sublime:convert": "bash ./build.sh"
+        "sublime:convert": "bash ./build.sh",
+        "jest": "jest",
+        "postinstall": "chmod +x ./resources/cftokens/cftokens_* || true"
     }
 }

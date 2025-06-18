@@ -30,5 +30,7 @@
         "coldbox":"^7.0.0"
     },
     "scripts":{},
-    "testbox":{}
+    "testbox":{
+        "runner": "http://127.0.0.1:64981/tests/runner.cfm"
+    }
 }

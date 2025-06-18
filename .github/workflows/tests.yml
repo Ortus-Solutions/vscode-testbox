@@ -44,3 +44,21 @@ jobs:
           SLACK_TITLE: "${{ env.PACKAGE_NAME }} Build Failure"
           SLACK_USERNAME: CI
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+  # jest_unit_tests:
+  #   name: Run Jest Unit Tests
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout Repository
+  #       uses: actions/checkout@v4
+
+  #     - name: Setup Node.js
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 20
+  #         registry-url: https://registry.npmjs.org/
+
+  #     - name: Install dependencies
+  #       run: npm i
+
+  #     - name: Run Jest tests
+  #       run: npm run jest -- --coverage --ci --passWithNoTests

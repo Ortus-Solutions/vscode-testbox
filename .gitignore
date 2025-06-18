@@ -24,6 +24,7 @@ npm-debug.log
 ## Mac
 .DS_Store
 Thumbs.db
+coverage/
 
 ## Pack
 vscode-testbox-*.tgz
